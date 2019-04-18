@@ -4,8 +4,6 @@ if(!isset($_SESSION["login"])){session_start(); }
    require_once 'loading.php';
    require_once '../controller/cadmin.php';
 
-
-
 ?>
 
 
