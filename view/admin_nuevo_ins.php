@@ -4,6 +4,22 @@ if(!isset($_SESSION["login"])){session_start(); }
    require_once 'loading.php';
    require_once '../controller/cadmin.php';
 
+
+     $institucion   = isset($_REQUEST['institucion'])?$_REQUEST['institucion']:isset($_REQUEST['institucion']);
+
+     $monitor   = isset($_REQUEST['monitor'])?$_REQUEST['monitor']:isset($_REQUEST['monitor']);
+        
+     $ingresar  = isset($_REQUEST['ingresar'])?$_REQUEST['ingresar']:isset($_REQUEST['ingresar']);
+
+
+        if ($ingresar == "crear")
+        {
+            $ingresar_ins = new funciones();
+            
+            $registrar = $ingresar_ins->ingresar_institucion($institucion, $monitor);
+           echo "<meta http-equiv='refresh' content='0;url=../view/admin_nuevo_ins.php'>";
+        }
+    
 ?>
 
 
@@ -45,14 +61,14 @@ if(!isset($_SESSION["login"])){session_start(); }
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="primer_nombre" class="form-control" placeholder="Ingrese institución" type="text" required maxlength="20">
+                        <input name="institucion" class="form-control" placeholder="Ingrese institución" type="text" required maxlength="20">
                     </div>
                     
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="segundo_apellido" class="form-control" placeholder="Apellido Materno" type="text" required maxlength="30">
+                        <input name="monitor" class="form-control" placeholder="Monitor" type="text" required maxlength="30">
                     </div>
 
                     <div class="form-group">

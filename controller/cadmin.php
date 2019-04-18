@@ -181,5 +181,31 @@ class funciones {
         }
      }  
     
+    
+    
+    
+        //==================== INSERTAR INSTITUCION ===========================  
+    
+     public function ingresar_institucion($institucion, $monitor)
+     { 
+           require_once '../modell/madmin.php';
+
+        try {
+            $lista = new funciones_BD();
+            $list = $lista->ingresar_institucion($institucion, $monitor);
+            
+            if ($lista) {
+                return true;
+            } else {
+                
+                return false;
+            }
+        } 
+         
+         catch (Exception $e) {
+         echo "<script>alert('ERROR AL INGRESAR USUARIO NIVEL 1');</script>";
+        }
+    } 
+    
 }
 ?>

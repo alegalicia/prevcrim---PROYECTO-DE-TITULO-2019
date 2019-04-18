@@ -153,5 +153,28 @@ class funciones_BD {
         }
     }  
     
+
+    
+    
+         //==================== INSERTAR institucion===========================  
+    
+     public function ingresar_institucion($institucion, $monitor)  { 
+         
+         
+        $sql_estado = $this->db->connect()->exec("INSERT INTO `institucion` 
+        (`id_institucion`, `institucion`, `monitor`, `estado`) 
+         VALUES ('null','".$institucion."','".$monitor."', '1');");
+
+        if ($sql_estado) {
+            echo "<script>alert('INSTITUCIÓN INGRESADO CORRECTAMENTE');</script>";
+            return true;
+            
+        } else { echo "<script>alert('ERROR AL CREAR INSTITUCIOÓN');</script>";
+            return false;
+        }
+    }  
+    
+    
+    
  }
 ?>
