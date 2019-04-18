@@ -26,11 +26,50 @@ if(!isset($_SESSION["login"])){session_start(); }
     <link rel="stylesheet" href="css/panel.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 </head>
+<?php 
+    if($_SESSION["id_perfil"] == 1)
+    {        
+        
+ ?>
+ 
 <body>
-   
-   <h1> Crear Institución</h1>
-   
-   
-    
+ <center>
+    <h1>Crear Institución</h1>
+    <div class="container">
+        <br>
+<div class="col-md-4 login-sec">
+        <div class="card bg-light">
+            <article class="card-body mx-auto" style="max-width: 400px;">
+
+                <form method="post">
+                                      
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                        <input name="primer_nombre" class="form-control" placeholder="Ingrese institución" type="text" required maxlength="20">
+                    </div>
+                    
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                        <input name="segundo_apellido" class="form-control" placeholder="Apellido Materno" type="text" required maxlength="30">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block" name="ingresar" value="crear"> Create Institución</button>
+                    </div>
+                </form>
+            </article>
+        </div>
+        </div>
+    </div>
+ </center>
 </body>
+
+<?php
+   }else echo"debe iniciar sesión con una cuenta con previlegios";
+?>
+
 </html>
