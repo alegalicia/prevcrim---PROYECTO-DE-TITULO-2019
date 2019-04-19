@@ -185,12 +185,32 @@ class funciones_BD {
       
       
             if ($sql_estado) {
-                    echo "<script>alert('USUAIO ACTUALIZADO..!!!');</script>";
+                    echo "<script>alert('INSTITUCION ACTUALIZADA..!!!');</script>";
             return true;
         } else {
            echo "<script>alert('ERROR !!!);</script>";
             return false;
         }
     }     
+    
+    
+   // ACTUALIZAR INSTITUCION
+  public function eliminar_ins($id_institucion)  {
+      
+        $sql_estado = $this->db->connect()->exec("update `institucion`  
+        set   `estado` = '0'  
+        where `institucion`.`id_institucion` = '".$id_institucion."'");
+      
+      
+            if ($sql_estado) {
+                    echo "<script>alert('INSTITUCION ELIMINADA..!!!');</script>";
+            return true;
+        } else {
+           echo "<script>alert('ERROR !!!);</script>";
+            return false;
+        }
+    }     
+      
+    
  }
 ?>
