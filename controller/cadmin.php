@@ -12,7 +12,7 @@ class funciones {
     
    //==================== listado de insituciones  ===========================
     public function lista_inst() {        
-        $sql = "select id_institucion, institucion from `institucion` where estado=1 ";
+        $sql = "select id_institucion, institucion, monitor from `institucion` where estado=1 ";
             
         $stmt = $this->db->connect()->query($sql);
         $datos = array();
@@ -206,6 +206,28 @@ class funciones {
          echo "<script>alert('ERROR AL INGRESAR USUARIO NIVEL 1');</script>";
         }
     } 
+    
+    
+     //======= ACTUALIZAR INSTITUCION=========  
+ public function actualizar_ins($id_institucion, $institucion, $monitor) 
+     {
+               require_once '../modell/madmin.php';
+        try {
+            $lista = new funciones_BD();
+            $list = $lista->actualizar_ins($id_institucion, $institucion, $monitor);
+            
+            if ($lista) {
+                return true;
+                
+            } else {
+                return false;
+            }
+        } 
+         
+         catch (Exception $e) {
+         echo "<script>alert('ERROR AL ACTUALIZAR');</script>";
+        }
+     }
     
 }
 ?>

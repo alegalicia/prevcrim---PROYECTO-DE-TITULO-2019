@@ -1,35 +1,27 @@
-<?php 
+<?php
 if(!isset($_SESSION["login"])){session_start(); } 
+    require_once 'loading.php';
+    require_once '../controller/cadmin.php';
 
-   require_once 'loading.php';
-   require_once '../controller/cadmin.php';
+    $primer_nombre   = isset($_REQUEST['primer_nombre'])?$_REQUEST['primer_nombre']:isset($_REQUEST['primer_nombre']);
 
+    $segundo_nombre   = isset($_REQUEST['segundo_nombre'])?$_REQUEST['segundo_nombre']:isset($_REQUEST['segundo_nombre']);
 
-     $institucion   = isset($_REQUEST['institucion'])?$_REQUEST['institucion']:isset($_REQUEST['institucion']);
-
-     $monitor   = isset($_REQUEST['monitor'])?$_REQUEST['monitor']:isset($_REQUEST['monitor']);
-        
      $ingresar  = isset($_REQUEST['ingresar'])?$_REQUEST['ingresar']:isset($_REQUEST['ingresar']);
+ 
+ if ($ingresar == "actualizar"){   
+                        $act = new funciones();
+                        $registrar = $act->actualizar_usuario($primer_nombre, $segundo_nombre, $primer_apellido , $segundo_apellido, $correo,
+                        $celular, $fijo, $rut, $comuna, $institucion, $perfil, $clave, $direccion);
+} else //echo "<script>alert('LAS CONTRASEÑAS NO COINCIDEN');</script>";
 
-
-        if ($ingresar == "crear")
-        {
-            $ingresar_ins = new funciones();
-            
-            $registrar = $ingresar_ins->ingresar_institucion($institucion, $monitor);
-           echo "<meta http-equiv='refresh' content='0;url=../view/admin_nuevo_ins.php'>";
-        }
-    
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+
     <meta charset="UTF-8">
     <title></title>
-     <meta charset="UTF-8">
-    <title>Nuevo Funcionario</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -37,49 +29,155 @@ if(!isset($_SESSION["login"])){session_start(); }
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="css/panel.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> 
+    
 </head>
 <?php 
     if($_SESSION["id_perfil"] == 1)
-    {        
-        
- ?>
- 
+    { 
+?>
+
 <body>
- <center>
-    <h1>Crear Institución</h1>
-    <div class="container">
+
+    <center>
         <br>
+        <h1> Actualizar Usuario: </h1>
+        <div class="col-md-8 login-sec">
+            <form class="login-form" action="admin_act.php" method="post" name="f1">
+                <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="th-sm">Editar</th>
+                            <th class="th-sm">Rut</th>
+                            <th class="th-sm">Nombre </th>
+                            <th class="th-sm">Apellido</th>
+                            <th class="th-sm">Institución</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+//============ Genera tabla ===============
+          require_once('../controller/cadmin.php');
+           $lista = new funciones();
+           $res = $lista->lista_usuario();
+            foreach($res as $obj => $o)
+              { $fac = $o['rut'];
+                  ?>
+                        <tr>
+                            <td align='center'><input type='radio' value="<?php echo $o['rut'] ?>" id='ckhActualizar' name='update' /></td>
+                            <td><?php echo $o['rut']?></td>
+                            <td><?php echo $o['primer_nombre']?></td>
+                            <td><?php echo $o['primer_apellido']?></td>
+                            <td><?php echo $o['institucion']?></td>
+                        </tr>
+                        <?php
+                            }
+                        ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Editar</th>
+                            <th>Rut</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Institución</th>
+                        </tr>
+                    </tfoot>
+                </table>
+              <button  class="btn btn-success btn-block" name="editar" type="submit" value="editar">Aceptar</button>
+            </form>
+        </div>
+        <br>
+
 <div class="col-md-4 login-sec">
-        <div class="card bg-light">
+  <?php
+    if(ISSET($_POST['update'])){
+        $id = $_POST['update'];
+  
+ //============ Genera tabla ===============
+          require_once('../controller/cadmin.php');
+           $lista = new funciones();
+           $res = $lista->buscar_usuario($id);
+            foreach($res as $obj => $o)
+              { $fac = $o['rut'];
+               
+  $obj = new funciones();
+ }           
+                  ?>
+            <hr>
+            
+    <div class="card bg-light">
             <article class="card-body mx-auto" style="max-width: 400px;">
-
-                <form method="post">
-                                      
+                <form action="admin_act.php" method="get">
+                      
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="institucion" class="form-control" placeholder="Ingrese institución" type="text" required maxlength="20">
+                        <input name="primer_nombre" class="form-control" placeholder="Primer Nombre" type="text" required maxlength="20" value="<?php echo $o['primer_nombre'] ?>">
                     </div>
-                    
+
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="monitor" class="form-control" placeholder="Monitor" type="text" required maxlength="30">
+                        <input name="segundo_nombre" class="form-control" placeholder="Segundo Nombre" type="text" required maxlength="30" value="<?php echo $o['segundo_nombre'] ?>">
                     </div>
-
+                       
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-block" name="ingresar" value="crear"> Create Institución</button>
+                        <button type="submit" class="btn btn-success btn-block" name="ingresar" value="actualizar"> Actualizar cuenta</button>
                     </div>
                 </form>
             </article>
-        </div>
-        </div>
-    </div>
- </center>
+    </div>     
+  <hr>
+            <?php
+    }
+ ?>
+ </div>
+    </center>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
+        $('#dtBasicExample').DataTable({
+            language: {
+                processing: "Cargando...",
+                search: "Buscar:",
+                lengthMenu: "Mostrar elementos en: _MENU_",
+                info: "Elementos mostrados _START_ de _END_  de un total _TOTAL_ Elementos encontrados",
+                infoEmpty: " ",
+                infoFiltered: "",
+                infoPostFix: "",
+                loadingRecords: "Chargement en cours...",
+                zeroRecords: "No se encontro factura",
+                emptyTable: " ",
+                paginate: {
+                    first: "Premier",
+                    previous: "Anterior",
+                    next: "Siguiente",
+                    last: "Ultimo"
+                },
+                aria: {
+                    sortAscending: ": activer pour trier la colonne par ordre croissant",
+                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function ExportToExcel(dtBasicExample) {
+            var htmltable = document.getElementById('dtBasicExample');
+            var html = htmltable.outerHTML;
+            window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
+        }
+    </script>
+
 </body>
 
 <?php

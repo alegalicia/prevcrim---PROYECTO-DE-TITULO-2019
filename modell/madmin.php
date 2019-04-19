@@ -175,6 +175,22 @@ class funciones_BD {
     }  
     
     
-    
+        // ACTUALIZAR INSTITUCION
+  public function actualizar_ins($id_institucion, $institucion, $monitor)  {
+      
+        $sql_estado = $this->db->connect()->exec("update `institucion`  
+        set `institucion` = '".$institucion."',
+        `monitor` = '".$monitor."'  
+        where `institucion`.`id_institucion` = '".$id_institucion."'");
+      
+      
+            if ($sql_estado) {
+                    echo "<script>alert('USUAIO ACTUALIZADO..!!!');</script>";
+            return true;
+        } else {
+           echo "<script>alert('ERROR !!!);</script>";
+            return false;
+        }
+    }     
  }
 ?>
