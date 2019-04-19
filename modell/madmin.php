@@ -191,6 +191,27 @@ class funciones_BD {
            echo "<script>alert('ERROR !!!);</script>";
             return false;
         }
-    }     
+    }
+    
+       // ELIMIMNAR INSTITUCION
+  public function eliminar_ins($id_institucion)  {
+      
+        $sql_estado = $this->db->connect()->exec("update `institucion`  
+        set   `estado` = '0'  
+        where `institucion`.`id_institucion` = '".$id_institucion."'");
+      
+      
+            if ($sql_estado) {
+                    echo "<script>alert('INSTITUCION ELIMINADA..!!!');</script>";
+            return true;
+        } else {
+           echo "<script>alert('ERROR !!!);</script>";
+            return false;
+        }
+    }  
+    
+    
+    
+    
  }
 ?>

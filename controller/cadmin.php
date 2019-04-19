@@ -229,5 +229,27 @@ class funciones {
         }
      }
     
+    
+              //======= ELIMINAR INSTITUCION=========  
+ public function eliminar_ins($id_institucion) 
+     {
+               require_once '../modell/madmin.php';
+        try {
+            $lista = new funciones_BD();
+            $list = $lista->eliminar_ins($id_institucion);
+            
+            if ($lista) {
+                return true;
+                
+            } else {
+                return false;
+            }
+        } 
+         
+         catch (Exception $e) {
+         echo "<script>alert('ERROR AL ELIMINAR');</script>";
+        }
+     }
+    
 }
 ?>
