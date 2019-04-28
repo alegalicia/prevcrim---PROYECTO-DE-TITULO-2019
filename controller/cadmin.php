@@ -184,7 +184,7 @@ class funciones {
     
     
     
-        //==================== INSERTAR INSTITUCION ===========================  
+//==================== INSERTAR INSTITUCION ===========================  
     
      public function ingresar_institucion($institucion, $monitor)
      { 

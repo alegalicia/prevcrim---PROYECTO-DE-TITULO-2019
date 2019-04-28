@@ -41,7 +41,7 @@ echo $id_institucion;
 
      <center>
         <br>
-        <h1> Actualizar Institucion: </h1>
+        <h1>Eliminar Institucion: </h1>
         <div class="col-md-8 login-sec">
             <form class="login-form" action="admin_eliminar_ins.php" method="post" name="f1">
                 <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
