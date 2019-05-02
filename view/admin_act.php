@@ -67,7 +67,44 @@ if(!isset($_SESSION["login"])){session_start(); }
     <link rel="stylesheet" href="css/panel.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> 
-    
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+      <script>
+        $(document).ready(function() {
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
+        $('#dtBasicExample').DataTable({
+            language: {
+                processing: "Cargando...",
+                search: "Buscar:",
+                lengthMenu: "Mostrar elementos en: _MENU_",
+                info: "Elementos mostrados _START_ de _END_  de un total _TOTAL_ Elementos encontrados",
+                infoEmpty: " ",
+                infoFiltered: "",
+                infoPostFix: "",
+                loadingRecords: "Chargement en cours...",
+                zeroRecords: "No se encontro factura",
+                emptyTable: " ",
+                paginate: {
+                    first: "Premier",
+                    previous: "Anterior",
+                    next: "Siguiente",
+                    last: "Ultimo"
+                },
+                aria: {
+                    sortAscending: ": activer pour trier la colonne par ordre croissant",
+                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function ExportToExcel(dtBasicExample) {
+            var htmltable = document.getElementById('dtBasicExample');
+            var html = htmltable.outerHTML;
+            window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
+        }
+    </script>   
 </head>
 <?php 
     if($_SESSION["id_perfil"] == 1)
@@ -121,7 +158,7 @@ if(!isset($_SESSION["login"])){session_start(); }
                         </tr>
                     </tfoot>
                 </table>
-              <button  class="btn btn-success btn-block" name="editar" type="submit" value="editar">Aceptar</button>
+              <button  class="btn btn-success" name="editar" type="submit" value="editar">Seleccionar</button>
             </form>
         </div>
         <br>
@@ -282,7 +319,7 @@ if(!isset($_SESSION["login"])){session_start(); }
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-block" name="ingresar" value="actualizar"> Actualizar cuenta</button>
+                        <button type="submit" class="btn btn-success" name="ingresar" value="actualizar"> Actualizar cuenta</button>
                     </div>
                 </form>
             </article>
@@ -293,45 +330,6 @@ if(!isset($_SESSION["login"])){session_start(); }
  }?>
  </div>
     </center>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function() {
-            $('#dtBasicExample').DataTable();
-            $('.dataTables_length').addClass('bs-select');
-        });
-        $('#dtBasicExample').DataTable({
-            language: {
-                processing: "Cargando...",
-                search: "Buscar:",
-                lengthMenu: "Mostrar elementos en: _MENU_",
-                info: "Elementos mostrados _START_ de _END_  de un total _TOTAL_ Elementos encontrados",
-                infoEmpty: " ",
-                infoFiltered: "",
-                infoPostFix: "",
-                loadingRecords: "Chargement en cours...",
-                zeroRecords: "No se encontro factura",
-                emptyTable: " ",
-                paginate: {
-                    first: "Premier",
-                    previous: "Anterior",
-                    next: "Siguiente",
-                    last: "Ultimo"
-                },
-                aria: {
-                    sortAscending: ": activer pour trier la colonne par ordre croissant",
-                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
-                }
-            }
-        });
-    </script>
-    <script type="text/javascript">
-        function ExportToExcel(dtBasicExample) {
-            var htmltable = document.getElementById('dtBasicExample');
-            var html = htmltable.outerHTML;
-            window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
-        }
-    </script>
-
 </body>
 
 <?php

@@ -30,7 +30,44 @@ echo $id_institucion;
      <link rel="stylesheet" href="css/panel.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> 
-
+     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
+        $('#dtBasicExample').DataTable({
+            language: {
+                processing: "Cargando...",
+                search: "Buscar:",
+                lengthMenu: "Mostrar elementos en: _MENU_",
+                info: "Elementos mostrados _START_ de _END_  de un total _TOTAL_ Elementos encontrados",
+                infoEmpty: " ",
+                infoFiltered: "",
+                infoPostFix: "",
+                loadingRecords: "Chargement en cours...",
+                zeroRecords: "No se encontro factura",
+                emptyTable: " ",
+                paginate: {
+                    first: "Premier",
+                    previous: "Anterior",
+                    next: "Siguiente",
+                    last: "Ultimo"
+                },
+                aria: {
+                    sortAscending: ": activer pour trier la colonne par ordre croissant",
+                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function ExportToExcel(dtBasicExample) {
+            var htmltable = document.getElementById('dtBasicExample');
+            var html = htmltable.outerHTML;
+            window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
+        }
+    </script>
  </head>
 <?php 
     if($_SESSION["id_perfil"] == 1)
@@ -78,50 +115,13 @@ echo $id_institucion;
                         </tr>
                     </tfoot>
                 </table>
-              <button  class="btn btn-success btn-block" name="ingresar" type="submit" value="eliminar">Aceptar</button>
+              <button  class="btn btn-success" name="ingresar" type="submit" value="eliminar">Aceptar</button>
             </form>
         </div>
         <br>
     </center>
 
-     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function() {
-            $('#dtBasicExample').DataTable();
-            $('.dataTables_length').addClass('bs-select');
-        });
-        $('#dtBasicExample').DataTable({
-            language: {
-                processing: "Cargando...",
-                search: "Buscar:",
-                lengthMenu: "Mostrar elementos en: _MENU_",
-                info: "Elementos mostrados _START_ de _END_  de un total _TOTAL_ Elementos encontrados",
-                infoEmpty: " ",
-                infoFiltered: "",
-                infoPostFix: "",
-                loadingRecords: "Chargement en cours...",
-                zeroRecords: "No se encontro factura",
-                emptyTable: " ",
-                paginate: {
-                    first: "Premier",
-                    previous: "Anterior",
-                    next: "Siguiente",
-                    last: "Ultimo"
-                },
-                aria: {
-                    sortAscending: ": activer pour trier la colonne par ordre croissant",
-                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
-                }
-            }
-        });
-    </script>
-    <script type="text/javascript">
-        function ExportToExcel(dtBasicExample) {
-            var htmltable = document.getElementById('dtBasicExample');
-            var html = htmltable.outerHTML;
-            window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
-        }
-    </script>
+
 
  </body>
 
