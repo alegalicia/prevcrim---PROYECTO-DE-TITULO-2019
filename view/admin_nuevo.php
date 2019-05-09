@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 if(!isset($_SESSION["login"])){session_start(); } 
 
    require_once 'loading.php';
@@ -94,7 +96,6 @@ if($clave==$clave1){
             foreach ($lista2 as $key2 => $value2) {
                      $select2.= '<option value="' . $value2["id_perfil"] . '">' . $value2["perfil"] . '</option>';
          }  
-        
  ?>
  
 <body>
@@ -214,7 +215,7 @@ if($clave==$clave1){
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-block" name="ingresar" value="crear"> Create cuenta</button>
+                        <button type="submit" class="btn btn-success" name="ingresar" value="crear"> Create cuenta</button>
                     </div>
                 </form>
             </article>

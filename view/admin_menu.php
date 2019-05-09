@@ -38,11 +38,21 @@
         <ul>
             <li><a href="#"><i class="fas fa-atom"></i>Usuario (Jz)</a>
                 <ul class="submenu">
-                    <li><a target='cen' href="admin_nuevo.php"><i class="fa fa-glass"></i>Nuevo Usuario</a></li>
-                    <li><a target='cen' href="s_insumo.php"><i class="fa fa-glass"></i>Crear Sector a monitoriar</a></li>
+                    <li><a target='cen' href="admin_jz_usaurio_nuevo.php"><i class="fa fa-glass"></i>Nuevo Usuario</a></li>
+                    <li><a target='cen' href="admin_jz_actualizar.php"><i class="fa fa-glass"></i>Actualiza Usuario</a></li>
+                    <li><a target='cen' href="admin_jz_eliminar.php"><i class="fa fa-glass"></i>Eliminar Usuario</a></li>
                 </ul>
         </ul>
 
+         <ul>
+            <li><a href="#"><i class="fas fa-truck"></i>Delincuentes</a>
+                <ul class="submenu">
+                    <li><a target='cen' href="admin_jz_delincunete.php"><i class="fa fa-glass"></i>Ingresar Delincuente</a></li>
+                    <li><a target='cen' href=""><i class="fa fa-glass"></i>Actualizar Datos Personales</a></li>
+                    <li><a target='cen' href=""><i class="fa fa-glass"></i>Ingresar delito</a></li>
+                </ul>        
+        </ul>
+       
         <ul>
             <li><a href="#"><i class="fas fa-truck"></i>Reporte(Jz)</a>
                 <ul class="submenu">

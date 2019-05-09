@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);//oculta errores
 try {
     
     $opcion = $_REQUEST['opcion'];

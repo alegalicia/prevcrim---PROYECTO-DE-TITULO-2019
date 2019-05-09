@@ -18,14 +18,36 @@
 </head>
 
 <body>
+    <div>
+        <ul>
+            <li><a href="#"><i class="fas fa-truck"></i>Usuarios </a>
+                <ul class="submenu">
+                    <li><a target='cen' href="jefe_nuevo_usuario.php"><i class="fa fa-glass"></i>Crea Usuario</a></li>
+                    <li><a target='cen' href="jefe_actualizar.php"><i class="fa fa-glass"></i>Actualiza Usuario</a></li>
+                    <li><a target='cen' href="jefe_eliminar.php"><i class="fa fa-glass"></i>Eliminar Usuario</a>
+                </ul>
+        </ul>
+    </div>  
+      
+      <div>
+        <ul>
+            <li><a href="#"><i class="fas fa-truck"></i>Delincuentes</a>
+                <ul class="submenu">
+                    <li><a target='cen' href="jefe_delincuente_nue.php"><i class="fa fa-glass"></i>Ingresar Delincuente</a></li>
+                    <li><a target='cen' href=""><i class="fa fa-glass"></i>Actualizar Datos Personales</a></li>
+                    <li><a target='cen' href=""><i class="fa fa-glass"></i>Ingresar delito</a></li>
+                </ul>        
+        </ul>
+          
+      </div>
+      
        <div>
         <ul>
             <li><a href="#"><i class="fas fa-truck"></i>Reporte </a>
                 <ul class="submenu">
-                    <li><a target='cen' href="jefe_nuevo_inst.php"><i class="fa fa-glass"></i>Nuevo Usuario de institución</a></li>
-                    <li><a target='cen' href="s_ingresar_fac.php"><i class="fa fa-glass"></i>Zonas Conflictivas</a></li>
-                    <li><a target='cen' href="s_reporte_fact_i.php"><i class="fa fa-glass"></i>Ubicación de delincuentes</a></li>
-                    <li><a target='cen' href="s_act_fac.php"><i class="fa fa-glass"></i>Actualizar Factura</a></li>
+                    <li><a target='cen' href=""><i class="fa fa-glass"></i>Zonas Conflictivas</a></li>
+                    <li><a target='cen' href=""><i class="fa fa-glass"></i>Ubicación de delincuentes</a></li>
+                    <li><a target='cen' href=""><i class="fa fa-glass"></i>Actualizar Factura</a></li>
                     <li><a target='cen' href="operador_d_recu.php"><i class="fa fa-glass"></i>Delitos recurrentes</a></li>
                     <li><a target='cen' href="operador_delic_deli.php"><i class="fa fa-glass"></i>Delicuentes segun delitos </a>
                     <li><a target='cen' href="operador_delic_comuna.php"><i class="fa fa-glass"></i>Delicuentes segun Comuna por fecha</a>

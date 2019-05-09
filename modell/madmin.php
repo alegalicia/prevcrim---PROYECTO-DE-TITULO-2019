@@ -3,9 +3,7 @@
 class funciones_BD {
 
     private $db;
-
     function __construct() {
-        
         
  //inicio de la conexion de la base
         require_once '../conexion/conexion.php';
@@ -49,7 +47,7 @@ class funciones_BD {
             $_SESSION["segundo_apellido"] = $fila["segundo_apellido"];
             $_SESSION["perfil"] = $fila["perfil"];
             $_SESSION["institucion"] = $fila["institucion"];
-            
+            $_SESSION["id_institucion"] = $fila["id_institucion"];
         }
         $opcion = $_SESSION["id_perfil"];
         $ins = $_SESSION["institucion"];
@@ -69,7 +67,6 @@ class funciones_BD {
             case "3":
             echo "<meta http-equiv='refresh' content='0;url=../view/operador_panel.php'>";
             break; // perfil Operador
-                    
                     
             default: echo "<script>alert('error en el perfil');</script>";
                       
@@ -96,7 +93,7 @@ class funciones_BD {
         '".$comuna."', '".$direccion."', '".$perfil."', '".$fecha."', '".$hora."', '1');");
 
         if ($sql_estado) {
-            echo "<script>alert('FUNCIONARIO INGRESADO CORRECTAMENTE');</script>";
+            echo "<script>alert('EL USUAIO CON RUT ' + $rut+ 'SE INGRESADO CORRECTAMENTE');</script>";
             return true;
             
         } else { echo "<script>alert('EL RUT YA SE ENCUENTRA REGISTRADO');</script>";
@@ -118,14 +115,14 @@ class funciones_BD {
             `id_comuna` = '".$comuna."', 
             `id_institucion` = '".$institucion."', 
             `id_perfil` = '".$perfil."', 
-            `clave` = '".$clave."', 
+            `clave` = md5('".$clave."'), 
             `direccion` = '".$direccion."' 
             
         where `usuario`.`rut` = '".$rut."'");
       
       
             if ($sql_estado) {
-                    echo "<script>alert('USUAIO ELIMINADO..!!!');</script>";
+                    echo "<script>alert('EL USUAIO CON RUT ' + $rut+ ' ACTUALIZADO CORRECTAMENTE..!!!');</script>";
             return true;
         } else {
            echo "<script>alert('ERROR !!!);</script>";
@@ -145,7 +142,7 @@ class funciones_BD {
       
       
             if ($sql_estado) {
-                    echo "<script>alert('USUAIO ACTUALIZADO..!!!');</script>";
+                    echo "<script>alert('EL USUAIO CON RUT ' + $rut+ ' FUE ELIMINADO!!!');</script>";
             return true;
         } else {
            echo "<script>alert('ERROR !!!);</script>";
@@ -209,6 +206,48 @@ class funciones_BD {
             return false;
         }
     }  
+    
+    
+// ACTUALIZAR PERSONA SEGUN EL PERFIL QUE ACTUALIZA
+  public function actualizar_usuario_ins($primer_nombre, $segundo_nombre, $primer_apellido , $segundo_apellido, $correo, $celular, $fijo, $rut, $comuna, $institucion, $perfil, $clave, $direccion) {
+      
+        $sql_estado = $this->db->connect()->exec("update `usuario`  
+        set `primer_nombre` = '".$primer_nombre."', 
+            `segundo_nombre` = '".$segundo_nombre."', 
+            `primer_apellido` = '".$primer_apellido."', 
+            `segundo_apellido` = '".$segundo_apellido."', 
+            `correo` = '".$correo."', 
+            `celular` = '".$celular."', 
+            `fijo` = '".$fijo."', 
+            `id_comuna` = '".$comuna."', 
+            `clave` = md5('".$clave."'), 
+            `direccion` = '".$direccion."' 
+            
+        where `usuario`.`rut` = '".$rut."'");
+      
+      
+            if ($sql_estado) {
+                    echo "<script>alert('USUAIO ELIMINADO..!!!');</script>";
+            return true;
+        } else {
+           echo "<script>alert('ERROR !!!);</script>";
+            return false;
+        }
+    }
+    
+//crea delincuente
+    public function nuevo_delincuente($primer_nombre, $segundo_nombre, $primer_apellido, $segundo_apellido, $celular, $fijo, $rut, $comuna, $nacionalidad, $direccion, $genero, $id_estado_delincuente, $ingresar, $apado){
+        
+      $sql_estado = $this->db->connect()->exec("insert into `delincuente` (`rut`, `primer_nombre`, `segundo_nombre`, `primer_apellido`, `segundo_apellido`, `apodo`, `id_nacionalidad`, `domicilio`, `genero`, `lugar_visto`, `id_comuna`, `celular`, `fijo`, `id_estado_delincuente`, `fecha`, `estado`) values ('".$rut."', '".$primer_nombre."', '".$segundo_nombre."', '".$primer_apellido."', '".$segundo_apellido."', '".$apado."', '".$nacionalidad."', '".$direccion."', '".$genero."', '".$direccion."', '".$comuna."', '".$celular."', '".$fijo."', '".$id_estado_delincuente."', now(), '1');");
+
+        if($sql_estado) {
+            echo "<script>alert('DELINCUENTE INGRESADO CORRECTAMENTE');</script>";
+            return true;
+            
+        } else { echo "<script>alert('ERROR AL INGRESAR DELINCUENTE');</script>";
+                return false;
+               }   
+    }
     
     
     
