@@ -348,6 +348,69 @@ class funciones {
         }
     }
     
+    //==================== listado delincuente  ===========================
+    public function lista_delincuente () 
+     {
+            $sql = "select delincuente.rut, delincuente.primer_nombre, delincuente.segundo_nombre, delincuente.primer_apellido, delincuente.segundo_apellido,
+            nacionalidad.nombre, estado_delincuente.estado_delincuente, comuna.comuna, provincia.provincia, region.region 
+            from `delincuente` 
+            inner join estado_delincuente on delincuente.id_estado_delincuente = estado_delincuente.id_estado_delincuente 
+            inner join nacionalidad on delincuente.id_nacionalidad = nacionalidad.id 
+            inner join comuna on delincuente.id_comuna = comuna.id_comuna 
+            inner join provincia on comuna.id_provincia = provincia.id_provincia 
+            inner join region on provincia.id_region = region.id_region 
+            where delincuente.estado = 1 
+            order by delincuente.rut desc";
+        
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }   
+    
+    
+ //==================== listado delitos  ===========================
+    public function lista_delitos() 
+     {
+            $sql = "select id_delito, delito, descripcion FROM `delito` where estado= 1";
+        
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }     
+    
+    
+ //genera un nuevo delito delincunte   
+    public function nuevo_delito_delincuente($rut, $comuna, $direccion, $fecha, $hora, $descpcion, $delito, $tipo){
+        
+        require_once '../modell/madmin.php';
+        try {
+            $lista = new funciones_BD();
+            $list = $lista->nuevo_delito_delincuente($rut, $comuna, $direccion, $fecha, $hora, $descpcion, $delito, $tipo);
+            
+            if ($lista){
+                return true;
+
+            } else           {
+                return false;
+            }
+          } 
+
+         catch (Exception $e) {
+         echo "<script>alert('ERROR AL ACTUALIZAR');</script>";
+        }
+    }   
+    
+    
     
 }
 ?>
