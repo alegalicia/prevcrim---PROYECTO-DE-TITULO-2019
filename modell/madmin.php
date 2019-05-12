@@ -252,8 +252,7 @@ class funciones_BD {
     
 //crea delincuente
     public function nuevo_delito_delincuente($rut, $comuna, $direccion, $fecha, $hora, $descpcion, $delito, $tipo){
-        echo "<script>alert('DELITO AGREGARDO CORRECTAMENTE' + $rut+'');</script>";
-        
+      
       $sql_estado = $this->db->connect()->exec("insert into `delito_delincuente` (`id_delito_delincuente`, `id_delincuente`, `id_delito`, `id_comuna`, `descripcion`, `fecha`, `hora`, `tipo`, `estado`) values (null, '".$rut."', '".$delito."', '".$comuna."', '".$descpcion."', '".$fecha."', '".$hora."', '".$tipo."', '1'); ");
 
         if($sql_estado) {

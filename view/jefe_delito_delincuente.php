@@ -28,7 +28,7 @@ if(!isset($_SESSION["login"])){session_start(); }
             $rut = (int)$rut;
              $act = new funciones();     
              $registrar = $act->nuevo_delito_delincuente($rut, $comuna, $direccion, $fecha, $hora, $descpcion, $delito, $tipo);
-              echo "<meta http-equiv='refresh' content='0;url=../view/admin_ingresar_delito.php'>";
+              echo "<meta http-equiv='refresh' content='0;url=../view/jefe_delito_delincuente.php'>";
              
             }
 
@@ -95,7 +95,7 @@ if(!isset($_SESSION["login"])){session_start(); }
 
 </head>
 <?php 
-    if($_SESSION["id_perfil"] == 1)
+    if($_SESSION["id_perfil"] == 2)
     { 
 ?>
 
@@ -104,7 +104,7 @@ if(!isset($_SESSION["login"])){session_start(); }
         <br>
         <h6> Buscar Delincuente: </h6>
         <div class="col-md-8 login-sec">
-            <form class="login-form" action="admin_ingresar_delito.php" method="post" name="f1">
+            <form class="login-form" action="jefe_delito_delincuente.php" method="post" name="f1">
                 <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>
@@ -184,7 +184,7 @@ if(!isset($_SESSION["login"])){session_start(); }
          }  
         
    ?>
-        <form class="login-form" action="admin_ingresar_delito.php" method="post" name="f2">
+        <form class="login-form" action="jefe_delito_delincuente.php" method="post" name="f2">
 
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

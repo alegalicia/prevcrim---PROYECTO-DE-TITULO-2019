@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 
 if(!isset($_SESSION["login"])){session_start(); } 
     require_once 'loading.php';
@@ -28,7 +28,7 @@ if(!isset($_SESSION["login"])){session_start(); }
             $rut = (int)$rut;
              $act = new funciones();     
              $registrar = $act->nuevo_delito_delincuente($rut, $comuna, $direccion, $fecha, $hora, $descpcion, $delito, $tipo);
-              echo "<meta http-equiv='refresh' content='0;url=../view/admin_ingresar_delito.php'>";
+              echo "<meta http-equiv='refresh' content='0;url=../view/jefe_atecedentes.php'>";
              
             }
 
@@ -95,7 +95,7 @@ if(!isset($_SESSION["login"])){session_start(); }
 
 </head>
 <?php 
-    if($_SESSION["id_perfil"] == 1)
+    if($_SESSION["id_perfil"] == 2)
     { 
 ?>
 
@@ -104,18 +104,15 @@ if(!isset($_SESSION["login"])){session_start(); }
         <br>
         <h6> Buscar Delincuente: </h6>
         <div class="col-md-8 login-sec">
-            <form class="login-form" action="admin_ingresar_delito.php" method="post" name="f1">
+            <form class="login-form" action="jefe_atecedentes.php" method="post" name="f1">
                 <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="th-sm">Delito</th>
+                            <th class="th-sm">Ver detalle Delito</th>
                             <th class="th-sm">Rut</th>
                             <th class="th-sm">Nombre </th>
                             <th class="th-sm">Apellido</th>
                             <th class="th-sm">Estado</th>
-                            <th class="th-sm">Comuna</th>
-                            <th class="th-sm">Provincia</th>
-                            <th class="th-sm">Region</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -140,9 +137,6 @@ if(!isset($_SESSION["login"])){session_start(); }
                             <td><?php echo $o['primer_nombre']?></td>
                             <td><?php echo $o['primer_apellido']?></td>
                             <td><?php echo $o['estado_delincuente']?></td>
-                            <td><?php echo $o['comuna']?></td>
-                            <td><?php echo $o['provincia']?></td>
-                            <td><?php echo $o['region']?></td>
                         </tr>
                         <?php
                             }
@@ -150,14 +144,11 @@ if(!isset($_SESSION["login"])){session_start(); }
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Delito</th>
+                            <th>Ver Detalle delito</th>
                             <th>Rut</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Estado</th>
-                            <th>Comuna</th>
-                            <th>Provincia</th>
-                            <th>Region</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -165,26 +156,8 @@ if(!isset($_SESSION["login"])){session_start(); }
 
         </div>
         <br>
-        <?php     
-//==================LISTA DE comunas =============       
-        require_once '../controller/cadmin.php';
-        $obj = new funciones();
-        
-            $lista1 = $obj->lista_comuna();
-            $select1 = '';
-            foreach ($lista1 as $key1 => $value1) {
-                     $select1.= '<option value="' . $value1["id_comuna"] . '">' . $value1["comuna"] . '</option>';
-         }  
-        
-//==================LISTA DE perfiles =============        
-           $lista2 = $obj->lista_delitos();
-            $select2 = '';
-            foreach ($lista2 as $key2 => $value2) {
-                     $select2.= '<option value="' . $value2["id_delito"] . '">' . $value2["delito"] . '</option>';
-         }  
-        
-   ?>
-        <form class="login-form" action="admin_ingresar_delito.php" method="post" name="f2">
+
+        <form class="login-form" action="jefe_atecedentes.php" method="post" name="f2">
 
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -200,7 +173,7 @@ if(!isset($_SESSION["login"])){session_start(); }
                                     }
                                 </style>
                                 <div>
-                                    <h5 class="modal-title" id="j5">DELITO</h5>
+                                    <h5 class="modal-title" id="j5">DETALLE DELITO</h5>
                                 </div>
                             </strong>
 
@@ -215,67 +188,76 @@ if(!isset($_SESSION["login"])){session_start(); }
                                 
                                   $rut = "";
                                   $rut = $_POST['rut']; 
-                
-                                echo "RUT Delincuente: ".$rut ?>
-                            <input name="rut" type="hidden" value="<?php echo $rut; ?>">
+        
+                                echo "RUT Delincuente: <b>".$rut."</b>";
+                                echo "<br>";
+        
+                                $lista = new funciones();
+                                $res = $lista->cuenta_cantida_delitos($rut);
+                                foreach($res as $obj => $o)
+                                {
+                                $delito = $o['delito'];
+                                echo "Cantidad de delitos: <b>".$delito ."</b><br>";
+
+                                }
+
+                                $lista = new funciones();
+                                $res = $lista->cuenta_cantida_contorl($rut);
+                                foreach($res as $obj => $o)
+                                {
+                                $controles = $o['control'];
+                                echo "Cantidad de controles: <b>".$controles ."</b><br>";
+                                }
+                                
+                                ?>
                             </div>
                             <hr>
 
-                            <div class="form-group input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-                                </div>
-                                <select name="tipo" class="form-control">
-                                    <option value="control">Control</option>
-                                    <option value="Delito">Delito</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-                                </div>
-                                <select name="comuna" class="form-control"><?php echo $select1; ?></select>
-                            </div>
-
-                            <div class="form-group input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-                                </div>
-                                <select name="delito" class="form-control"><?php echo $select2; ?></select>
-                            </div>
-
-                            <table>
-                                <tr>
-                                    <td>
-                                        <div class="form-group input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                                            </div>
-                                            <input name="fecha" class="form-control" type="date" required>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="form-group input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                                            </div>
-                                            <input name="hora" class="form-control" type="time" required>
-                                        </div>
-                                    </td>
-                                </tr>
+                            <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="th-sm">Delito</th>
+                                        <th class="th-sm">Comuna</th>
+                                        <th class="th-sm">Fecha </th>
+                                        <th class="th-sm">Hora</th>
+                                        <th class="th-sm">Tipo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php 
+//============ Genera tabla ===============
+          require_once('../controller/cadmin.php');
+           $lista = new funciones();
+           $res = $lista->buscar_delito_delincuente($rut);
+            foreach($res as $obj => $o)
+              {
+          ?>
+                                    <tr>
+                                        <td><?php echo $o['delito']?></td>
+                                        <td><?php echo $o['comuna']?></td>
+                                        <td><?php echo $o['fecha']?></td>
+                                        <td><?php echo $o['hora']?></td>
+                                        <td><?php echo $o['tipo']?></td>
+                                    </tr>
+                                    <?php
+                            }
+                        ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th class="th-sm">Delito</th>
+                                        <th class="th-sm">Comuna</th>
+                                        <th class="th-sm">Fecha </th>
+                                        <th class="th-sm">Hora</th>
+                                        <th class="th-sm">Tipo</th>
+                                    </tr>
+                                </tfoot>
                             </table>
 
-                            <div class="md-form">
-                                <label for="form7">Descripción de lo sucedido</label>
-                                <textarea id="form7" class="md-textarea form-control" rows="3" name="descpcion"></textarea>
-                            </div>
 
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-                            <button type="submit" class="btn btn-success" name="ingresar" value="ok">Guardar Delito</button>
+                            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                 </div>

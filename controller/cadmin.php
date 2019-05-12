@@ -410,6 +410,61 @@ class funciones {
         }
     }   
     
+     //==================== buscar delitos delincuente  ===========================
+    public function buscar_delito_delincuente($rut) {
+        $sql = "SELECT delito_delincuente.fecha, delito_delincuente.hora, delito.delito, comuna.comuna, delito_delincuente.id_delincuente ,                 delito_delincuente.tipo 
+                FROM `delito_delincuente` 
+                inner join delito on delito_delincuente.id_delito = delito.id_delito 
+                inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
+                WHERE delito_delincuente.estado = 1 and delito_delincuente.id_delincuente ='".$rut."' 
+                order by delito_delincuente.fecha desc
+          ";
+        
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }   
+    
+    
+  //==================== listado delitos  ===========================
+    public function cuenta_cantida_delitos($rut) 
+     {
+            $sql = "SELECT COUNT(tipo)as delito FROM `delito_delincuente`
+                    where tipo = 'delito' and delito_delincuente.id_delincuente = '".$rut."'
+                    GROUP by tipo";
+        
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }     
+    
+    
+   //==================== listado delitos  ===========================
+    public function cuenta_cantida_contorl($rut) 
+     {
+            $sql = "SELECT COUNT(tipo)as control FROM `delito_delincuente`
+                    where tipo = 'control' and delito_delincuente.id_delincuente = '".$rut."'
+                    GROUP by tipo";
+        
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }       
     
     
 }

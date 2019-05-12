@@ -1,3 +1,6 @@
+<?php
+error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,8 +51,7 @@
             <li><a href="#"><i class="fas fa-truck"></i>Delincuentes</a>
                 <ul class="submenu">
                     <li><a target='cen' href="admin_jz_delincunete.php"><i class="fa fa-glass"></i>Ingresar Delincuente</a></li>
-                    <li><a target='cen' href=""><i class="fa fa-glass"></i>Actualizar Datos Personales</a></li>
-                    <li><a target='cen' href=""><i class="fa fa-glass"></i>Ingresar delito</a></li>
+                    <li><a target='cen' href="admin_ingresar_delito.php"><i class="fa fa-glass"></i>Ingresar delito</a></li>
                 </ul>        
         </ul>
        

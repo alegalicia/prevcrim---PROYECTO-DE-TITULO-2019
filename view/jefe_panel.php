@@ -5,4 +5,3 @@
                  <FRAME name= "cen" width="100%" SRC="inicio.php"></FRAME>
               </FRAMESET>
            </FRAMESET>
-          <div id = "footer">
