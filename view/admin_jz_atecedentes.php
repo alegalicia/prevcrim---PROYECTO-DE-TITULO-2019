@@ -1,7 +1,8 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 
 if(!isset($_SESSION["login"])){session_start(); } 
+
     require_once 'loading.php';
     require_once '../controller/cadmin.php';
     
@@ -50,7 +51,7 @@ if(!isset($_SESSION["login"])){session_start(); }
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
             $('#dtBasicExample').DataTable();
             $('.dataTables_length').addClass('bs-select');
