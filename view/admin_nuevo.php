@@ -97,7 +97,6 @@ if($clave==$clave1){
                      $select2.= '<option value="' . $value2["id_perfil"] . '">' . $value2["perfil"] . '</option>';
          }  
  ?>
- 
 <body>
  <center>
     <h1>Nuevo usuairo</h1>

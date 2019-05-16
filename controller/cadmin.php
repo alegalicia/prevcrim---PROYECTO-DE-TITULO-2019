@@ -412,7 +412,7 @@ class funciones {
     
      //==================== buscar delitos delincuente  ===========================
     public function buscar_delito_delincuente($rut) {
-        $sql = "SELECT delito_delincuente.fecha, delito_delincuente.hora, delito.delito, comuna.comuna, delito_delincuente.id_delincuente ,                 delito_delincuente.tipo 
+        $sql = "SELECT delito_delincuente.fecha, delito_delincuente.hora, delito.delito, comuna.comuna, delito_delincuente.id_delincuente, delito_delincuente.tipo 
                 FROM `delito_delincuente` 
                 inner join delito on delito_delincuente.id_delito = delito.id_delito 
                 inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
@@ -465,6 +465,106 @@ class funciones {
         return $datos;
         
     }       
+
+//==================== listado de comunas - provincia - region ===========================
+    public function lista_comuna_prov_reg() {
+        $sql = "select comuna.id_comuna, comuna.comuna, provincia.provincia, region.region from `comuna` 
+                inner join provincia on comuna.id_provincia = provincia.id_provincia 
+                inner join region on provincia.id_region = region.id_region 
+                order by comuna asc";
+        
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }  
+    
+    
+ //==================== listado de comunas - delitos ===========================
+    public function reporte_comuna_delito($comuna) {
+        $sql = "SELECT delito_delincuente.id_delincuente,  delito_delincuente.descripcion, delito_delincuente.fecha, delito_delincuente.hora, delito_delincuente.tipo, 
+        comuna.comuna, delincuente.rut, delincuente.primer_nombre, delincuente.primer_apellido, delito.delito 
+        from `delito_delincuente` 
+        inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
+        inner join delincuente on delito_delincuente.id_delincuente = delincuente.rut 
+        inner join delito on delito_delincuente.id_delito = delito.id_delito  
+        where delito_delincuente.id_comuna = '".$comuna."'";
+        
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }    
+    
+    
+    
+//==================== listado dlitos por comuna ===========================
+    public function cuenta_comuna_delitos($comuna) 
+     {
+            $sql = "SELECT COUNT(tipo)as delito FROM `delito_delincuente`
+                    where tipo = 'delito' and delito_delincuente.id_comuna = '".$comuna."'
+                    GROUP by tipo";
+        
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }     
+    
+    
+   //==================== listado comuna delitos  ===========================
+    public function cuenta_comuna_contorl($comuna) 
+     {
+            $sql = "SELECT COUNT(tipo)as control FROM `delito_delincuente`
+                    where tipo = 'control' and delito_delincuente.id_comuna = '".$comuna."'
+                    GROUP by tipo";
+        
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }    
+
+    
+//==================== listado comuna delitos  ===========================
+    public function cuenta_comuna_mxa5($comuna) 
+     {
+            $sql = "select delito_delincuente.id_delincuente,  delito_delincuente.descripcion, delito_delincuente.fecha, delito_delincuente.hora, delito_delincuente.tipo,
+            comuna.comuna, delincuente.rut, delincuente.primer_nombre, delincuente.primer_apellido, delito.delito, count(delito_delincuente.id_delito) as total 
+            from `delito_delincuente` 
+            inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
+            inner join delincuente on delito_delincuente.id_delincuente = delincuente.rut 
+            inner join delito on delito_delincuente.id_delito = delito.id_delito
+            where delito_delincuente.id_comuna = '".$comuna."'
+            GROUP by delito_delincuente.id_delito 
+            limit 5";
+        
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }      
+    
     
     
 }

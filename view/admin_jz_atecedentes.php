@@ -47,11 +47,12 @@ if(!isset($_SESSION["login"])){session_start(); }
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="css/panel.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> 
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
             $('#dtBasicExample').DataTable();
             $('.dataTables_length').addClass('bs-select');
@@ -89,7 +90,7 @@ if(!isset($_SESSION["login"])){session_start(); }
         }
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-   ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
@@ -123,16 +124,14 @@ if(!isset($_SESSION["login"])){session_start(); }
            $lista = new funciones();
            $res = $lista->lista_delincuente();
             foreach($res as $obj => $o)
-              { $fac = $o['rut'];
+              {
           ?>
                         <tr>
                             <td align='center'>
-
                                 <input type='radio' value="
                                 <?php 
                                 echo $o['rut']?>" id='ckhActualizar' name="rut" />
                                 <button type="submit" class="btn btn-success" name="modal" value="modal" data-toggle="modal" data-target="#exampleModal"><i class='far fa-angry' style='font-size:24px'></i></button>
-
                             </td>
                             <td><?php echo $o['rut']?></td>
                             <td><?php echo $o['primer_nombre']?></td>
