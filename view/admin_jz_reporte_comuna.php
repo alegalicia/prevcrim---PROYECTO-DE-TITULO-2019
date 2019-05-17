@@ -88,7 +88,7 @@ if(!isset($_SESSION["id_perfil"]) ){
 <body>
     <center>
        
-        <h1>Reporte por comuna</h1>
+        <h3>Reporte por comuna</h3>
         <div class="container">
             <br>
             <div class="col-md-6 login-sec">
@@ -126,6 +126,7 @@ if(!isset($_SESSION["id_perfil"]) ){
                     <th class="th-sm">Rut</th>
                     <th class="th-sm">Nombre</th>
                     <th class="th-sm">Apellido</th>
+                    <th class="th-sm">Ult.Direccion</th>
                     <th class="th-sm">Delito</th>
                     <th class="th-sm">Fecha</th>
                     <th class="th-sm">Hora</th>
@@ -149,6 +150,7 @@ if(!isset($_SESSION["id_perfil"]) ){
                     <td><?php echo $o['id_delincuente']?></td>
                     <td><?php echo $o['primer_nombre']?></td>
                     <td><?php echo $o['primer_apellido']?></td>
+                    <td><?php echo $o['direccion']?></td>
                     <td><?php echo $o['delito']?></td>
                     <td><?php echo $o['fecha']?></td>
                     <td><?php echo $o['hora']?></td>
@@ -164,6 +166,7 @@ if(!isset($_SESSION["id_perfil"]) ){
                     <th class="th-sm">Rut</th>
                     <th class="th-sm">Nombre</th>
                     <th class="th-sm">Apellido</th>
+                    <th class="th-sm">Ult.Direccion</th>
                     <th class="th-sm">Delito</th>
                     <th class="th-sm">Fecha</th>
                     <th class="th-sm">Hora</th>
@@ -194,14 +197,14 @@ if(!isset($_SESSION["id_perfil"]) ){
     Estaditicas delitos y controles
 </button>
 
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal1" >
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal1" onclick="atrasar2()">
     Top 5 de Delitos
 </button>
 
 <hr>
         </center>
     </div>
-    <?php  } ?>
+    <?php   ?>
     </center>
     
 <!-- Modal Cantidad delitos y controles -->
@@ -362,6 +365,7 @@ Highcharts.chart('container1', {
   </div>
 </div>
 <center>
+
 <h4>TOP 5 de delincuentes de la comuna</h4>
  </center>
     <div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
@@ -395,9 +399,7 @@ Highcharts.chart('container2', {
         }
     }, 
     series: 
-
     [{
-
         name: 'Catidad',
         colorByPoint: true,
         data: [
@@ -411,7 +413,7 @@ Highcharts.chart('container2', {
            $total = $o['total'];
            $total = (int)$total;
            echo "{";
-           echo "name: '".$delincuente."',";
+           echo "name: 'RUT:".$delincuente."',";
            echo "y:".$total.",";
            echo "sliced: true,";
            echo "elected: true";
@@ -425,7 +427,8 @@ Highcharts.chart('container2', {
 <br>
 </body>
 <?php
-    } else echo"debe iniciar sesión con una cuenta con previlegios";
+    }
+  } else echo"debe iniciar sesión con una cuenta con previlegios";
 ?>
 
 </html>

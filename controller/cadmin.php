@@ -486,8 +486,7 @@ class funciones {
     
  //==================== listado de comunas - delitos ===========================
     public function reporte_comuna_delito($comuna) {
-        $sql = "SELECT delito_delincuente.id_delincuente,  delito_delincuente.descripcion, delito_delincuente.fecha, delito_delincuente.hora, delito_delincuente.tipo, 
-        comuna.comuna, delincuente.rut, delincuente.primer_nombre, delincuente.primer_apellido, delito.delito 
+        $sql = "SELECT delito_delincuente.id_delincuente,  delito_delincuente.descripcion, delito_delincuente.fecha, delito_delincuente.hora, delito_delincuente.tipo, comuna.comuna, delincuente.rut, delincuente.primer_nombre, delincuente.primer_apellido, delito.delito, delito_delincuente.direccion 
         from `delito_delincuente` 
         inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
         inner join delincuente on delito_delincuente.id_delincuente = delincuente.rut 
