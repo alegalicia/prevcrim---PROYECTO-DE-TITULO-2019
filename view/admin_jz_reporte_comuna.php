@@ -61,7 +61,15 @@ if(!isset($_SESSION["id_perfil"]) ){
             window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
         }
     </script>
+    
+    <?php //librerias char?>
+        <script src="js/highcharts.js"></script>
+        <script src="js/modules/exporting.js"></script>
+        <script src="js/modules/export-data.js"></script>
+        
+        <script src="../jquery-1.4.2.min.js" type="text/javascript"></script>
 </head>
+
 <?php
   if($_SESSION["id_perfil"] == 1)
     { 
@@ -108,6 +116,7 @@ if(!isset($_SESSION["id_perfil"]) ){
 <br>
     <?php
     if(isset($_POST["buscar"])){ ?>
+    
     <div class="col-md-8 login-sec">
         <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
             <thead>
@@ -128,6 +137,7 @@ if(!isset($_SESSION["id_perfil"]) ){
           require_once('../controller/cadmin.php');
           $lista = new funciones();
           $comuna=$_POST["comuna"];
+          $comuna1=$comuna;
           $res = $lista->reporte_comuna_delito($comuna);
           foreach($res as $obj => $o)
           { 
@@ -165,13 +175,11 @@ if(!isset($_SESSION["id_perfil"]) ){
         <hr>
         <center>
             <?php
-       
         $lista = new funciones();
         $res = $lista->cuenta_comuna_delitos($comuna);
         foreach($res as $obj => $o)
         {
-        $delito = $o['delito'];
-        echo "<h4>Cantidad de delitos en la comuna: <b>".$delito ."</b></h4><br>";
+        $cantidadDelito = $o['delito'];       
         }
 
         $lista = new funciones();
@@ -179,34 +187,242 @@ if(!isset($_SESSION["id_perfil"]) ){
         foreach($res as $obj => $o)
         {
         $controles = $o['control'];
-        echo "<h5>Cantidad de controles: <b>".$controles ."</b></h5><br>";
         }
     ?>
+    
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"  onclick="atrasar()">
+    Estaditicas delitos y controles
+</button>
 
-            <hr>
-            <?php
-        
-            $delito="";
-            $total="";  
-            $controles="";
-        
-        $lista = new funciones();
-        $res = $lista->cuenta_comuna_mxa5($comuna);
-        foreach($res as $obj => $o)
-        {
-        $delito = $o['delito'];
-        $total = $o['total'];    
-        echo "<h5>Los delitos de <b>".$delito ."</b> con un total de <b>".$total."</b> es una de las causas principales</h5><br>";
-        }
-    ?>
-            <hr>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal1" >
+    Top 5 de Delitos
+</button>
+
+<hr>
         </center>
     </div>
-
-    <?php     
-    }
-    ?>
+    <?php  } ?>
     </center>
+    
+<!-- Modal Cantidad delitos y controles -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Indicadores de delitos y controles</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+           
+    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+		<script type="text/javascript" >
+            
+  function atrasar(){
+      setTimeout ('char()', 500); 
+  }   
+            
+    function char(){
+        
+Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: ' '
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    }, 
+    series: [{
+        name: 'Catidad',
+        colorByPoint: true,
+        data: [{
+            name: 'Delitos',
+            y: <?php echo $cantidadDelito; ?>,
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Controles',
+            y: <?php echo $controles; ?>,
+        },]
+    }]
+});
+        
+         } 
+		</script>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="atrasar2()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Cantidad delitos y controles -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">TOP 5 de Delitos de comuna</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+           
+    <div id="container1" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+<?php //grafico char ?>
+
+		<script type="text/javascript" >
+    function atrasar2(){
+      setTimeout ('char1()', 500); 
+  }   
+            
+    function char1(){          
+            
+Highcharts.chart('container1', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: ' '
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    }, 
+    series: 
+
+    [{
+        name: 'Catidad',
+        colorByPoint: true,
+        data: [
+              <?php 
+      //traemos los datos
+    $lista = new funciones();
+        $res = $lista->cuenta_comuna_mxa5($comuna);
+        foreach($res as $obj => $o)
+        {  
+           $delito = $o['delito'];
+           $total = $o['total'];
+           $total = (int)$total;
+           echo "{";
+           echo "name: '".$delito."',";
+           echo "y:".$total.",";
+           echo "sliced: true,";
+           echo "elected: true";
+           echo "},";
+        }
+        ?>
+        ]
+    }]
+});
+    }
+		</script>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<center>
+<h4>TOP 5 de delincuentes de la comuna</h4>
+ </center>
+    <div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+    
+		<script type="text/javascript" >
+            
+Highcharts.chart('container2', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: ' '
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    }, 
+    series: 
+
+    [{
+
+        name: 'Catidad',
+        colorByPoint: true,
+        data: [
+              <?php 
+      //traemos los datos
+    $lista = new funciones();
+        $res = $lista->top_delincuentes($comuna);
+        foreach($res as $obj => $o)
+        {  
+           $delincuente = $o['id_delincuente'];
+           $total = $o['total'];
+           $total = (int)$total;
+           echo "{";
+           echo "name: '".$delincuente."',";
+           echo "y:".$total.",";
+           echo "sliced: true,";
+           echo "elected: true";
+           echo "},";
+        }
+        ?>
+        ]
+    }]
+});
+		</script>
+<br>
 </body>
 <?php
     } else echo"debe iniciar sesión con una cuenta con previlegios";

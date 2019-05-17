@@ -551,8 +551,9 @@ class funciones {
             inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
             inner join delincuente on delito_delincuente.id_delincuente = delincuente.rut 
             inner join delito on delito_delincuente.id_delito = delito.id_delito
-            where delito_delincuente.id_comuna = '".$comuna."'
+            where delito_delincuente.id_comuna = '".$comuna."' 
             GROUP by delito_delincuente.id_delito 
+            ORDER by total desc  
             limit 5";
         
         $stmt = $this->db->connect()->query($sql);
@@ -566,6 +567,27 @@ class funciones {
     }      
     
     
-    
+ //==================== listado delicuentes  ===========================
+    public function top_delincuentes($comuna) 
+     {
+            $sql = "select delito_delincuente.id_delincuente,  delito_delincuente.descripcion, delito_delincuente.fecha, delito_delincuente.hora, delito_delincuente.tipo, comuna.comuna, delincuente.rut, delincuente.primer_nombre, delincuente.primer_apellido, delito.delito, count(delito_delincuente.id_delincuente) as total 
+            from `delito_delincuente` 
+            inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
+            inner join delincuente on delito_delincuente.id_delincuente = delincuente.rut 
+            inner join delito on delito_delincuente.id_delito = delito.id_delito
+            where delito_delincuente.id_comuna = '".$comuna."'  
+            GROUP by delito_delincuente.id_delincuente  
+            ORDER by total desc  
+            limit 5";
+        
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }      
 }
 ?>
