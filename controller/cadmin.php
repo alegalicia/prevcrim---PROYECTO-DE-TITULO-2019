@@ -569,7 +569,7 @@ class funciones {
  //==================== listado delicuentes  ===========================
     public function top_delincuentes($comuna) 
      {
-            $sql = "select delito_delincuente.id_delincuente,  delito_delincuente.descripcion, delito_delincuente.fecha, delito_delincuente.hora, delito_delincuente.tipo, comuna.comuna, delincuente.rut, delincuente.primer_nombre, delincuente.primer_apellido, delito.delito, count(delito_delincuente.id_delincuente) as total 
+            $sql = "select delito_delincuente.id_delincuente,  delito_delincuente.descripcion, delito_delincuente.fecha, delito_delincuente.hora, delito_delincuente.tipo, comuna.comuna, delincuente.rut, delincuente.primer_nombre, delincuente.primer_apellido, delito.delito, count(delito_delincuente.id_delincuente) as total,  delincuente.apodo
             from `delito_delincuente` 
             inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
             inner join delincuente on delito_delincuente.id_delincuente = delincuente.rut 
@@ -587,6 +587,70 @@ class funciones {
         }
         return $datos;
         
-    }      
+    }     
+
+
+ //==================== listado deltos por fecha y sector  ===========================
+    public function sector_fecha($inicio, $fin) 
+     {
+            $sql = "SELECT  delito_delincuente.id_delito_delincuente, delito_delincuente.id_delincuente, delito_delincuente.id_delito, delito_delincuente.id_comuna,delito_delincuente.tipo, delito.delito , count(delito.delito) as delito, delito.delito as nombre, comuna.comuna, comuna.id_sector, sector.sector     
+                    FROM `delito_delincuente`
+                    inner join delito on delito_delincuente.id_delito = delito.id_delito 
+                    inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
+                    left JOIN sector on comuna.id_sector = sector.id_sector 
+                    where fecha BETWEEN '".$inicio."' and '".$fin."'
+                    GROUP by delito ";
+                    
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }  
+
+ //==================== listado cuenta delitos por mes ===========================
+    public function delito_mes_year($inicio, $fin) 
+     {
+            $sql = "SELECT COUNT(*), MonthName(delito_delincuente.fecha), YEAR (delito_delincuente.fecha) as year 
+                      FROM `delito_delincuente`
+                      where fecha BETWEEN '".$inicio."' and '".$fin."' 
+                      GROUP by MonthName(delito_delincuente.fecha)";
+                    
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }  
+
+ //==================== grafico por sector y comuna fechas ===========================
+    public function grafico_sector_comuna($inicio, $fin) 
+     {
+            $sql = "SELECT day(delito_delincuente.fecha) as day, month(delito_delincuente.fecha)-1 as month, year(delito_delincuente.fecha) year, COUNT(delito_delincuente.id_delito) as total, comuna.id_comuna, comuna.comuna, sector.sector 
+              FROM `delito_delincuente`
+              inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
+              left JOIN sector on comuna.id_comuna = sector.id_sector 
+              where fecha BETWEEN '".$inicio."' and '".$fin."' 
+              GROUP by fecha";
+                    
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }  
+
+
+
+
 }
 ?>

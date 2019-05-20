@@ -58,9 +58,8 @@ error_reporting(0);
         <ul>
             <li><a href="#"><i class="fas fa-truck"></i>Reporte(Jz)</a>
                 <ul class="submenu">
-                    <li><a target='cen' href="s_ingresar_fac.php"><i class="fa fa-glass"></i>Zonas Conflictivas</a></li>
-                    <li><a target='cen' href="s_reporte_fact_i.php"><i class="fa fa-glass"></i>Ubicación de delincuentes</a></li>
-                    <li><a target='cen' href="s_act_fac.php"><i class="fa fa-glass"></i>Actualizar Factura</a></li>
+                    <li><a target='cen' href="admin_jz_reporte_comuna.php"><i class="fa fa-glass"></i>Comuna</a></li>
+                    <li><a target='cen' href="admin_jz_reporte_sector.php"><i class="fa fa-glass"></i>Sector</a></li>
                 </ul>        
         </ul>
                 

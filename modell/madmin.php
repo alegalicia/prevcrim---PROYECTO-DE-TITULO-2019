@@ -263,6 +263,13 @@ class funciones_BD {
                 return false;
                }   
     }    
-    
+   
+
+
+
+
+
+   
  }
+
 ?>

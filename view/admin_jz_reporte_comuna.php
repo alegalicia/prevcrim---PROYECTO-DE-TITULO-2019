@@ -1,9 +1,9 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 if(!isset($_SESSION["id_perfil"]) ){
     session_start();
 }
-
+require_once 'loading.php';
 ?>
 
 <!DOCTYPE html>
@@ -91,12 +91,11 @@ if(!isset($_SESSION["id_perfil"]) ){
         <h3>Reporte por comuna</h3>
         <div class="container">
             <br>
-            <div class="col-md-6 login-sec">
+            <div class="col-md-10 login-sec">
                 <div class="card bg-light">
                     <article class="card-body mx-auto" style="max-width: 400px;">
 
                         <form method="post">
-
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-building"></i> </span>
@@ -176,7 +175,6 @@ if(!isset($_SESSION["id_perfil"]) ){
     </div>
     <div>
         <hr>
-        <center>
             <?php
         $lista = new funciones();
         $res = $lista->cuenta_comuna_delitos($comuna);
@@ -202,10 +200,8 @@ if(!isset($_SESSION["id_perfil"]) ){
 </button>
 
 <hr>
-        </center>
     </div>
     <?php   ?>
-    </center>
     
 <!-- Modal Cantidad delitos y controles -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -261,7 +257,7 @@ Highcharts.chart('container', {
         data: [{
             name: 'Delitos',
             y: <?php echo $cantidadDelito; ?>,
-            sliced: true,
+            sliced: false,
             selected: true
         }, {
             name: 'Controles',
@@ -347,7 +343,7 @@ Highcharts.chart('container1', {
            echo "{";
            echo "name: '".$delito."',";
            echo "y:".$total.",";
-           echo "sliced: true,";
+           echo "sliced: false,";
            echo "elected: true";
            echo "},";
         }
@@ -364,10 +360,8 @@ Highcharts.chart('container1', {
     </div>
   </div>
 </div>
-<center>
 
 <h4>TOP 5 de delincuentes de la comuna</h4>
- </center>
     <div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
     
 		<script type="text/javascript" >
@@ -376,7 +370,7 @@ Highcharts.chart('container2', {
     chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
-        plotShadow: false,
+        plotShadow: true,
         type: 'pie'
     },
     title: {
@@ -411,11 +405,12 @@ Highcharts.chart('container2', {
         {  
            $delincuente = $o['id_delincuente'];
            $total = $o['total'];
+           $apodo = $o['apodo'];
            $total = (int)$total;
            echo "{";
-           echo "name: 'RUT:".$delincuente."',";
+           echo "name:'Apodo: ".$apodo." <br>RUT:".$delincuente."',";
            echo "y:".$total.",";
-           echo "sliced: true,";
+           echo "sliced: false,";
            echo "elected: true";
            echo "},";
         }
@@ -425,6 +420,7 @@ Highcharts.chart('container2', {
 });
 		</script>
 <br>
+</center>
 </body>
 <?php
     }
