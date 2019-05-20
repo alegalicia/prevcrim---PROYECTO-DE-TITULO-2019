@@ -1,6 +1,7 @@
 <?php 
 //error_reporting(0);
 if(!isset($_SESSION["login"])){session_start(); } 
+require_once 'loading.php'; 
  ?>
 
 <!DOCTYPE html>
@@ -88,6 +89,7 @@ if(!isset($_SESSION["login"])){session_start(); }
 	transform:translate(-50%, -50%);
 }
 </style>
+
  <style type="text/css">
 #container {
     min-width: 310px;
@@ -103,16 +105,10 @@ if (isset($_SESSION["id_perfil"])) {
 ?>
 
 <body>
-
-    <div class="preload">
-    	<img src="img/loading_spinner.gif" />
-    </div>
-
 <center>
-        <h3>Reporte por periodo</h3>
-        <div class="content">
+        <h3>Reporte por periodo Sector/comuna</h3>        
             <br>
-            <div class="col-md-2 login-sec">
+            <div class="col-md-3 login-sec">
                 <div class="card bg-light">
                     <article class="card-body mx-auto" style="max-width: 400px;">
                         <form method="post" id="f1">
@@ -131,15 +127,20 @@ if (isset($_SESSION["id_perfil"])) {
                                 <button type="submit" class="btn btn-success" name="buscar" value="buscar"> Buscar</button>
                             </div>
                         </form>
-
                     </article>
                 </div>
             </div>
-        
+  <div>      
 <br>
+
     <?php
     if(isset($_POST["buscar"])){ ?>
+    <hr>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="atrasar2()">
+    Estaditca Comuna </button>
     
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal1" onclick="atrasar()"> Estaditca Sector </button>
+    <hr>
     <div class="col-md-10 login-sec">
         <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
             <thead>
@@ -187,48 +188,35 @@ if (isset($_SESSION["id_perfil"])) {
                 </tr>
             </tfoot>
         </table>
-                <?php
-                }
-                            
-                ?>
+               
+            <hr>   
+                <?php } ?>
+                
    </div>
-
-
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"  onclick="atrasar()">
-    Sector
-</button>
-
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal1" onclick="atrasar2()">
-    Comuna
-</button>
-
-<hr>
-    <?php   ?>
-    
 
 <!-- Modal Cantidad delitos y controles -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">TOP 5 de Delitos de comuna</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Estadística del sector</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
      
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
-<?php 
-           $year=0;
-           $month=0;
-           $day=0;
-           $total=0;
- ?>
 
-        <script type="text/javascript">
-Highcharts.chart('container', {
+
+<script type="text/javascript">
+   function atrasar(){
+      setTimeout ('char()', 500); 
+  }   
+            
+    function char(){   
+Highcharts.chart('container1', {
     chart: {
         type: 'spline'
     },
@@ -241,22 +229,22 @@ Highcharts.chart('container', {
     xAxis: {
         type: 'datetime',
         dateTimeLabelFormats: { // don't display the dummy year
-            month: '%e',
+            month: '%e. %b',
             year: '%b'
         },
         title: {
-            text: 'Mes'
+            text: 'Fecha'
         }
     },
     yAxis: {
         title: {
-            text: 'Snow depth (m)'
+            text: ''
         },
         min: 0
     },
     tooltip: {
         headerFormat: '<b>{series.name}</b><br>',
-        pointFormat: '{point.x:%e}: {point.y:.2f} m'
+        pointFormat: '{point.x:%e. %b}: {point.y:.0f} Cantidad'
     },
 
     plotOptions: {
@@ -298,11 +286,9 @@ Highcharts.chart('container', {
         ]
     }]
 });
+    }
         </script>  
   
-
-
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -314,18 +300,134 @@ Highcharts.chart('container', {
 
 
 
+<!-- Modal Cantidad delitos y controles -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Estadística del sector</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+ 
+<?php //grafica con comunas ?>     
+             
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
+<script type="text/javascript">
+     function atrasar2(){
+      setTimeout ('char1()', 500); 
+  }   
+            
+    function char1(){       
+Highcharts.chart('container', {
+    chart: {
+        type: 'spline'
+    },
+    title: {
+        text: 'Delincuencia por sector'
+    },
+    subtitle: {
+        text: ' '
+    },
+    xAxis: {
+        type: 'datetime',
+        dateTimeLabelFormats: { // don't display the dummy year
+            month: '%e. %b',
+            year: '%b'
+        },
+        title: {
+            text: 'Fecha'
+        }
+    },
+    yAxis: {
+        title: {
+            text: ''
+        },
+        min: 0
+    },
+    tooltip: {
+        headerFormat: '<b>{series.name}</b><br>',
+        pointFormat: '{point.x:%e. %b}: {point.y:.0f} Cantidad'
+    },
+
+    plotOptions: {
+        spline: {
+            marker: {
+                enabled: true
+            }
+        }
+    },
+
+    colors: ['#6CF', '#39F', '#06C', '#036', '#000'],
+
+    // Define the data points. All series have a dummy year
+    // of 1970/71 in order to be compared on the same x axis. Note
+    // that in JavaScript, months start at 0 for January, 1 for February etc.
+    
+    
+    series: [
+           <?php         
+            $lista = new funciones();
+            $res = $lista->grafico_sector_comuna1($inicio, $fin);
+            
+            foreach($res as $obj => $o)
+            {  
+            ?> 
+        
+            {
+                
+            <?php     
+           $com1 = $o['comuna'];
+            $com = $o['id_comuna'];
+           echo "";
+           echo  "name: \"$com1\"".","; 
+             ?>
+            
+                
+        data: [
+            <?php
+                
+           $year=0;
+           $month=0;
+           $day=0;
+           $total=0;
+
+            $lista1 = new funciones();
+            $res1 = $lista1->grafico_sector_comuna2($inicio, $fin, $com);
+
+            foreach($res1 as $obj1 => $o1)
+            {                  
+           $year = $o1['year'];
+           $month = $o1['month'];
+           $day = $o1['day'];
+           $total = $o1['total'];
+
+            echo "[Date.UTC(".$year.", ".$month.", ".$day."),".$total."],";
+            }
+            ?>
+        ]
+        }, 
+        <?php }  ?>
+        
+    ]
+});
+    }
+        </script>  
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>
 </center>
-<script>
-	//loading jaquery
-	$(function() {
-		$(".preload").fadeOut(1500, function() {
-			$(".content").fadeIn(1000);
-		});
-	});
-</script>  
+ 
 </body>
 <?php 
  }

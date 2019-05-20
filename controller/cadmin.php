@@ -632,10 +632,10 @@ class funciones {
  //==================== grafico por sector y comuna fechas ===========================
     public function grafico_sector_comuna($inicio, $fin) 
      {
-            $sql = "SELECT day(delito_delincuente.fecha) as day, month(delito_delincuente.fecha)-1 as month, year(delito_delincuente.fecha) year, COUNT(delito_delincuente.id_delito) as total, comuna.id_comuna, comuna.comuna, sector.sector 
+            $sql = "SELECT day(delito_delincuente.fecha) as day, month(delito_delincuente.fecha)-1 as month, year(delito_delincuente.fecha) year, COUNT(delito_delincuente.id_delito) as total,  comuna.comuna, comuna.id_sector, comuna.id_comuna, sector.sector 
               FROM `delito_delincuente`
               inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
-              left JOIN sector on comuna.id_comuna = sector.id_sector 
+              left JOIN sector on comuna.id_sector = sector.id_sector 
               where fecha BETWEEN '".$inicio."' and '".$fin."' 
               GROUP by fecha";
                     
@@ -650,7 +650,74 @@ class funciones {
     }  
 
 
+ //==================== listado deltos por fecha y sector  ===========================
+    public function cantidad_delito_comuna($inicio, $fin) 
+     {
+            $sql = "SELECT day(delito_delincuente.fecha) as day, month(delito_delincuente.fecha)-1 as month, year(delito_delincuente.fecha) year, COUNT(delito_delincuente.id_delito) as total,  comuna.comuna, comuna.id_sector, comuna.id_comuna, sector.sector 
+              FROM `delito_delincuente`
+              inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
+              left JOIN sector on comuna.id_sector = sector.id_sector 
+              where fecha BETWEEN '".$inicio."' and '".$fin."' 
+              GROUP by comuna.comuna";
+                    
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }  
 
-
+    
+    
+     //==================== grafico por sector y comuna fechas ===========================
+    public function grafico_sector_comuna1($inicio, $fin) 
+     {
+            $sql = "SELECT day(delito_delincuente.fecha) as day, month(delito_delincuente.fecha)-1 as month, year(delito_delincuente.fecha) year, COUNT(delito_delincuente.id_delito) as total,  comuna.comuna, comuna.id_sector, comuna.id_comuna, sector.sector 
+              FROM `delito_delincuente`
+              inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
+              left JOIN sector on comuna.id_sector = sector.id_sector 
+              where fecha BETWEEN '".$inicio."' and '".$fin."'  
+              GROUP by fecha 
+              limit 5
+              ";
+                    
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }  
+    
+      //==================== grafico por sector y comuna fechas ===========================
+    public function grafico_sector_comuna2($inicio, $fin,$com) 
+     {
+            $sql = "SELECT day(delito_delincuente.fecha) as day, month(delito_delincuente.fecha)-1 as month, year(delito_delincuente.fecha) year, COUNT(delito_delincuente.id_delito) as total,  comuna.comuna, comuna.id_sector, comuna.id_comuna, sector.sector 
+              FROM `delito_delincuente`
+              inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna 
+              left JOIN sector on comuna.id_sector = sector.id_sector 
+              where fecha BETWEEN '".$inicio."' and '".$fin."'  and delito_delincuente.id_comuna = '".$com."'
+              GROUP by fecha 
+              ORDER by fecha, total asc 
+              limit 5
+              ";
+                    
+        $stmt = $this->db->connect()->query($sql);
+        $datos = array();
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $datos[] = array_map("utf8_encode", $fila);
+            // $datos[] =  $fila;
+        }
+        return $datos;
+        
+    }     
+    
+    
+    
 }
 ?>

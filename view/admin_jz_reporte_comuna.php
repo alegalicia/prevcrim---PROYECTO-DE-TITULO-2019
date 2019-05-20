@@ -292,7 +292,7 @@ Highcharts.chart('container', {
 
 <?php //grafico char ?>
 
-		<script type="text/javascript" >
+<script type="text/javascript" >
     function atrasar2(){
       setTimeout ('char1()', 500); 
   }   
