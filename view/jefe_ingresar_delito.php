@@ -4,7 +4,6 @@ error_reporting(0);
 if (!isset($_SESSION["login"])) {
     session_start();
 }
-
 require_once 'loading.php';
 require_once '../controller/cadmin.php';
 
@@ -26,12 +25,14 @@ $tipo = isset($_REQUEST['tipo']) ? $_REQUEST['tipo'] : isset($_REQUEST['tipo']);
 
 $ingresar  = isset($_REQUEST['ingresar']) ? $_REQUEST['ingresar'] : isset($_REQUEST['ingresar']);
 
+
 if ($ingresar == "ok") {
     $rut = (int)$rut;
     $act = new funciones();
     $registrar = $act->nuevo_delito_delincuente($rut, $comuna, $direccion, $fecha, $hora, $descpcion, $delito, $tipo);
-    echo "<meta http-equiv='refresh' content='0;url=../view/jefe_atecedentes.php'>";
+    echo "<meta http-equiv='refresh' content='0;url=../view/jefe_ingresar_delito.php'>";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,13 +40,6 @@ if ($ingresar == "ok") {
 <head>
     <meta charset="UTF-8">
     <title>usuairo</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/panel.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
@@ -98,17 +92,20 @@ if ($_SESSION["id_perfil"] == 2) {
     <body>
         <center>
             <br>
-            <h4> Buscar Delincuente: </h4>
-            <div class="col-md-10 login-sec">
-                <form class="login-form" action="jefe_atecedentes.php" method="post" name="f1">
+            <h4> Seleccionar Delincuente: </h4>
+            <div class="col-md-8 login-sec">
+                <form class="login-form" action="jefe_ingresar_delito.php" method="post" name="f1">
                     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
                         <thead>
                             <tr>
-                                <th class="th-sm">Ver detalle Delito</th>
+                                <th class="th-sm">Delito</th>
                                 <th class="th-sm">Rut</th>
                                 <th class="th-sm">Nombre </th>
                                 <th class="th-sm">Apellido</th>
                                 <th class="th-sm">Estado</th>
+                                <th class="th-sm">Comuna</th>
+                                <th class="th-sm">Provincia</th>
+                                <th class="th-sm">Region</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -118,18 +115,24 @@ if ($_SESSION["id_perfil"] == 2) {
                             $lista = new funciones();
                             $res = $lista->lista_delincuente();
                             foreach ($res as $obj => $o) {
+                                $fac = $o['rut'];
                                 ?>
                                 <tr>
                                     <td align='center'>
+
                                         <input type='radio' value="
                                         <?php
                                         echo $o['rut'] ?>" id='ckhActualizar' name="rut" />
                                         <button type="submit" class="btn btn-success" name="modal" value="modal" data-toggle="modal" data-target="#exampleModal"><i class='far fa-angry' style='font-size:24px'></i></button>
+
                                     </td>
                                     <td><?php echo $o['rut'] ?></td>
                                     <td><?php echo $o['primer_nombre'] ?></td>
                                     <td><?php echo $o['primer_apellido'] ?></td>
                                     <td><?php echo $o['estado_delincuente'] ?></td>
+                                    <td><?php echo $o['comuna'] ?></td>
+                                    <td><?php echo $o['provincia'] ?></td>
+                                    <td><?php echo $o['region'] ?></td>
                                 </tr>
                             <?php
                         }
@@ -137,27 +140,43 @@ if ($_SESSION["id_perfil"] == 2) {
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Ver Detalle delito</th>
+                                <th>Delito</th>
                                 <th>Rut</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Estado</th>
+                                <th>Comuna</th>
+                                <th>Provincia</th>
+                                <th>Region</th>
                             </tr>
                         </tfoot>
                     </table>
                 </form>
-
             </div>
             <br>
+            <?php
+            //==================LISTA DE comunas =============       
+            require_once '../controller/cadmin.php';
+            $obj = new funciones();
+            $lista1 = $obj->lista_comuna();
+            $select1 = '';
+            foreach ($lista1 as $key1 => $value1) {
+                $select1 .= '<option value="' . $value1["id_comuna"] . '">' . $value1["comuna"] . '</option>';
+            }
 
-            <form class="login-form" action="jefe_atecedentes.php" method="post" name="f2">
-
+            //==================LISTA DE perfiles =============        
+            $lista2 = $obj->lista_delitos();
+            $select2 = '';
+            foreach ($lista2 as $key2 => $value2) {
+                $select2 .= '<option value="' . $value2["id_delito"] . '">' . $value2["delito"] . '</option>';
+            }
+            ?>
+            <form class="login-form" action="jefe_ingresar_delito.php" method="post" name="f2">
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-
                                 <strong>
                                     <style>
                                         #j5,
@@ -166,86 +185,78 @@ if ($_SESSION["id_perfil"] == 2) {
                                         }
                                     </style>
                                     <div>
-                                        <h5 class="modal-title" id="j5">DETALLE DELITO</h5>
+                                        <h4 class="modal-title" id="j5">DELITO/CONTROL</h4>
                                     </div>
                                 </strong>
-
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
                                 <div id="d1">
-
                                     <?php
-
                                     $rut = "";
                                     $rut = $_POST['rut'];
 
-                                    echo "RUT Delincuente: <b>" . $rut . "</b>";
-                                    echo "<br>";
-
-                                    $lista = new funciones();
-                                    $res = $lista->cuenta_cantida_delitos($rut);
-                                    foreach ($res as $obj => $o) {
-                                        $delito = $o['delito'];
-                                        echo "Cantidad de delitos: <b>" . $delito . "</b><br>";
-                                    }
-
-                                    $lista = new funciones();
-                                    $res = $lista->cuenta_cantida_contorl($rut);
-                                    foreach ($res as $obj => $o) {
-                                        $controles = $o['control'];
-                                        echo "Cantidad de controles: <b>" . $controles . "</b><br>";
-                                    }
-                                    ?>
+                                    echo "RUT Delincuente: " . $rut ?>
+                                    <input name="rut" type="hidden" value="<?php echo $rut; ?>">
                                 </div>
                                 <hr>
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                                    </div>
+                                    <select name="tipo" class="form-control">
+                                        <option value="control">Control</option>
+                                        <option value="Delito">Delito</option>
+                                    </select>
+                                </div>
 
-                                <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th class="th-sm">Delito</th>
-                                            <th class="th-sm">Comuna</th>
-                                            <th class="th-sm">Fecha </th>
-                                            <th class="th-sm">Hora</th>
-                                            <th class="th-sm">Tipo</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        //============ Genera tabla ===============
-                                        require_once('../controller/cadmin.php');
-                                        $lista = new funciones();
-                                        $res = $lista->buscar_delito_delincuente($rut);
-                                        foreach ($res as $obj => $o) {
-                                            ?>
-                                            <tr>
-                                                <td><?php echo $o['delito'] ?></td>
-                                                <td><?php echo $o['comuna'] ?></td>
-                                                <td><?php echo $o['fecha'] ?></td>
-                                                <td><?php echo $o['hora'] ?></td>
-                                                <td><?php echo $o['tipo'] ?></td>
-                                            </tr>
-                                        <?php
-                                    }
-                                    ?>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th class="th-sm">Delito</th>
-                                            <th class="th-sm">Comuna</th>
-                                            <th class="th-sm">Fecha </th>
-                                            <th class="th-sm">Hora</th>
-                                            <th class="th-sm">Tipo</th>
-                                        </tr>
-                                    </tfoot>
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                                    </div>
+                                    <select name="comuna" class="form-control"><?php echo $select1; ?></select>
+                                </div>
+
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                                    </div>
+                                    <select name="delito" class="form-control"><?php echo $select2; ?></select>
+                                </div>
+
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                                </div>
+                                                <input name="fecha" class="form-control" type="date" required>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="form-group input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                                </div>
+                                                <input name="hora" class="form-control" type="time" required>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </table>
 
+                                <div class="md-form">
+                                    <label for="form7">Descripción de lo sucedido</label>
+                                    <textarea id="form7" class="md-textarea form-control" rows="3" name="descpcion"></textarea>
+                                </div>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+                                <button type="submit" class="btn btn-success" name="ingresar" value="ok">Guardar Delito</button>
                             </div>
                         </div>
                     </div>

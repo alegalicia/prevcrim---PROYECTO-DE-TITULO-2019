@@ -99,7 +99,7 @@ if ($_SESSION["id_perfil"] == 1) {
         <center>
             <br>
             <h4> Buscar Delincuente: </h4>
-            <div class="col-md-8 login-sec">
+            <div class="col-md-10 login-sec">
                 <form class="login-form" action="admin_jz_atecedentes.php" method="post" name="f1">
                     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
                         <thead>

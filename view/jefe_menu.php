@@ -3,10 +3,11 @@ error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title></title>
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -25,46 +26,37 @@ error_reporting(0);
         <ul>
             <li><a href="#"><i class="fas fa-truck"></i>Usuarios </a>
                 <ul class="submenu">
-                    <li><a target='cen' href="jefe_nuevo_usuario.php"><i class="fa fa-glass"></i>Crea Usuario</a></li>
+                    <li><a target='cen' href="jefe_usaurio_nuevo.php"><i class="fa fa-glass"></i>Crea Usuario</a></li>
                     <li><a target='cen' href="jefe_actualizar.php"><i class="fa fa-glass"></i>Actualiza Usuario</a></li>
-                    <li><a target='cen' href="jefe_eliminar.php"><i class="fa fa-glass"></i>Eliminar Usuario</a>
+                    <li><a target='cen' href="jefe_eliminar.php"><i class=" fa fa-glass"></i>Eliminar Usuario</a>
                 </ul>
         </ul>
-    </div>  
-      
-      <div>
-        <ul>
-            <li><a href="#"><i class="fas fa-truck"></i>Delincuentes</a>
-                <ul class="submenu">
-                    <li><a target='cen' href="jefe_delincuente_nue.php"><i class="fa fa-glass"></i>Ingresar Delincuente</a></li>
-                    <li><a target='cen' href="jefe_delito_delincuente.php"><i class="fa fa-glass"></i>Ingresar delito</a></li>
-                    <li><a target='cen' href="jefe_atecedentes.php"><i class="fa fa-glass"></i>Ver Historico de Delincuente</a></li>
-                
-                </ul>        
-        </ul>
+    </div>
 
-      </div>
-      
-       <div>
+    <div>
         <ul>
-            <li><a href="#"><i class="fas fa-truck"></i>Reporte </a>
+            <li><a href="#"><i class="fas fa-truck"></i>Delito / Delincuentes</a>
                 <ul class="submenu">
-                    <li><a target='cen' href=""><i class="fa fa-glass"></i>Zonas Conflictivas</a></li>
-                    <li><a target='cen' href=""><i class="fa fa-glass"></i>Ubicación de delincuentes</a></li>
-                    <li><a target='cen' href=""><i class="fa fa-glass"></i>Actualizar Factura</a></li>
-                    <li><a target='cen' href="operador_d_recu.php"><i class="fa fa-glass"></i>Delitos recurrentes</a></li>
-                    <li><a target='cen' href="operador_delic_deli.php"><i class="fa fa-glass"></i>Delicuentes segun delitos </a>
-                    <li><a target='cen' href="operador_delic_comuna.php"><i class="fa fa-glass"></i>Delicuentes segun Comuna por fecha</a>
-                    <li><a target='cen' href="operador_delic_paren.php"><i class="fa fa-glass"></i>Delicuentes segun parentesco </a>
-                    <li><a target='cen' href="operador_deli_fecha.php"><i class="fa fa-glass"></i>Delitos segun fecha </a></li>
-                    <li><a target='cen' href="operador_deli_sector.php"><i class="fa fa-glass"></i>Delitos segun sector fecha</a>
-                    <li><a target='cen' href="operador_busqueda.php"><i class="fa fa-glass"></i>Busqueda por cualquier campo </a>
-                    <li><a target='cen' href="operador_rank_comu.php"><i class="fa fa-glass"></i>Rankin de comunas por fechas</a>
-                    <li><a target='cen' href="operador_rank_sec.php"><i class="fa fa-glass"></i>Rankin de sector por fechas</a>
-                    <li><a target='cen' href="operador_google.php"><i class="fa fa-glass"></i>API google map</a>
+                    <li><a target='cen' href="jefe_delincunete.php"><i class="fa fa-glass"></i>Ingresar Delincuente</a></li>
+                    <li><a target='cen' href="jefe_parentesco.php"><i class="fa fa-glass"></i>Por Parentesco</a></li>
+                    <li><a target='cen' href="jefe_ingresar_delito.php"><i class="fa fa-glass"></i>Ingresar delito</a></li>
+                    <li><a target='cen' href="jefe_atecedentes.php"><i class="fa fa-glass"></i>Atecedente de Delincuente</a></li>
+                    <li><a target='cen' href="jefe_historico.php"><i class="fa fa-glass"></i>Historico</a></li>
                 </ul>
         </ul>
-    </div>  
-      
+    </div>
+    <div>
+        <ul>
+            <li><a href="#"><i class="fas fa-truck"></i>Reporte</a>
+                <ul class="submenu">
+                    <li><a target='cen' href="jefe_busqueda.php"><i class="fa fa-glass"></i>Busqueda</a></li>
+                    <li><a target='cen' href="jefe_rankin_comu_sec.php"><i class="fa fa-glass"></i>Rankin</a></li>
+                    <li><a target='cen' href="jefe_reporte_comuna.php"><i class="fa fa-glass"></i>Comuna</a></li>
+                    <li><a target='cen' href="jefe_reporte_sector.php"><i class="fa fa-glass"></i>Periodo Sector/comuna</a></li>
+                </ul>
+        </ul>
+    </div>
+
 </body>
+
 </html>

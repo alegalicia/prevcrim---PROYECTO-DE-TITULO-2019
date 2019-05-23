@@ -1,17 +1,8 @@
 <?php
-
-/**
- * Clase Clogin
- */
-
 session_start();
-
 class clogin {
-
-  public function __construct() {
-        
+  public function __construct() {       
     }
-
    public function login($usuario, $clave) 
     {
         
