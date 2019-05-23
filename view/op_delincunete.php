@@ -72,7 +72,7 @@ if ($ingresar == "crear") {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 </head>
 <?php
-if ($_SESSION["id_perfil"] == 2) {
+if ($_SESSION["id_perfil"] == 3) {
     require_once('../controller/cadmin.php');
     $obj = new funciones();
 
@@ -108,7 +108,7 @@ if ($_SESSION["id_perfil"] == 2) {
                     <form method="post">
                         <div class="container">
                             <table class="table table-striped">
-                                <form class="well form-horizontal" method="post" action="jefe_jz_delincunete.php">
+                                <form class="well form-horizontal" method="post" action="op_delincunete.php">
                                     <tbody>
                                         <tr>
                                             <div class="form-group">

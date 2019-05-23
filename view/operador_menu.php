@@ -25,25 +25,15 @@
 
     <div>
         <ul>
-            <li><a href="#"><i class="fas fa-atom"></i>Nuevo</a>
-                <ul class="submenu">
-                    <li><a target='cen' href="operador_nuevo_delc.php"><i class="fa fa-glass"></i>Ingresar Delincuente</a></li>
-                                   </ul>
-        </ul>
-
-        <ul>
-            <li><a href="#"><i class="fas fa-truck"></i>Reporte</a>
-                <ul class="submenu">
-                    <li><a target='cen' href="operador_d_recu.php"><i class="fa fa-glass"></i>Delitos recurrentes</a></li>
-                    <li><a target='cen' href="operador_delic_deli.php"><i class="fa fa-glass"></i>Delicuentes segun delitos </a>
-                    <li><a target='cen' href="operador_delic_comuna.php"><i class="fa fa-glass"></i>Delicuentes segun Comuna por fecha</a>
-                    <li><a target='cen' href="operador_delic_paren.php"><i class="fa fa-glass"></i>Delicuentes segun parentesco </a>
-                    <li><a target='cen' href="operador_deli_fecha.php"><i class="fa fa-glass"></i>Delitos segun fecha </a></li>
-                    <li><a target='cen' href="operador_deli_sector.php"><i class="fa fa-glass"></i>Delitos segun sector fecha</a>
-                    <li><a target='cen' href="operador_busqueda.php"><i class="fa fa-glass"></i>Busqueda por cualquier campo </a>
-                    <li><a target='cen' href="operador_rank_comu.php"><i class="fa fa-glass"></i>Rankin de comunas por fechas</a>
-                    <li><a target='cen' href="operador_rank_sec.php"><i class="fa fa-glass"></i>Rankin de sector por fechas</a>
-                    <li><a target='cen' href="operador_google.php"><i class="fa fa-glass"></i>API google map</a>
+            <ul class="submenu">
+                    <li><a target='cen' href="op_atecedentes.php"><i class="fa fa-glass"></i>Atecedentes</a></li>
+                    <li><a target='cen' href="op_busqueda.php"><i class="fa fa-glass"></i>Busqueda General</a>
+                    <li><a target='cen' href="op_delincunete.php"><i class="fa fa-glass"></i>Ingresar Delincuente</a>
+                    <li><a target='cen' href="op_historico.php"><i class="fa fa-glass"></i>Historico </a>
+                    <li><a target='cen' href="op_parentesco.php"><i class="fa fa-glass"></i>Parentsco</a></li>
+                    <li><a target='cen' href="op_rankin_comu_sec.php"><i class="fa fa-glass"></i>Ranking por comuna y sector</a>
+                    <li><a target='cen' href="op_reporte_comuna.php"><i class="fa fa-glass"></i>Reporte Comuna</a>
+                    <li><a target='cen' href="op_reporte_sector.php"><i class="fa fa-glass"></i>Reporte Sector / COmuna Periodo</a>
                 </ul>
         </ul>
     </div>

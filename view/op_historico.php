@@ -65,7 +65,7 @@ require_once 'loading.php';
 <?php
 //valida inicio de sesion y despues perfil moestra body o no
 if (isset($_SESSION['perfil'])) {
-	if ($_SESSION['id_perfil'] == 2) {
+	if ($_SESSION['id_perfil'] == 3) {
 		require_once '../controller/cadmin.php';
 		$obj = new funciones();
 

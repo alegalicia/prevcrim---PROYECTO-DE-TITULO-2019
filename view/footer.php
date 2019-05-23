@@ -7,8 +7,8 @@
 </head>
 <body>
  
- <h6>PROYECO TITULACION: PREVCRIM</h6>
- <H6>Copy Rigth 2019: Alejandro Galicia - Oscar Caceres - Patricio Tamayo </H6>
+ <h6>PROYECO TITULACION: SOLOBINARY</h6>
+ <H6>Copy Rigth 2019: Alejandro Galicia - Patricio Tamayo </H6>
      
 </body>
 </html>

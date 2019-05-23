@@ -111,7 +111,7 @@ if (isset($_SESSION['perfil'])) {
 									<h4>Estadísticas según delito del sector (ultimos 12 meses)</h4>
 									<div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 									<br>
-									<h4>Estaddistícas cronológicas</h4>
+									<h4>Estadistícas cronológicas</h4>
 									<div id="container1" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
 								</div>
 								<?php
