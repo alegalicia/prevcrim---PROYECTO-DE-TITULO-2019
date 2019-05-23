@@ -3,9 +3,9 @@ error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   
-    <meta charset="UTF-8">    
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -17,8 +17,8 @@ error_reporting(0);
     <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/brands.js" integrity="sha384-zJ8/qgGmKwL+kr/xmGA6s1oXK63ah5/1rHuILmZ44sO2Bbq1V3p3eRTkuGcivyhD" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/fontawesome.js" integrity="sha384-Qmms7kHsbqYnKkSwiePYzreT+ufFVSNBhfLOEp0sEEfEVdORDs/aEnGaJy/l4eoy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/panel.css">
-    
 </head>
+
 <body>
     <div>
         <ul>
@@ -29,13 +29,14 @@ error_reporting(0);
                     <li><a href="admin_elimina.php" target='cen'><i class="fa fa-glass"></i>Eliminar Usuario </a></li>
                 </ul>
         </ul>
-                <ul>
-            <li><a href="#"><i class="fas fa-address-book"></i>ADMI. INSTITUCIONES</a>
-                <ul class="submenu">
-                    <li><a href="admin_nuevo_ins.php" target='cen'><i class="fa fa-glass"></i>Nueva institución</a></li>
-                    <li><a href="admin_actualizar_ins.php" target='cen'><i class="fa fa-glass"></i>Actualizar institucion </a></li>
-                    <li><a href="admin_eliminar_ins.php" target='cen'><i class="fa fa-glass"></i>Eliminar Institución</a></li>
-                </ul>
+        <ul>
+            <li><a href="#"><i class="fas fa-address-book"></i>ADMI. INSTITUCIONES</a></li>
+            <ul class="submenu">
+                <li><a href="admin_nuevo_ins.php" target='cen'><i class="fa fa-glass"></i>Nueva institución</a></li>
+                <li><a href="admin_actualizar_ins.php" target='cen'><i class="fa fa-glass"></i>Actualizar institucion </a></li>
+                <li><a href="admin_eliminar_ins.php" target='cen'><i class="fa fa-glass"></i>Eliminar Institución</a></li>
+
+            </ul>
         </ul>
 
         <ul>
@@ -43,41 +44,32 @@ error_reporting(0);
                 <ul class="submenu">
                     <li><a target='cen' href="admin_jz_usaurio_nuevo.php"><i class="fa fa-glass"></i>Nuevo Usuario</a></li>
                     <li><a target='cen' href="admin_jz_actualizar.php"><i class="fa fa-glass"></i>Actualiza Usuario</a></li>
-                    <li><a target='cen' href="admin_jz_eliminar.php"><i class="fa fa-glass"></i>Eliminar Usuario</a></li>
+                    <li><a target='cen' href="admin_jz_eliminar.php"><i class="fa fa-glass"></i>Eliminar Usuario </a></li>
                 </ul>
         </ul>
 
-         <ul>
-            <li><a href="#"><i class="fas fa-truck"></i>Delincuentes</a>
+        <ul>
+            <li><a href="#"><i class="fas fa-truck"></i>Delito y delicuente(Jz)</a>
                 <ul class="submenu">
+                    <li><a target='cen' href="admin_ingresar_delito.php"><i class="fa fa-glass"></i>Ingresar Delito</a></li>
+                    <li><a target='cen' href="admin_jz_atecedentes.php"><i class="fa fa-glass"></i>Atecedentes</a></li>
+                    <li><a target='cen' href="admin_jz_busqueda.php"><i class="fa fa-glass"></i>Busqueda (pendiente)</a></li>
                     <li><a target='cen' href="admin_jz_delincunete.php"><i class="fa fa-glass"></i>Ingresar Delincuente</a></li>
-                    <li><a target='cen' href="admin_ingresar_delito.php"><i class="fa fa-glass"></i>Ingresar delito</a></li>
-                </ul>        
+                    <li><a target='cen' href="admin_jz_parentesco.php"><i class="fa fa-glass"></i>Parentesco (pendiente)</a></li>
+                    <li><a target='cen' href="google.php"><i class="fa fa-glass"></i>Google Map </a></li>
+                </ul>
         </ul>
-       
+
         <ul>
             <li><a href="#"><i class="fas fa-truck"></i>Reporte(Jz)</a>
                 <ul class="submenu">
-                    <li><a target='cen' href="admin_jz_reporte_comuna.php"><i class="fa fa-glass"></i>Comuna</a></li>
-                    <li><a target='cen' href="admin_jz_reporte_sector.php"><i class="fa fa-glass"></i>Sector</a></li>
-                </ul>        
-        </ul>
-                
-         <ul>
-            <li><a href="#"><i class="fas fa-truck"></i>Reporte (Operador)</a>
-                <ul class="submenu">
-                    <li><a target='cen' href="operador_d_recu.php"><i class="fa fa-glass"></i>Delitos recurrentes</a></li>
-                    <li><a target='cen' href="operador_delic_deli.php"><i class="fa fa-glass"></i>Delicuentes segun delitos </a>
-                    <li><a target='cen' href="operador_delic_comuna.php"><i class="fa fa-glass"></i>Delicuentes segun Comuna por fecha</a>
-                    <li><a target='cen' href="operador_delic_paren.php"><i class="fa fa-glass"></i>Delicuentes segun parentesco </a>
-                    <li><a target='cen' href="operador_deli_fecha.php"><i class="fa fa-glass"></i>Delitos segun fecha </a></li>
-                    <li><a target='cen' href="operador_deli_sector.php"><i class="fa fa-glass"></i>Delitos segun sector fecha</a>
-                    <li><a target='cen' href="operador_busqueda.php"><i class="fa fa-glass"></i>Busqueda por cualquier campo </a>
-                    <li><a target='cen' href="operador_rank_comu.php"><i class="fa fa-glass"></i>Rankin de comunas por fechas</a>
-                    <li><a target='cen' href="operador_rank_sec.php"><i class="fa fa-glass"></i>Rankin de sector por fechas</a>
-                    <li><a target='cen' href="operador_google.php"><i class="fa fa-glass"></i>API google map</a>
+                    <li><a target='cen' href="admin_jz_reporte_comuna.php"><i class="fa fa-glass"></i>Estadistícas Comuna</a></li>
+                    <li><a target='cen' href="admin_jz_reporte_sector.php"><i class="fa fa-glass"></i>Estadistícas Sector</a></li>
+                    <li><a target='cen' href="admin_jz_historico.php"><i class="fa fa-glass"></i>Historico</a></li>
+                    <li><a target='cen' href="admin_jz_rankin_comu_sec.php"><i class="fa fa-glass"></i>Ranling Comuna</a></li>
                 </ul>
         </ul>
-    </div>  
+    </div>
 </body>
+
 </html>

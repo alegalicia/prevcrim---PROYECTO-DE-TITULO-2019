@@ -3,24 +3,21 @@
 if(!isset($_SESSION["login"])){session_start(); } 
 require_once 'loading.php'; 
  ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Reporte por Sector - Comuna</title>
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <link rel="stylesheet" href="css/panel.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
@@ -59,7 +56,6 @@ require_once 'loading.php';
             window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
         }
     </script>
-    
     <?php //librerias char?>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="js/highcharts.js"></script>
@@ -67,12 +63,10 @@ require_once 'loading.php';
 <script src="js/modules/series-label.js"></script>
 <script src="js/modules/exporting.js"></script>
 <script src="js/modules/export-data.js"></script>
-
 <!-- Additional files for the Highslide popup effect -->
 <script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
 <script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
-
 <?php ///loading  v2?>
 	 <script src="js/jquery-1.8.3.js"></script>
 	<style>
@@ -89,7 +83,6 @@ require_once 'loading.php';
 	transform:translate(-50%, -50%);
 }
 </style>
-
  <style type="text/css">
 #container {
     min-width: 310px;
@@ -100,10 +93,10 @@ require_once 'loading.php';
         </style>
     </head>
 <?php 
+
 if (isset($_SESSION["id_perfil"])) {
 	if ($_SESSION["id_perfil"] == "1") {
 ?>
-
 <body>
 <center>
         <h3>Reporte por periodo Sector/comuna</h3>        
@@ -132,7 +125,6 @@ if (isset($_SESSION["id_perfil"])) {
             </div>
   <div>      
 <br>
-
     <?php
     if(isset($_POST["buscar"])){ ?>
     <hr>
@@ -175,7 +167,6 @@ if (isset($_SESSION["id_perfil"])) {
                 </tr>
                 <?php
                 }
-
                 ?>
             </tbody>
             <tfoot>
@@ -205,11 +196,7 @@ if (isset($_SESSION["id_perfil"])) {
         </button>
       </div>
       <div class="modal-body">
-     
 <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
-
-
 <script type="text/javascript">
    function atrasar(){
       setTimeout ('char()', 500); 
@@ -256,10 +243,6 @@ Highcharts.chart('container1', {
     },
 
     colors: ['#6CF', '#39F', '#06C', '#036', '#000'],
-
-    // Define the data points. All series have a dummy year
-    // of 1970/71 in order to be compared on the same x axis. Note
-    // that in JavaScript, months start at 0 for January, 1 for February etc.
     series: [{
         name: "SECTOR",
         data: [
@@ -288,7 +271,6 @@ Highcharts.chart('container1', {
 });
     }
         </script>  
-  
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -297,10 +279,6 @@ Highcharts.chart('container1', {
   </div>
 </div>
 
-
-
-
-<!-- Modal Cantidad delitos y controles -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -312,22 +290,20 @@ Highcharts.chart('container1', {
       </div>
       <div class="modal-body">
  
-<?php //grafica con comunas ?>     
-             
+<?php //grafica con comunas ?>                 
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <script type="text/javascript">
      function atrasar2(){
       setTimeout ('char1()', 500); 
-  }   
-            
+  }          
     function char1(){       
 Highcharts.chart('container', {
     chart: {
         type: 'spline'
     },
     title: {
-        text: 'Delincuencia por sector'
+        text: 'Delincuencia por comuna del sector'
     },
     subtitle: {
         text: ' '
@@ -360,14 +336,7 @@ Highcharts.chart('container', {
             }
         }
     },
-
     colors: ['#6CF', '#39F', '#06C', '#036', '#000'],
-
-    // Define the data points. All series have a dummy year
-    // of 1970/71 in order to be compared on the same x axis. Note
-    // that in JavaScript, months start at 0 for January, 1 for February etc.
-    
-    
     series: [
            <?php         
             $lista = new funciones();
@@ -375,29 +344,22 @@ Highcharts.chart('container', {
             
             foreach($res as $obj => $o)
             {  
-            ?> 
-        
-            {
-                
+            ?>           
+            {       
             <?php     
            $com1 = $o['comuna'];
             $com = $o['id_comuna'];
            echo "";
            echo  "name: \"$com1\"".","; 
-             ?>
-            
-                
+             ?>       
         data: [
             <?php
-                
            $year=0;
            $month=0;
            $day=0;
            $total=0;
-
             $lista1 = new funciones();
             $res1 = $lista1->grafico_sector_comuna2($inicio, $fin, $com);
-
             foreach($res1 as $obj1 => $o1)
             {                  
            $year = $o1['year'];
@@ -410,13 +372,13 @@ Highcharts.chart('container', {
             ?>
         ]
         }, 
-        <?php }  ?>
-        
+        <?php 
+        }  
+        ?>
     ]
 });
     }
-        </script>  
-  
+        </script> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -427,7 +389,6 @@ Highcharts.chart('container', {
 
 </div>
 </center>
- 
 </body>
 <?php 
  }

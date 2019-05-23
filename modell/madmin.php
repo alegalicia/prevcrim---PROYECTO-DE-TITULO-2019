@@ -140,7 +140,6 @@ class funciones_BD {
             
         where `usuario`.`rut` = '".$rut."'");
       
-      
             if ($sql_estado) {
                     echo "<script>alert('EL USUAIO CON RUT ' + $rut+ ' FUE ELIMINADO!!!');</script>";
             return true;
@@ -150,7 +149,6 @@ class funciones_BD {
         }
     }  
     
-
     
     
          //==================== INSERTAR institucion===========================  
@@ -263,12 +261,6 @@ class funciones_BD {
                 return false;
                }   
     }    
-   
-
-
-
-
-
    
  }
 

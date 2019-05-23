@@ -222,19 +222,19 @@ class funciones {
 
 	//==================== listado usuarios  ===========================
 	public function lista_usuario_inst($id_institucion) {
-		$sql = "select usuario.primer_nombre, usuario.primer_apellido, usuario.id_perfil, perfil.perfil, usuario.id_institucion,
-          usuario.segundo_nombre, usuario.segundo_apellido, usuario.correo, usuario.celular, usuario.fijo,
-          usuario.id_institucion, usuario.id_comuna, institucion.institucion, comuna.comuna, provincia.provincia,
-          region.region, usuario.rut , usuario.estado
+		$sql = "SELECT usuario.primer_nombre, usuario.primer_apellido, usuario.id_perfil, perfil.perfil, usuario.id_institucion,
+		usuario.segundo_nombre, usuario.segundo_apellido, usuario.correo, usuario.celular, usuario.fijo,
+		usuario.id_institucion, usuario.id_comuna, institucion.institucion, comuna.comuna, provincia.provincia,
+		region.region, usuario.rut , usuario.estado
 
-          from usuario
+		from usuario
 
-          inner join perfil on usuario.id_perfil = perfil.id_perfil
-          inner join institucion on usuario.id_institucion = institucion.id_institucion
-          inner join comuna on usuario.id_comuna = comuna.id_comuna
-          inner join provincia on comuna.id_provincia = provincia.id_provincia
-          inner join region on provincia.id_region = region.id_region
-          where usuario.estado = 1 and usuario.id_institucion = '" . $id_institucion . "' and usuario.id_perfil = '3'";
+		inner join perfil on usuario.id_perfil = perfil.id_perfil
+		inner join institucion on usuario.id_institucion = institucion.id_institucion
+		inner join comuna on usuario.id_comuna = comuna.id_comuna
+		inner join provincia on comuna.id_provincia = provincia.id_provincia
+		inner join region on provincia.id_region = region.id_region
+		 where usuario.estado = 1 and usuario.id_institucion = '".$id_institucion."'";
 
 		$stmt = $this->db->connect()->query($sql);
 		$datos = array();
@@ -710,6 +710,51 @@ class funciones {
 		return $datos;
 
 	}
+
+//muestra los ultimos 12 meses lineal de tiempo grafico
+public function rankinkComuna() {
+
+	$sql = "SELECT count(comuna.comuna) as total_comuna, delito_delincuente.id_delito, comuna.comuna 
+			from delito_delincuente
+			inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna
+			GROUP BY comuna.comuna 
+			ORDER by total_comuna desc
+			limit 5 
+		  ";
+
+	$stmt = $this->db->connect()->query($sql);
+	$datos = array();
+	while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		$datos[] = array_map("utf8_encode", $fila);
+
+	}
+	return $datos;
+
+}
+
+
+//muestra los ultimos 12 meses lineal de tiempo grafico
+public function rankinkSector() {
+
+	$sql = "SELECT count(sector.id_sector) as total_sector, delito_delincuente.id_delito, sector.sector, 
+					comuna.comuna, sector.sector    
+					from delito_delincuente
+					inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna
+					LEFT JOIN sector on comuna.id_sector = sector.id_sector 
+					GROUP BY sector.sector 
+					ORDER by total_sector desc
+					limit 5 
+		  ";
+
+	$stmt = $this->db->connect()->query($sql);
+	$datos = array();
+	while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		$datos[] = array_map("utf8_encode", $fila);
+
+	}
+	return $datos;
+
+}
 
 }
 ?>

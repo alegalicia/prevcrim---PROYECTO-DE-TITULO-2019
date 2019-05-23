@@ -1,23 +1,24 @@
 <?php
 error_reporting(0);
-if(!isset($_SESSION["login"])){session_start(); } 
-    require_once 'loading.php';
-    require_once '../controller/cadmin.php';
-     $id_institucion   = isset($_REQUEST['id_institucion'])?$_REQUEST['id_institucion']:isset($_REQUEST['id_institucion']);
-      $ingresar  = isset($_REQUEST['ingresar'])?$_REQUEST['ingresar']:isset($_REQUEST['ingresar']);
- 
- if ($ingresar == "eliminar"){   
-     
-          $act = new funciones(); 
-          $registrar = $act->eliminar_ins($id_institucion);
-     
-} else 
-echo $id_institucion;
+if (!isset($_SESSION["login"])) {
+    session_start();
+}
+require_once 'loading.php';
+require_once '../controller/cadmin.php';
+$id_institucion   = isset($_REQUEST['id_institucion']) ? $_REQUEST['id_institucion'] : isset($_REQUEST['id_institucion']);
+$ingresar  = isset($_REQUEST['ingresar']) ? $_REQUEST['ingresar'] : isset($_REQUEST['ingresar']);
+
+if ($ingresar == "eliminar") {
+
+    $act = new funciones();
+    $registrar = $act->eliminar_ins($id_institucion);
+} else
+    echo $id_institucion;
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
- <head>
+<head>
     <meta charset="UTF-8">
     <title>usuairo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -27,11 +28,10 @@ echo $id_institucion;
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-     <link rel="stylesheet" href="css/panel.css">
+    <link rel="stylesheet" href="css/panel.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> 
-     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
             $('#dtBasicExample').DataTable();
@@ -69,65 +69,59 @@ echo $id_institucion;
             window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
         }
     </script>
- </head>
-<?php 
-    if($_SESSION["id_perfil"] == 1)
-    { 
-?>
+</head>
+<?php
+if ($_SESSION["id_perfil"] == 1) {
+    ?>
 
- <body>
-
-     <center>
-        <br>
-        <h1>Eliminar Institucion: </h1>
-        <div class="col-md-8 login-sec">
-            <form class="login-form" action="admin_eliminar_ins.php" method="post" name="f1">
-                <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th class="th-sm">Eliminar</th>
-                            <th class="th-sm">Institucion</th>
-                            <th class="th-sm">Monitor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-//============ Genera tabla ===============
-          require_once('../controller/cadmin.php');
-           $lista = new funciones();
-           $res = $lista->lista_inst();
-            foreach($res as $obj => $o)
-              { $fac = $o['id_institucion'];
-                  ?>
-                        <tr>
-                            <td align='center'><input type='radio' value="<?php echo $o['id_institucion'] ?>" id='ckhActualizar' name='id_institucion' /></td>
-                            <td><?php echo $o['institucion']?></td>
-                            <td><?php echo $o['monitor']?></td>
-                        </tr>
-                        <?php
-                            }
+    <body>
+        <center>
+            <br>
+            <h4>Eliminar Institucion: </h4>
+            <div class="col-md-8 login-sec">
+                <form class="login-form" action="admin_eliminar_ins.php" method="post" name="f1">
+                    <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="th-sm">Eliminar</th>
+                                <th class="th-sm">Institucion</th>
+                                <th class="th-sm">Monitor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            //============ Genera tabla ===============
+                            require_once('../controller/cadmin.php');
+                            $lista = new funciones();
+                            $res = $lista->lista_inst();
+                            foreach ($res as $obj => $o) {
+                                $fac = $o['id_institucion'];
+                                ?>
+                                <tr>
+                                    <td align='center'><input type='radio' value="<?php echo $o['id_institucion'] ?>" id='ckhActualizar' name='id_institucion' /></td>
+                                    <td><?php echo $o['institucion'] ?></td>
+                                    <td><?php echo $o['monitor'] ?></td>
+                                </tr>
+                            <?php
+                        }
                         ?>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Eliminar</th>
-                            <th>Institucion</th>
-                            <th>Monitor</th>
-                        </tr>
-                    </tfoot>
-                </table>
-              <button  class="btn btn-success" name="ingresar" type="submit" value="eliminar">Aceptar</button>
-            </form>
-        </div>
-        <br>
-    </center>
-
-
-
- </body>
-
- <?php
-   }else echo"debe iniciar sesión con una cuenta con previlegios";
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Eliminar</th>
+                                <th>Institucion</th>
+                                <th>Monitor</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <button class="btn btn-success" name="ingresar" type="submit" value="eliminar">Aceptar</button>
+                </form>
+            </div>
+            <br>
+        </center>
+    </body>
+<?php
+} else echo "debe iniciar sesión con una cuenta con previlegios";
 ?>
 
- </html> 
+</html>

@@ -1,24 +1,23 @@
 <?php
 error_reporting(0);
-if(!isset($_SESSION["login"])){session_start(); } 
+if (!isset($_SESSION["login"])) {
+    session_start();
+}
 
-   require_once 'loading.php';
-   require_once '../controller/cadmin.php';
-        
-    $institucion   = isset($_REQUEST['institucion'])?$_REQUEST['institucion']:isset($_REQUEST['institucion']);
+require_once 'loading.php';
+require_once '../controller/cadmin.php';
 
-    $monitor   = isset($_REQUEST['monitor'])?$_REQUEST['monitor']:isset($_REQUEST['monitor']);
-        
-    $ingresar  = isset($_REQUEST['ingresar'])?$_REQUEST['ingresar']:isset($_REQUEST['ingresar']);
+$institucion   = isset($_REQUEST['institucion']) ? $_REQUEST['institucion'] : isset($_REQUEST['institucion']);
 
+$monitor   = isset($_REQUEST['monitor']) ? $_REQUEST['monitor'] : isset($_REQUEST['monitor']);
 
-        if ($ingresar == "crear")
-        {
-            $ingresar_act = new funciones();
-            
-            $registrar = $ingresar_act->ingresar_institucion($institucion, $monitor);
-           echo "<meta http-equiv='refresh' content='0;url=../view/admin_nuevo_ins.php'>";
-        }
+$ingresar  = isset($_REQUEST['ingresar']) ? $_REQUEST['ingresar'] : isset($_REQUEST['ingresar']);
+
+if ($ingresar == "crear") {
+    $ingresar_act = new funciones();
+    $registrar = $ingresar_act->ingresar_institucion($institucion, $monitor);
+    echo "<meta http-equiv='refresh' content='0;url=../view/admin_nuevo_ins.php'>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,55 +34,48 @@ if(!isset($_SESSION["login"])){session_start(); }
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/panel.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-    
-    
 </head>
-<?php 
-    if($_SESSION["id_perfil"] == 1)
-    {        
-
-        
- ?>
- 
-<body>
- <center>
-    <h1>Nueva institución</h1>
-    <div class="container">
-        <br>
-<div class="col-md-4 login-sec">
-        <div class="card bg-light">
-            <article class="card-body mx-auto" style="max-width: 400px;">
-
-                <form method="post">
-
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                        </div>
-                        <input name="institucion" class="form-control" placeholder="Nombre Institución" type="text" required maxlength="30">
-                    </div>
-
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                        </div>
-                        <input name="monitor" class="form-control" placeholder="Monitor Asignado" type="text" required maxlength="30">
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-block" name="ingresar" value="crear"> Create institución</button>
-                    </div>
-                </form>
-            </article>
-        </div>
-        </div>
-    </div>
- </center>
-</body>
-
 <?php
-   }else{ echo "<script>alert('DEBE INICIAR SESIÓN..!!!');</script>";  
-    echo "<meta http-equiv='refresh' content='0;url=../index.html'>";}
+if ($_SESSION["id_perfil"] == 1) {
+    ?>
+    <body>
+        <center>
+            <h4>Nueva institución</h4>
+            <div class="container">
+                <br>
+                <div class="col-md-4 login-sec">
+                    <div class="card bg-light">
+                        <article class="card-body mx-auto" style="max-width: 400px;">
+                            <form method="post">
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                    </div>
+                                    <input name="institucion" class="form-control" placeholder="Nombre Institución" type="text" required maxlength="30">
+                                </div>
+
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                    </div>
+                                    <input name="monitor" class="form-control" placeholder="Monitor Asignado" type="text" required maxlength="30">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success btn-block" name="ingresar" value="crear"> Create institución</button>
+                                </div>
+                            </form>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </body>
+<?php
+} else {
+    echo "<script>alert('DEBE INICIAR SESIÓN..!!!');</script>";
+    echo "<meta http-equiv='refresh' content='0;url=../index.html'>";
+}
 ?>
 
 </html>

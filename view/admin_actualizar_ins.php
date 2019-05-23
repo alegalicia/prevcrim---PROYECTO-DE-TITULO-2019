@@ -1,22 +1,24 @@
 <?php
 error_reporting(0);
-if(!isset($_SESSION["login"])){session_start(); } 
-    require_once 'loading.php';
-    require_once '../controller/cadmin.php';
+if (!isset($_SESSION["login"])) {
+    session_start();
+}
+require_once 'loading.php';
+require_once '../controller/cadmin.php';
 
-    $institucion   = isset($_REQUEST['institucion'])?$_REQUEST['institucion']:isset($_REQUEST['institucion']);
+$institucion   = isset($_REQUEST['institucion']) ? $_REQUEST['institucion'] : isset($_REQUEST['institucion']);
 
-    $id_institucion   = isset($_REQUEST['id_institucion'])?$_REQUEST['id_institucion']:isset($_REQUEST['id_institucion']);
+$id_institucion   = isset($_REQUEST['id_institucion']) ? $_REQUEST['id_institucion'] : isset($_REQUEST['id_institucion']);
 
-    $monitor         = isset($_REQUEST['monitor'])?$_REQUEST['monitor']:isset($_REQUEST['monitor']);
+$monitor         = isset($_REQUEST['monitor']) ? $_REQUEST['monitor'] : isset($_REQUEST['monitor']);
 
-     $ingresar  = isset($_REQUEST['ingresar'])?$_REQUEST['ingresar']:isset($_REQUEST['ingresar']);
- 
- if ($ingresar == "actualizar"){   
-                        $act = new funciones(); 
-                        $registrar = $act->actualizar_ins($id_institucion, $institucion, $monitor);
-} else 
-echo $id_institucion;
+$ingresar  = isset($_REQUEST['ingresar']) ? $_REQUEST['ingresar'] : isset($_REQUEST['ingresar']);
+
+if ($ingresar == "actualizar") {
+    $act = new funciones();
+    $registrar = $act->actualizar_ins($id_institucion, $institucion, $monitor);
+} else
+    echo $id_institucion;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +36,7 @@ echo $id_institucion;
 
     <link rel="stylesheet" href="css/panel.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
@@ -74,112 +76,105 @@ echo $id_institucion;
         }
     </script>
 </head>
-<?php 
-    if($_SESSION["id_perfil"] == 1)
-    { 
-?>
-
-<body>
-
-    <center>
-        <br>
-        <h1> Actualizar Institucion: </h1>
-        <div class="col-md-8 login-sec">
-            <form class="login-form" action="admin_actualizar_ins.php" method="post" name="f1">
-                <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th class="th-sm">Editar</th>
-                            <th class="th-sm">Institucion</th>
-                            <th class="th-sm">Monitor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-//============ Genera tabla ===============
-          require_once('../controller/cadmin.php');
-           $lista = new funciones();
-           $res = $lista->lista_inst();
-            foreach($res as $obj => $o)
-              { $fac = $o['id_institucion'];
-                  ?>
-                        <tr>
-                            <td align='center'><input type='radio' value="<?php echo $o['id_institucion'] ?>" id='ckhActualizar' name='update' /></td>
-                            <td><?php echo $o['institucion']?></td>
-                            <td><?php echo $o['monitor']?></td>
-                        </tr>
-                        <?php
-                            }
+<?php
+if ($_SESSION["id_perfil"] == 1) {
+    ?>
+    <body>
+        <center>
+            <br>
+            <h4> Actualizar Institucion: </h4>
+            <div class="col-md-8 login-sec">
+                <form class="login-form" action="admin_actualizar_ins.php" method="post" name="f1">
+                    <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="th-sm">Editar</th>
+                                <th class="th-sm">Institucion</th>
+                                <th class="th-sm">Monitor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            //============ Genera tabla ===============
+                            require_once('../controller/cadmin.php');
+                            $lista = new funciones();
+                            $res = $lista->lista_inst();
+                            foreach ($res as $obj => $o) {
+                                $fac = $o['id_institucion'];
+                                ?>
+                                <tr>
+                                    <td align='center'><input type='radio' value="<?php echo $o['id_institucion'] ?>" id='ckhActualizar' name='update' /></td>
+                                    <td><?php echo $o['institucion'] ?></td>
+                                    <td><?php echo $o['monitor'] ?></td>
+                                </tr>
+                            <?php
+                        }
                         ?>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Editar</th>
-                            <th>Institucion</th>
-                            <th>Monitor</th>
-                        </tr>
-                    </tfoot>
-                </table>
-              <button  class="btn btn-success" name="editar" type="submit" value="editar">Aceptar</button>
-            </form>
-        </div>
-        <br>
-
-<div class="col-md-4 login-sec">
-  <?php
-    if(ISSET($_POST['update'])){
-        $id = $_POST['update'];
-  
- //============ Genera tabla ===============
-          require_once('../controller/cadmin.php');
-           $lista = new funciones();
-           $res = $lista->lista_inst($id);
-            foreach($res as $obj => $o)
-              { $fac = $o['id_institucion'];
-               
-  $obj = new funciones();
- }           
-                  ?>
-            <hr>
-            
-    <div class="card bg-light">
-            <article class="card-body" style="max-width: 400px;">
-                <form action="admin_actualizar_ins.php" method="get">
-                      
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                        </div>
-                        <input name="institucion" class="form-control" type="text" required maxlength="30" value="<?php echo $o['institucion'] ?>">
-                    </div>
-
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                        </div>
-                        <input name="monitor" class="form-control" type="text" required maxlength="30" value="<?php echo $o['monitor'] ?>">
-                    </div>
-                      
-                      <input type="hidden" name="id_institucion" value="<?php echo $o['id_institucion'] ?>">
-                       
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success" name="ingresar" value="actualizar"> Actualizar institucion</button>
-                    </div>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Editar</th>
+                                <th>Institucion</th>
+                                <th>Monitor</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <button class="btn btn-success" name="editar" type="submit" value="editar">Aceptar</button>
                 </form>
-            </article>
-    </div>     
-  <hr>
+            </div>
+            <br>
+
+            <div class="col-md-4 login-sec">
+                <?php
+                if (isset($_POST['update'])) {
+                    $id = $_POST['update'];
+
+                    //============ Genera tabla ===============
+                    require_once('../controller/cadmin.php');
+                    $lista = new funciones();
+                    $res = $lista->lista_inst($id);
+                    foreach ($res as $obj => $o) {
+                        $fac = $o['id_institucion'];
+
+                        $obj = new funciones();
+                    }
+                    ?>
+                    <hr>
+                    <div class="card bg-light">
+                        <article class="card-body" style="max-width: 400px;">
+                            <form action="admin_actualizar_ins.php" method="get">
+
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                    </div>
+                                    <input name="institucion" class="form-control" type="text" required maxlength="30" value="<?php echo $o['institucion'] ?>">
+                                </div>
+
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                    </div>
+                                    <input name="monitor" class="form-control" type="text" required maxlength="30" value="<?php echo $o['monitor'] ?>">
+                                </div>
+
+                                <input type="hidden" name="id_institucion" value="<?php echo $o['id_institucion'] ?>">
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success" name="ingresar" value="actualizar"> Actualizar institucion</button>
+                                </div>
+                            </form>
+                        </article>
+                    </div>
+                    <hr>
+                <?php
+            }
+            ?>
+            </div>
+        </center>
+    </body>
 <?php
-    }
- ?>
- </div>
-    </center>
-
-
-</body>
-
-<?php
-   }else echo"debe iniciar sesión con una cuenta con previlegios";
+} else echo "debe iniciar sesión con una cuenta con previlegios";
 ?>
 
 </html>
