@@ -753,8 +753,39 @@ public function rankinkSector() {
 
 	}
 	return $datos;
-
 }
+
+	//==================== conexion google  ===========================
+	public function g() {
+		$sql = "SELECT rut, clave FROM `usuario` where rut=0505";
+
+		$stmt = $this->db->connect()->query($sql);
+		$datos = array();
+		while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$datos[] = array_map("utf8_encode", $fila);
+			// $datos[] =  $fila;
+		}
+		return $datos;
+	}
+
+	//==================== marcado ene mapa  ===========================
+	public function geolocalizacion_delito() {
+		$sql = "SELECT delincuente.domicilio as direccion, comuna.comuna, delincuente.fecha, delincuente.latitud, delincuente.longitud,
+		   delincuente.apodo
+				FROM `delincuente` 
+        inner join comuna on delincuente.id_comuna = comuna.id_comuna 
+				order by `delincuente`.`fecha` DESC 
+				LIMIT 5";
+
+		$stmt = $this->db->connect()->query($sql);
+		$datos = array();
+		while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$datos[] = array_map("utf8_encode", $fila);
+			// $datos[] =  $fila;
+		}
+		return $datos;
+	}
+
 
 }
 ?>

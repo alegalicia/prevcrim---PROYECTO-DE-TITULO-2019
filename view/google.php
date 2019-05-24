@@ -1,61 +1,112 @@
+<?php
+//============ Genera algo ===============
+
+?>
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Marker Clustering</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
+
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>Map prevcrim</title>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script>
+    #map {
+      height: 100%;
+    }
 
-      function initMap() {
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+  </style>
+</head>
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 3,
-          center: {lat: -28.024, lng: 140.887}
+<body>
+  <center>
+  <h4>UBICACION ACTUAL DE LOS DELINCUENTE</h4>
+  </center>
+
+  <div id="map"></div>
+  <script>
+    function initMap() {
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: {
+          lat: -33.4845875,
+          lng: -70.6227194
+        }
+      });
+
+      // Create an array of alphabetical characters used to label the markers.
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+      // Add some markers to the map.
+      // Note: The code uses the JavaScript Array.prototype.map() method to
+      // create an array of markers based on a given "locations" array.
+      // The map() method here has nothing to do with the Google Maps API.
+      var markers = locations.map(function(location, i) {
+        return new google.maps.Marker({
+          <?php
+          require_once('../controller/cadmin.php');
+          $lista = new funciones();
+          $res = $lista->geolocalizacion_delito();
+          foreach ($res as $obj => $o) {
+
+            $direccion = $o['direccion'];
+            $apodo = $o['apodo'];
+          ?>
+
+          position: location,
+          title: "Apodo: <?php echo  $apodo;?>",
+          <?php 
+      }         
+?>
+          icon: image,
+          label: labels[i % labels.length]
         });
+      });
+      // Add a marker clusterer to manage the markers.
+      var markerCluster = new MarkerClusterer(map, markers, {
+        imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+      });
+    }
+    var locations = [
+      <?php
 
-        // Create an array of alphabetical characters used to label the markers.
-        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-        // Add some markers to the map.
-        // Note: The code uses the JavaScript Array.prototype.map() method to
-        // create an array of markers based on a given "locations" array.
-        // The map() method here has nothing to do with the Google Maps API.
-        var markers = locations.map(function(location, i) {
-          return new google.maps.Marker({
-            position: location,
-            label: labels[i % labels.length]
-          });
-        });
-
-        // Add a marker clusterer to manage the markers.
-        var markerCluster = new MarkerClusterer(map, markers,
-            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      require_once('../controller/cadmin.php');
+      $lista = new funciones();
+      $res = $lista->g();
+      foreach ($res as $obj => $o) {
+        $s = $o['clave'];
       }
-      var locations = [
-        {lat: -33.5029003, lng: -70.7703586},
-        {lat: -33.5262781, lng: -70.7749635},
-      ]
-    </script>
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvztmbJFQMh32bOGkAHNzzOhP-v5AJ_K4&callback=initMap">
-    </script>
-  </body>
+
+      require_once('../controller/cadmin.php');
+      $lista = new funciones();
+      $res = $lista->geolocalizacion_delito();
+      foreach ($res as $obj => $o) {
+
+        $direccion = $o['direccion'];
+        $comuna = $o['comuna'];
+        $latitud = $o['latitud'];
+        $longitud = $o['longitud'];
+
+        echo "{lat: " . $latitud . ", lng: " . $longitud . "},";
+      }
+      ?>
+    ]
+  </script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsxGq5u9E8WCut3OGqWZC8bGpvV53sbV8&callback=initMap">
+  </script>
+</body>
+
 </html>

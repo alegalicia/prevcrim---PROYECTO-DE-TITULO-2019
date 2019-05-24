@@ -234,9 +234,39 @@ class funciones_BD {
     }
     
 //crea delincuente
-    public function nuevo_delincuente($primer_nombre, $segundo_nombre, $primer_apellido, $segundo_apellido, $celular, $fijo, $rut, $comuna, $nacionalidad, $direccion, $genero, $id_estado_delincuente, $ingresar, $apado){
-        
-      $sql_estado = $this->db->connect()->exec("insert into `delincuente` (`rut`, `primer_nombre`, `segundo_nombre`, `primer_apellido`, `segundo_apellido`, `apodo`, `id_nacionalidad`, `domicilio`, `genero`, `lugar_visto`, `id_comuna`, `celular`, `fijo`, `id_estado_delincuente`, `fecha`, `estado`) values ('".$rut."', '".$primer_nombre."', '".$segundo_nombre."', '".$primer_apellido."', '".$segundo_apellido."', '".$apado."', '".$nacionalidad."', '".$direccion."', '".$genero."', '".$direccion."', '".$comuna."', '".$celular."', '".$fijo."', '".$id_estado_delincuente."', now(), '1');");
+    public function nuevo_delincuente($primer_nombre, $segundo_nombre, $primer_apellido, $segundo_apellido,
+     $celular, $fijo, $rut, $comuna, $nacionalidad, $direccion, $genero, $id_estado_delincuente, $ingresar, $apado){
+  
+  //============ Genera algo ===============
+  require_once('../controller/cadmin.php');
+  $lista = new funciones();
+  $res = $lista->g();
+  foreach ($res as $obj => $o) {
+  $s = $o['clave'];
+  }       
+
+$geoloc = $direccion .", ".$comuna."Santiago, chile ";      
+ // Obtener los resultados JSON de la peticion.
+$geo = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($geoloc).'&key='.$s.'');
+// https://maps.googleapis.com/maps/api/geocode/json?address=Winnetka&key=AIzaSyCsxGq5u9E8WCut3OGqWZC8bGpvV53sbV8
+// Convertir el JSON en array.
+$geo = json_decode($geo, true);
+
+// Si todo esta bien
+if ($geo['status'] = 'OK') {
+   // Obtener los valores
+   $latitud = $geo['results'][0]['geometry']['location']['lat'];
+   
+   $longitud = $geo['results'][0]['geometry']['location']['lng'];
+} 
+
+
+      $sql_estado = $this->db->connect()->exec("INSERT into `delincuente` (`rut`, `primer_nombre`, `segundo_nombre`, 
+      `primer_apellido`, `segundo_apellido`, `apodo`, `id_nacionalidad`, `domicilio`, `genero`, `lugar_visto`, `id_comuna`, 
+      `celular`, `fijo`, `id_estado_delincuente`, `fecha`, `estado`,`latitud`,`longitud`) 
+      values ('".$rut."', '".$primer_nombre."', '".$segundo_nombre."', '".$primer_apellido."', '".$segundo_apellido."', 
+      '".$apado."', '".$nacionalidad."', '".$direccion."', '".$genero."', '".$direccion."', '".$comuna."', '".$celular."', 
+      '".$fijo."', '".$id_estado_delincuente."', now(), '1','".$latitud."','".$longitud."');");
 
         if($sql_estado) {
             echo "<script>alert('DELINCUENTE INGRESADO CORRECTAMENTE');</script>";
@@ -251,7 +281,8 @@ class funciones_BD {
 //crea delincuente
     public function nuevo_delito_delincuente($rut, $comuna, $direccion, $fecha, $hora, $descpcion, $delito, $tipo){
       
-      $sql_estado = $this->db->connect()->exec("insert into `delito_delincuente` (`id_delito_delincuente`, `id_delincuente`, `id_delito`, `id_comuna`, `descripcion`, `fecha`, `hora`, `tipo`, `estado`) values (null, '".$rut."', '".$delito."', '".$comuna."', '".$descpcion."', '".$fecha."', '".$hora."', '".$tipo."', '1'); ");
+      $sql_estado = $this->db->connect()->exec("insert into `delito_delincuente` (`id_delito_delincuente`, `id_delincuente`, `id_delito`, `id_comuna`, `descripcion`, `fecha`, `hora`, `tipo`, `estado`) 
+      values (null, '".$rut."', '".$delito."', '".$comuna."', '".$descpcion."', '".$fecha."', '".$hora."', '".$tipo."', '1'); ");
 
         if($sql_estado) {
             echo "<script>alert('DELITO AGREGARDO CORRECTAMENTE ');</script>";
