@@ -110,8 +110,8 @@ if ($_SESSION["id_perfil"] == 2) {
 
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
-                                        <input onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="rut" class="form-control" placeholder=Rut type="text" required maxlength="10">
-                                        <input name="dv" class="form-control" placeholder="DV" type="text" required maxlength="1">
+                                        <input onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="rut" name="rut" required oninput="checkRut(this)" class="form-control" placeholder=Rut type="text" required maxlength="10">
+                                       <script src="js/modulo11.js"></script>  
                                     </div>
                                 </div>
 

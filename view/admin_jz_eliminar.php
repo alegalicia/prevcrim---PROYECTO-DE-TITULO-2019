@@ -98,7 +98,7 @@ if ($_SESSION["id_perfil"] == 1) {
                                 $fac = $o['rut'];
                                 ?>
                                 <tr>
-                                    <td align='center'><input type='radio' value="<?php echo $o['rut'] ?>" id='ckhActualizar' name='rut' /></td>
+                                    <td align="center"><input type='radio' value="<?php echo $o['rut'] ?>" id='ckhActualizar' name='rut' /></td>
                                     <td><?php echo $o['rut'] ?></td>
                                     <td><?php echo $o['primer_nombre'] ?></td>
                                     <td><?php echo $o['primer_apellido'] ?></td>
@@ -121,7 +121,7 @@ if ($_SESSION["id_perfil"] == 1) {
                     <button type="submit" class="btn btn-success" name="ingresar" value="actualizar">Eliminar</button>
                 </form>
             </div>
-            <br>
+        <br>
         </center>
     </body>
 <?php

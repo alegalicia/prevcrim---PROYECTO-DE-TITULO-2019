@@ -114,8 +114,10 @@ if ($_SESSION["id_perfil"] == 1) {
                                             <div class="form-group">
                                                 <label class="col-md-6 control-label">RUT</label>
                                                 <div class="col-md-4 inputGroupContainer">
-                                                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input name="rut" placeholder="RUT" class="form-control" required="true" type="text" maxlength="11"></div>
-                                                </div>
+                                                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i>
+                                                </span><input id="rut" name="rut" required oninput="checkRut(this)" placeholder="RUT" class="form-control" required="true" type="text" maxlength="10"></div>
+                                             <script src="js/modulo11.js"></script>    
+                                            </div>
                                             </div>
                                         </tr>
 

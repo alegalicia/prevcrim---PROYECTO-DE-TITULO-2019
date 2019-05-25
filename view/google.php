@@ -46,7 +46,7 @@
       });
 
       // Create an array of alphabetical characters used to label the markers.
-      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labels = 'Delincunete';
       var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
       // Add some markers to the map.
       // Note: The code uses the JavaScript Array.prototype.map() method to
@@ -62,15 +62,13 @@
 
             $direccion = $o['direccion'];
             $apodo = $o['apodo'];
+          }
           ?>
-
-          position: location,
+         
           title: "Apodo: <?php echo  $apodo;?>",
-          <?php 
-      }         
-?>
+          position: location,
           icon: image,
-          label: labels[i % labels.length]
+          label: labels
         });
       });
       // Add a marker clusterer to manage the markers.

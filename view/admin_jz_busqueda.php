@@ -62,7 +62,80 @@ if (isset($_SESSION['perfil'])) {
         ?>
 
         <body>
+            <center>
             <h4>Busqueda en calquier campo</h4>
+
+            <div class="col-md-12 login-sec">
+                <form class="login-form" action="admin_elimina.php" method="get" name="f1">
+                    <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="th-sm">Rut</th>
+                                <th class="th-sm">P. Nombre </th>
+                                <th class="th-sm">S. Nombre </th>
+                                <th class="th-sm">P. Apellido</th>
+                                <th class="th-sm">S. Apellido</th>
+                                <th class="th-sm">Estado</th>
+                                <th class="th-sm">Estado C.</th>
+                                <th class="th-sm">Domicilio</th>
+                                <th class="th-sm">Delito</th>
+                                <th class="th-sm">Direccion D.</th>
+                                <th class="th-sm">Comuna</th>
+                                <th class="th-sm">Provincia</th>
+                                <th class="th-sm">Region</th>
+                                <th class="th-sm">Region O.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            //============ Genera tabla ===============
+                            require_once('../controller/cadmin.php');
+                            $lista = new funciones();
+                            $res = $lista->busqueda();
+                            foreach ($res as $obj => $o) {
+                                ?>
+                                <tr>
+                                    <td><?php echo $o['rut'] ?></td>
+                                    <td><?php echo $o['primer_nombre'] ?></td>
+                                    <td><?php echo $o['segundo_nombre'] ?></td>
+                                    <td><?php echo $o['primer_apellido'] ?></td>
+                                    <td><?php echo $o['segundo_apellido'] ?></td>
+                                    <td><?php echo $o['estado_delincuente'] ?></td>
+                                    <td><?php echo $o['codigo'] ?></td>
+                                    <td><?php echo $o['domicilio'] ?></td>
+                                    <td><?php echo $o['delito'] ?></td>
+                                    <td><?php echo $o['direccion'] ?></td>
+                                    <td><?php echo $o['comuna'] ?></td>
+                                    <td><?php echo $o['provincia'] ?></td>
+                                    <td><?php echo $o['region'] ?></td>
+                                    <td><?php echo $o['region_ordinal'] ?></td>
+                                </tr>
+                            <?php
+                        }
+                        ?>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th class="th-sm">Rut</th>
+                                <th class="th-sm">P. Nombre </th>
+                                <th class="th-sm">S. Nombre </th>
+                                <th class="th-sm">P. Apellido</th>
+                                <th class="th-sm">S. Apellido</th>
+                                <th class="th-sm">Estado</th>
+                                <th class="th-sm">Estado C.</th>
+                                <th class="th-sm">Domicilio</th>
+                                <th class="th-sm">Delito</th>
+                                <th class="th-sm">Direccion D.</th>
+                                <th class="th-sm">Comuna</th>
+                                <th class="th-sm">Provincia</th>
+                                <th class="th-sm">Region</th>
+                                <th class="th-sm">Region O.</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </form>
+            
+            </center>
         </body>
     <?php
 } else {
