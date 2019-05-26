@@ -786,25 +786,14 @@ public function rankinkSector() {
 		return $datos;
 	}
 
-
+//todos los delincuentes
 //==================== marcado ene mapa  ===========================
 	public function busqueda() {
-		$sql = "SELECT delito_delincuente.id_delincuente, delincuente.primer_nombre, delincuente.segundo_nombre, delincuente.
-		primer_apellido, delincuente.segundo_apellido, delincuente.domicilio, delito_delincuente.direccion, delito.delito, 
-		comuna.comuna, sector.sector, nacionalidad.nombre, provincia.provincia, region.region, region.region_ordinal, 
-		estado_delincuente.codigo, estado_delincuente.estado_delincuente, delincuente.rut 
-
-		FROM delito_delincuente
-
-    inner join delincuente on delito_delincuente.id_delincuente = delincuente.rut
-    inner join delito on delito_delincuente.id_delito = delito.id_delito
-    inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna
-    inner JOIN sector on comuna.id_sector = sector.id_sector
-    inner JOIN nacionalidad on delincuente.id_nacionalidad = nacionalidad.id
-    inner join provincia on comuna.id_provincia = provincia.id_provincia
-    inner join region on provincia.id_region = region.id_region
-		inner join estado_delincuente on delincuente.id_estado_delincuente = estado_delincuente.id_estado_delincuente
-		";
+		$sql = "SELECT delincuente.primer_nombre, delincuente.segundo_nombre, delincuente.primer_apellido, 
+									delincuente.segundo_apellido, delincuente.domicilio, comuna.comuna, delincuente.rut
+									FROM `delincuente` 
+									inner join comuna on delincuente.id_comuna = comuna.id_comuna 
+									";
 
 		$stmt = $this->db->connect()->query($sql);
 		$datos = array();
@@ -815,7 +804,49 @@ public function rankinkSector() {
 		return $datos;
 	}
 
-	
+
+	//busqueda de delincuente por rut 
+	public function busquedaParentesco($rut) {
+		$sql = "SELECT delincuente.primer_nombre, delincuente.segundo_nombre, delincuente.primer_apellido, 
+						delincuente.segundo_apellido, delincuente.domicilio, comuna.comuna, delincuente.rut
+						FROM `delincuente` 
+						inner join comuna on delincuente.id_comuna = comuna.id_comuna 
+            where delincuente.estado = 1 and delincuente.rut ='".$rut."'
+            order by delincuente.rut desc";
+
+							$stmt = $this->db->connect()->query($sql);
+							$datos = array();
+							while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+								$datos[] = array_map("utf8_encode", $fila);
+								// $datos[] =  $fila;
+							}
+							return $datos;
+
+	}	
+
+
+	//busqueda de delincuente por rut 
+	public function busquedaSmilitud($primerApellido, $segundoApellido, $direccion) {
+		$sql = "SELECT delincuente.primer_nombre, delincuente.segundo_nombre, delincuente.primer_apellido, 
+						delincuente.segundo_apellido, delincuente.domicilio, comuna.comuna, delincuente.rut, count(delincuente.rut) as posibilidad 
+						FROM `delincuente` 
+						inner join comuna on delincuente.id_comuna = comuna.id_comuna 
+						WHERE delincuente.primer_apellido = '".$primerApellido."' 
+						or delincuente.segundo_apellido = '".$segundoApellido."' 
+					  or delincuente.domicilio = '".$direccion."'
+						GROUP BY delincuente.primer_nombre, delincuente.segundo_nombre, delincuente.primer_apellido, 
+						delincuente.segundo_apellido, delincuente.domicilio, delincuente.rut
+						 "; 
+
+							$stmt = $this->db->connect()->query($sql);
+							$datos = array();
+							while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+								$datos[] = array_map("utf8_encode", $fila);
+								// $datos[] =  $fila;
+							}
+							return $datos;
+
+	}	
 
 }
 ?>
