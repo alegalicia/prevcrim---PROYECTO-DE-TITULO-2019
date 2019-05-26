@@ -53,7 +53,7 @@ error_reporting(0);
                 <ul class="submenu">
                     <li><a target='cen' href="admin_ingresar_delito.php"><i class="fa fa-glass"></i>Ingresar Delito</a></li>
                     <li><a target='cen' href="admin_jz_atecedentes.php"><i class="fa fa-glass"></i>Atecedentes</a></li>
-                    <li><a target='cen' href="admin_jz_busqueda.php"><i class="fa fa-glass"></i>Busqueda (pendiente)</a></li>
+                    <li><a target='cen' href="admin_jz_busqueda.php"><i class="fa fa-glass"></i>Busqueda</a></li>
                     <li><a target='cen' href="admin_jz_delincunete.php"><i class="fa fa-glass"></i>Ingresar Delincuente</a></li>
                     <li><a target='cen' href="admin_jz_parentesco.php"><i class="fa fa-glass"></i>Parentesco (pendiente)</a></li>
                     <li><a target='cen' href="google.php"><i class="fa fa-glass"></i>Google Map </a></li>
