@@ -12,7 +12,7 @@
     img{
         display:block;
         margin:auto;
-        width: 40%;
+        width: 35%;
         }
     </style>
     <img aling:center src="img/logo.png">

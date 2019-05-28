@@ -17,7 +17,7 @@ class funciones_BD {
         $sql = "SELECT usuario.primer_nombre, usuario.primer_apellido, usuario.id_perfil, perfil.perfil, usuario.id_institucion,
           usuario.segundo_nombre, usuario.segundo_apellido, usuario.correo, usuario.celular, usuario.fijo,
           usuario.id_institucion, usuario.id_comuna, institucion.institucion, comuna.comuna, provincia.provincia, 
-          region.region 
+          region.region, comuna.id_comuna
           
           from usuario  
           
@@ -48,6 +48,7 @@ class funciones_BD {
             $_SESSION["perfil"] = $fila["perfil"];
             $_SESSION["institucion"] = $fila["institucion"];
             $_SESSION["id_institucion"] = $fila["id_institucion"];
+            $_SESSION["id_comuna"] = $fila["id_comuna"];
         }
         $opcion = $_SESSION["id_perfil"];
         $ins = $_SESSION["institucion"];
@@ -57,15 +58,15 @@ class funciones_BD {
             switch ($opcion) {
 
             case "1":
-            echo "<meta http-equiv='refresh' content='0;url=../view/admin_panel.php'>";
+            echo "<meta http-equiv='refresh' content='0;url=../view/admin_menu.php'>";
             break; //Perfil Administrador General
 
             case "2":
-            echo "<meta http-equiv='refresh' content='0;url=../view/jefe_panel.php'>";
+            echo "<meta http-equiv='refresh' content='0;url=../view/jefe_menu.php'>";
             break;// Perfil Jefe de Zona
 
             case "3":
-            echo "<meta http-equiv='refresh' content='0;url=../view/operador_panel.php'>";
+            echo "<meta http-equiv='refresh' content='0;url=../view/operador_menu.php'>";
             break; // perfil Operador
                     
             default: echo "<script>alert('error en el perfil');</script>";
@@ -73,7 +74,6 @@ class funciones_BD {
             }
         }else echo "<meta http-equiv='refresh' content='0;url=../view/index.php'>";
     }
-    
     
     
      //==================== INSERTAR USUARIO===========================  
@@ -102,7 +102,8 @@ class funciones_BD {
     }   
     
    // ACTUALIZAR PERSONA
-  public function actualizar_usuario($primer_nombre, $segundo_nombre, $primer_apellido , $segundo_apellido, $correo, $celular, $fijo, $rut, $comuna, $institucion, $perfil, $clave, $direccion) {
+  public function actualizar_usuario($primer_nombre, $segundo_nombre, $primer_apellido , $segundo_apellido, $correo, 
+  $celular, $fijo, $rut, $comuna, $institucion, $perfil, $clave, $direccion) {
       
         $sql_estado = $this->db->connect()->exec("update `usuario`  
         set `primer_nombre` = '".$primer_nombre."', 
@@ -207,7 +208,8 @@ class funciones_BD {
     
     
 // ACTUALIZAR PERSONA SEGUN EL PERFIL QUE ACTUALIZA
-  public function actualizar_usuario_ins($primer_nombre, $segundo_nombre, $primer_apellido , $segundo_apellido, $correo, $celular, $fijo, $rut, $comuna, $institucion, $perfil, $clave, $direccion) {
+  public function actualizar_usuario_ins($primer_nombre, $segundo_nombre, $primer_apellido , $segundo_apellido, 
+  $correo, $celular, $fijo, $rut, $comuna, $institucion, $perfil, $clave, $direccion) {
       
         $sql_estado = $this->db->connect()->exec("update `usuario`  
         set `primer_nombre` = '".$primer_nombre."', 

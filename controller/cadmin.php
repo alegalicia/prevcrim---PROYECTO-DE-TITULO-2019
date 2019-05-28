@@ -845,8 +845,93 @@ public function rankinkSector() {
 								// $datos[] =  $fila;
 							}
 							return $datos;
-
 	}	
+
+	//==================== dlincuente de la comuna con mayor  ===========================
+	public function delincuentePrincipal() {
+		$sql = "SELECT delito_delincuente.id_delito_delincuente, COUNT(id_delito) as total, delincuente.rut, delincuente.apodo 
+						FROM `delito_delincuente`
+						inner join delincuente on delito_delincuente.id_delincuente = delincuente.rut 
+						where delincuente.estado = 1
+						GROUP by delincuente.rut 
+						order by total desc
+						limit 1
+						";
+
+		$stmt = $this->db->connect()->query($sql);
+		$datos = array();
+		while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$datos[] = array_map("utf8_encode", $fila);
+			// $datos[] =  $fila;
+		}
+		return $datos;
+
+	}
+
+
+	//==================== dlincuente de la comuna con mayor  ===========================
+	public function comunaPrincipal() {
+		$sql = "SELECT delito_delincuente.id_delito, COUNT(id_delito) as total, delito_delincuente.id_comuna, 
+						comuna.comuna 
+						FROM `delito_delincuente` 
+						inner join comuna on  delito_delincuente.id_comuna = comuna.id_comuna 
+						GROUP by delito_delincuente.id_comuna  
+						order by total desc
+						limit 1
+						";
+
+		$stmt = $this->db->connect()->query($sql);
+		$datos = array();
+		while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$datos[] = array_map("utf8_encode", $fila);
+			// $datos[] =  $fila;
+		}
+		return $datos;
+
+	}
+
+
+	//==================== dlincuente de la comuna con mayor  ===========================
+	public function diaPrincipal() {
+		$sql = "SELECT delito_delincuente.id_delito, COUNT(fecha) as total, fecha
+						FROM `delito_delincuente`
+						group by fecha
+						order by total desc
+						limit 1
+						";
+
+		$stmt = $this->db->connect()->query($sql);
+		$datos = array();
+		while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$datos[] = array_map("utf8_encode", $fila);
+			// $datos[] =  $fila;
+		}
+		return $datos;
+
+	}
+
+	//==================== dlincuente de la comuna con mayor  ===========================
+	public function delitoPrincipal() {
+		$sql = "SELECT delito_delincuente.id_delito, COUNT(delito_delincuente.id_delito) as total, delito.delito,delito.id_delito
+						FROM `delito_delincuente`
+						inner join delito on delito_delincuente.id_delito = delito.id_delito 
+						group by delito.id_delito
+						order by total desc
+						limit 1
+						";
+
+		$stmt = $this->db->connect()->query($sql);
+		$datos = array();
+		while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$datos[] = array_map("utf8_encode", $fila);
+			// $datos[] =  $fila;
+		}
+		return $datos;
+
+	}
+
+
+
 
 }
 ?>
