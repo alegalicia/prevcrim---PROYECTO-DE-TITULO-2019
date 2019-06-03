@@ -36,7 +36,8 @@ if ($ingresar == "crear") {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 </head>
 <?php
-if ($_SESSION["id_perfil"] == 2) {
+if (isset($_SESSION["id_perfil"])) {
+    if ($_SESSION["id_perfil"] == 2) {
     ?>
     <body>
         <center>
@@ -73,9 +74,11 @@ if ($_SESSION["id_perfil"] == 2) {
     </body>
 <?php
 } else {
-    echo "<script>alert('DEBE INICIAR SESIÓN..!!!');</script>";
+    echo "<script>alert('DEBE INICIAR SESIÓN CON EL PERFIL CORRESPONDIENTE.!!!');</script>";
     echo "<meta http-equiv='refresh' content='0;url=../index.html'>";
-}
+} 
+}   echo "<script>alert('DEBE INICIAR SESIÓN..!!!');</script>";
+    echo "<meta http-equiv='refresh' content='0;url=../index.html'>";
 ?>
 
 </html>

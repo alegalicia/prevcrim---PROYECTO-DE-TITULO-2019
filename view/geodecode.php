@@ -12,7 +12,8 @@
  foreach ($res as $obj => $o) {
 
 $direccion = $o['direccion'];
-$comuna = $o['comuna'];
+$comuna = $o['comuna']; 
+
 
 $direccion = $direccion . ", ".$comuna.", CHILE";
 // Obtener los resultados JSON de la peticion.
