@@ -8,39 +8,34 @@
 
 <head>
     <title>PREVCRIM</title>
-    <!--Made with love by Mutiullah Samim -->
+        <link rel="stylesheet" href="css/video.css">
 
-    <!--Bootsrap 4 CDN-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <!--Fontawesome CDN-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-    <!--Custom styles-->
-    <link rel="stylesheet" type="text/css" href="styles.css">
-
-    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="d-flex justify-content-center h-100">
-            <div class="card">
-                <div class="card-body">
-                    <form action="../controller/acceso.php" method="post">
+<header class="v-header container">
+    <div class="fullscreen-video-wrap">
+      <!--  https://www.videvo.net/video/typing-on-computer-white-bg/4475/ -->
+      <!-- DO NOT USE THIS VIDEO, I JUST NEEDED A HOSTED VIDEO FOR THIS CODEPEN> USE THE ONE ABOVE -->
+      <video src="video/inicio.mov" autoplay="" loop="">
+    </video>
+    </div>
+    <div class="header-overlay"></div>
+    <div class="header-content text-md-center">
+                            <form action="../controller/acceso.php" method="post">
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input name="usuario" type="text" class="form-control" placeholder="Usuario">
+                            <input name="usuario" type="text" class="form-control" placeholder="Usuario" required maxlength="10">
 
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input name="clave" type="password" class="form-control" placeholder="Contraseña" required>
+                            <input name="clave" type="password" class="form-control" placeholder="Contraseña" required maxlength="10">
                         </div>
                         <div class="form-group">
                             <input id="ingresar" type="submit" value="Ingresar" class="btn float-right login_btn">
@@ -49,10 +44,26 @@
 
                         <input type="hidden" name="opcion" value="login">
                     </form>
-                </div>
-            </div>
-        </div>
+    
+      <p>SOPORTE TECNICO: MESA DE AYUDA CLIC 222-22221 <BR>CORREO: CLICK.SOLOBINARY</p>
+
+
     </div>
+  </header>
+
+  <section class="section section-a">
+    <div class="container">
+      <h2>Section A</h2>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, impedit amet minima iste autem cumque et maiores blanditiis doloribus aut dolorum quaerat non est voluptatum, tempore ut dolorem voluptas quod quae accusantium, ex inventore ducimus. Beatae mollitia exercitationem, quam similique, consectetur ratione reprehenderit delectus neque eligendi facere soluta dolor ducimus!</p>
+    </div>
+  </section>
+
+  <section class="section section-b">
+    <div class="container">
+      <h2>Section B</h2>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, impedit amet minima iste autem cumque et maiores blanditiis doloribus aut dolorum quaerat non est voluptatum, tempore ut dolorem voluptas quod quae accusantium, ex inventore ducimus. Beatae mollitia exercitationem, quam similique, consectetur ratione reprehenderit delectus neque eligendi facere soluta dolor ducimus!</p>
+    </div>
+  </section>
 </body>
 
 </html>
