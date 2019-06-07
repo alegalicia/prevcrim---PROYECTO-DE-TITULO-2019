@@ -10,6 +10,7 @@ body {
     line-height: 1.5;
     color: #333;
     overflow-x: hidden;
+    text-align: center;
 }
 
 .v-header {
@@ -48,8 +49,8 @@ body {
     left: 0;
     width: 100vw;
     z-index: 1;
-    background: #225470;
-    opacity: 0.85;
+    background: #619b66;
+    opacity: 0.55;
 }
 
 .header-content {
