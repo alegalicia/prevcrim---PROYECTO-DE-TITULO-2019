@@ -89,15 +89,17 @@
       require_once('../controller/cadmin.php');
       $lista = new funciones();
       $res = $lista->geolocalizacion_delito();
+      $contador=0;
       foreach ($res as $obj => $o) {
 
         $direccion = $o['direccion'];
         $comuna = $o['comuna'];
         $latitud = $o['latitud'];
         $longitud = $o['longitud'];
-
+        $contador++;
         echo "{lat: " . $latitud . ", lng: " . $longitud . "},";
       }
+
       ?>
     ]
   </script>
@@ -105,6 +107,17 @@
   </script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvHRtuYZISLE1P9gOa8Edu8KM37ZufM3U&callback=initMap">
   </script>
+  <?php
+
+  if (!isset($_SESSION["login"])) {
+    session_start();
+}
+      $contador;
+      require_once '../controller/cadmin.php';
+      $act = new funciones();
+      $registrar = $act->cuentaGoogle( $contador);
+
+  ?>
 </body>
 
 </html>

@@ -294,6 +294,21 @@ if ($geo['status'] = 'OK') {
                 return false;
                }   
     }    
+
+
+    public function cuentaGoogle( $contador) { 
+             
+        $sql_estado = $this->db->connect()->exec("INSERT INTO `google` (`id_google`, `cantidad`, `fecha`) 
+                                                    VALUES (NULL, '".$contador."', NOW() );");
+
+        if ($sql_estado) {
+          
+            return true;
+            
+        } else { echo "<script>alert('ERROR AL CONTAR GOOGLE');</script>";
+            return false;
+        }
+    }  
    
  }
 

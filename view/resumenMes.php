@@ -1,9 +1,14 @@
 <?php
+error_reporting(0);
+require_once 'loading.php';
+if (!isset($_SESSION["login"])) {
+    session_start();
+}
 //consumo api licencias
 function apiLicencias($tk)
 {
 	//link
-	$url = "http://localhost/prevcrim/view/ws/controller/acceso.php?opcion=licencia&token=";
+	$url = "https://prevcrim.000webhostapp.com/view/ws/controller/acceso.php?opcion=licencia&token=";
 	$resultado = $url . $tk;
 	return $resultado;
 }
@@ -17,7 +22,7 @@ $datos = json_decode($json, true);
 function apiGoogle($tk1)
 {
 	//link
-	$url = "http://localhost/prevcrim/view/ws/controller/acceso.php?opcion=controlGoogle&token=";
+	$url = "https://prevcrim.000webhostapp.com/view/ws/controller/acceso.php?opcion=controlGoogle&token=";
 	$resultado = $url . $tk1;
 	return $resultado;
 }
@@ -32,7 +37,7 @@ $datos2 = json_decode($json1, true);
 function contrato($t)
 {
 	//link
-	$url = "http://localhost/prevcrim/view/ws/controller/acceso.php?opcion=contrato&token=";
+	$url = "https://prevcrim.000webhostapp.com/view/ws/controller/acceso.php?opcion=contrato&token=";
 	$resultado = $url . $t;
 	return $resultado;
 }
@@ -68,7 +73,8 @@ echo 'Último error:', $json_errors [json_last_error ()], PHP_EOL, PHP_EOL;
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    
+    <link rel="stylesheet" href="css/panel.css">
 </head>
 
 <body>

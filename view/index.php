@@ -58,7 +58,7 @@
 
     </div>
   </header>
-  <div class="g-recaptcha" data-sitekey="TU CLAVE DEL SITIO AQUÍ" data-callback="correctCaptcha"></div>
+  <div class="g-recaptcha" data-sitekey="TU CLAVE DEL SITIO AQUÍ"></div>
   <section class="section section-b">
     <div class="container">
       <h2>Copy Rigth 2019:</h2>
@@ -66,7 +66,6 @@
     reserved.</p>
     </div>
   </section>
-  <script src="https://www.google.com/recaptcha/api.js"></script>
 </body>
 
 </html>

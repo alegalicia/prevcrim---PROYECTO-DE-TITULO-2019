@@ -930,7 +930,23 @@ public function rankinkSector() {
 
 	}
 
+	public function cuentaGoogle( $contador) {
+		require_once '../modell/madmin.php';
 
+		try {
+			$lista = new funciones_BD();
+			$lista->cuentaGoogle( $contador);
+
+			if ($lista) {
+				return true;
+			} else {
+
+				return false;
+			}
+		} catch (Exception $e) {
+			echo "<script>alert('ERROR AL INGRESAR ACTIVIDAD NIVEL 1');</script>";
+		}
+	}
 
 
 }

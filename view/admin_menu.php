@@ -240,6 +240,24 @@ if (isset($_SESSION["id_perfil"])) {
                 </ul>
               </li>
             </ul>
+
+            <ul class="sidebar-menu" data-widget="tree">
+              <li class="active treeview menu-open">
+              </li>
+
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-area-chart"></i>
+                  <span> Licencia </span>
+                  <span class="pull-right-container">
+                    <span class="label label-info pull-right">1</span>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a target='cen' href="resumenMes.php"><i class="fa fa-area-chart"></i>Licencias</a></li>
+                </ul>
+              </li>
+            </ul>
           </section>
           <!-- /.sidebar -->
         </aside>
