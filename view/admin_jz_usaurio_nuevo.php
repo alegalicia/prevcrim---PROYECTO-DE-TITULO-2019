@@ -174,7 +174,7 @@ if ($_SESSION["id_perfil"] == 1) {
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                                     </div>
-                                    <input name="direccion" class="form-control" placeholder="Diección" type="text" required maxlength="30">
+                                    <input name="direccion" class="form-control" placeholder="Dirección" type="text" required maxlength="30">
                                 </div>
 
                                 <div class="form-group input-group">
@@ -208,7 +208,7 @@ if ($_SESSION["id_perfil"] == 1) {
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success" name="ingresar" value="crear">Create cuenta</button>
+                                    <button type="submit" class="btn btn-success" name="ingresar" value="crear">Crear cuenta</button>
                                 </div>
                             </form>
                         </article>

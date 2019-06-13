@@ -24,25 +24,25 @@ require_once 'loading.php';
         });
         $('#dtBasicExample').DataTable({
             language: {
-                processing: "Cargando...",
-                search: "Buscar:",
-                lengthMenu: "Mostrar elementos en: _MENU_",
-                info: "Elementos mostrados _START_ de _END_  de un total _TOTAL_ Elementos encontrados",
-                infoEmpty: " ",
-                infoFiltered: "",
-                infoPostFix: "",
-                loadingRecords: "Busqueda en curso...",
-                zeroRecords: "No se encontro dato",
-                emptyTable: " ",
-                paginate: {
-                    first: "Premier",
-                    previous: "Anterior",
-                    next: "Siguiente",
-                    last: "Ultimo"
-                },
-                aria: {
-                    sortAscending: ": activer pour trier la colonne par ordre croissant",
-                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                        processing: "Cargando...",
+                        search: "Buscar:",
+                        lengthMenu: "Mostrar elementos en: _MENU_",
+                        info: "Elementos mostrados _START_ de _END_  de un total _TOTAL_ Elementos encontrados",
+                        infoEmpty: " ",
+                        infoFiltered: "",
+                        infoPostFix: "",
+                        loadingRecords: "Busqueda en curso...",
+                        zeroRecords: "No se encontro dato",
+                        emptyTable: " ",
+                            paginate: {
+                                first: "Premier",
+                                previous: "Anterior",
+                                next: "Siguiente",
+                                last: "Ultimo"
+                            },
+                        aria: {
+                            sortAscending: ": activer pour trier la colonne par ordre croissant",
+                            sortDescending: ": activer pour trier la colonne par ordre décroissant"
                 }
             }
         });
@@ -63,8 +63,8 @@ if (isset($_SESSION['perfil'])) {
 
         <body>
             <center>
-            <h4>Busqueda en calquier campo</h4>
-
+            <h4 id="titulo">Busqueda en calquier campo</h4>
+ 
             <div class="col-md-12 login-sec">
                 <form class="login-form" action="admin_elimina.php" method="get" name="f1">
                     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">

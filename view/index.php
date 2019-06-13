@@ -62,7 +62,7 @@
   <section class="section section-b">
     <div class="container">
       <h2>Copy Rigth 2019:</h2>
-      <p><strong> PROYECO TITULACION: SOLOBINARY {Copy Rigth 2019: Alejandro Galicia - Patricio Tamayo}</strong> All rights
+      <p><strong> PROYECTO TITULACIÓN: SOLOBINARY {Copy Rigth 2019: Alejandro Galicia - Patricio Tamayo}</strong> All rights
     reserved.</p>
     </div>
   </section>

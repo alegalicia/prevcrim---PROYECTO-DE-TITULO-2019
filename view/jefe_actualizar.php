@@ -281,7 +281,7 @@ if ($_SESSION["id_perfil"] == 2) {
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                                         </div>
-                                        <input name="direccion" class="form-control" placeholder="Diección" type="text" required maxlength="30" value="<?php echo $o['direccion'] ?>">
+                                        <input name="direccion" class="form-control" placeholder="Dirección" type="text" required maxlength="30" value="<?php echo $o['direccion'] ?>">
                                     </div>
 
                                     <div class="form-group input-group">

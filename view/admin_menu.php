@@ -104,7 +104,7 @@ if (isset($_SESSION["id_perfil"])) {
                 </li>
                 <!-- Menu Footer-->
                 <div class="pull-center">
-                  <a href="desconectar.php" class="btn btn-default btn-flat">Desconectar</a>
+                  <a href="desconectar.php" class="btn btn-danger btn-flat">Desconectar</a>
                 </div>
                 </li>
               </ul>
@@ -140,7 +140,7 @@ if (isset($_SESSION["id_perfil"])) {
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-id-card-o"></i>
-                  <span>Administr Usuario</span>
+                  <span>Administar Usuario</span>
                   <span class="pull-right-container">
                     <span class="label label-primary pull-right">3</span>
                   </span>
@@ -189,8 +189,8 @@ if (isset($_SESSION["id_perfil"])) {
                 </a>
                 <ul class="treeview-menu">
                   <li><a target='cen' href="admin_ingresar_delito.php"><i class="fa fa-font-awesome"></i>Ingresar Delito</a></li>
-                  <li><a target='cen' href="admin_jz_atecedentes.php"><i class="fa fa-font-awesome"></i>Atecedentes</a></li>
-                  <li><a target='cen' href="admin_jz_busqueda.php"><i class="fa fa-font-awesome"></i>Busqueda</a></li>
+                  <li><a target='cen' href="admin_jz_atecedentes.php"><i class="fa fa-font-awesome"></i>Antecedentes</a></li>
+                  <li><a target='cen' href="admin_jz_busqueda.php"><i class="fa fa-font-awesome"></i>Busqueda Total</a></li>
                   <li><a target='cen' href="admin_jz_delincunete.php"><i class="fa fa-font-awesome"></i>Ingresar Delincuente</a></li>
                   <li><a target='cen' href="admin_jz_parentesco.php"><i class="fa fa-font-awesome"></i>Parentesco</a></li>
                   <li><a target='cen' href="google.php"><i class="fa fa-map-marker"></i>Google Map </a></li>
@@ -236,7 +236,7 @@ if (isset($_SESSION["id_perfil"])) {
                   <li><a target='cen' href="admin_jz_reporte_comuna.php"><i class="fa fa-area-chart"></i>Estadistícas Comuna</a></li>
                   <li><a target='cen' href="admin_jz_reporte_sector.php"><i class="fa fa-area-chart"></i>Estadistícas Sector</a></li>
                   <li><a target='cen' href="admin_jz_historico.php"><i class="fa fa-area-chart"></i>Historico</a></li>
-                  <li><a target='cen' href="admin_jz_rankin_comu_sec.php"><i class="fa fa-area-chart"></i>Ranling Comuna</a></li>
+                  <li><a target='cen' href="admin_jz_rankin_comu_sec.php"><i class="fa fa-area-chart"></i>Ranking Comuna</a></li>
                 </ul>
               </li>
             </ul>
@@ -359,7 +359,7 @@ if (isset($_SESSION["id_perfil"])) {
                       $delito = $o['delito'];
                     }
                     ?>
-                    <span class="info-box-text">DELINTO PRINCIO </span>
+                    <span class="info-box-text">DELITO PRINCIO </span>
                     <span class="info-box-number">Día: <?php echo $delito; ?></span>
                     <span class="info-box-text"><strong>Cantidad: <?php echo $total; ?></strong></span>
                   </div>
@@ -397,7 +397,7 @@ if (isset($_SESSION["id_perfil"])) {
             </div>
             <div class="box-footer">
 
-              <iFRAME name="cen" height="480px" width="100%" SRC="inicio.php"></iFRAME>
+              <iFRAME name="cen" height="600px" width="100%" SRC="inicio.php"></iFRAME>
 
             </div>
             <!-- /.box-footer -->
@@ -418,7 +418,7 @@ if (isset($_SESSION["id_perfil"])) {
         <div class="pull-right hidden-xs">
           <b>Version</b> 1.2
         </div>
-        <strong> PROYECO TITULACION: SOLOBINARY {Copy Rigth 2019: Alejandro Galicia - Patricio Tamayo}</strong> All rights
+        <strong> PROYECTO TITULACIÓN: SOLOBINARY {Copy Rigth 2019: Alejandro Galicia - Patricio Tamayo}</strong> All rights
         reserved.
       </footer>
 

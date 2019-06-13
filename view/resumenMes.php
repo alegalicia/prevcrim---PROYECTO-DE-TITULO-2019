@@ -112,7 +112,7 @@ echo 'Último error:', $json_errors [json_last_error ()], PHP_EOL, PHP_EOL;
 								$t = $admin - (int)$licencia;
 								echo  $t;
 								if ($t <= 0) {
-									echo " Sin licencias: contacar a ventas@solobinary.cl";
+									echo " Sin licencias: contactar a ventas@solobinary.cl";
 								}
 							}
 
@@ -120,7 +120,7 @@ echo 'Último error:', $json_errors [json_last_error ()], PHP_EOL, PHP_EOL;
 								$t =   $jz - (int)$licencia;
 								echo  $t;
 								if ($t <= 0) {
-									echo " Sin licencias: contacar a ventas@solobinary.cl";
+									echo " Sin licencias: contactar a ventas@solobinary.cl";
 								}
 							}
 
@@ -128,7 +128,7 @@ echo 'Último error:', $json_errors [json_last_error ()], PHP_EOL, PHP_EOL;
 								$t =  $op - (int)$licencia;
 								echo  $t;
 								if ($t <= 0) {
-									echo " Sin licencias: contacar a ventas@solobinary.cl";
+									echo " Sin licencias: contactar a ventas@solobinary.cl";
 								}
 							}
 
