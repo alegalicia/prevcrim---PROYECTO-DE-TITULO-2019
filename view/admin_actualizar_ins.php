@@ -128,11 +128,11 @@ if ($_SESSION["id_perfil"] == 1) {
                 <?php
                 if (isset($_POST['update'])) {
                     $id = $_POST['update'];
-
+                    
                     //============ Genera tabla ===============
                     require_once('../controller/cadmin.php');
                     $lista = new funciones();
-                    $res = $lista->lista_inst($id);
+                    $res = $lista->lista_inst_a($id);
                     foreach ($res as $obj => $o) {
                         $fac = $o['id_institucion'];
 

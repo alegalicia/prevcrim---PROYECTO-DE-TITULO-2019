@@ -6,7 +6,7 @@ if (!isset($_SESSION["id_perfil"])) {
 require_once 'loading.php';
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>

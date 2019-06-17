@@ -320,7 +320,7 @@ if ($_SESSION["id_perfil"] == 1) {
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success" name="ingresar" value="actualizar"> Actualizar cuenta</button>
+                                        <button type="submit" class="btn btn-success" name="ingresar" value="actualizar">Actualizar</button>
                                     </div>
                                 </form>
                             </article>

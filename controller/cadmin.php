@@ -37,7 +37,7 @@ class funciones {
 
 	//==================== listado deperfil  ===========================
 	public function lista_perfil() {
-		$sql = "select id_perfil, perfil from `perfil` order by perfil asc";
+		$sql = "select id_perfil, perfil from `perfil` where id_perfil <> 1 order by perfil asc";
 
 		$stmt = $this->db->connect()->query($sql);
 		$datos = array();
@@ -947,6 +947,19 @@ public function rankinkSector() {
 			echo "<script>alert('ERROR AL INGRESAR ACTIVIDAD NIVEL 1');</script>";
 		}
 	}
+
+		//==================== listado de insituciones  ===========================
+		public function lista_inst_a($id) {
+			$sql = "select id_institucion, institucion, monitor from `institucion` where estado=1 and id_institucion = '".$id."'";
+	
+			$stmt = $this->db->connect()->query($sql);
+			$datos = array();
+			while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+				$datos[] = array_map("utf8_encode", $fila);
+				// $datos[] =  $fila;
+			}
+			return $datos;
+		}
 
 
 }

@@ -104,7 +104,7 @@ if ($_SESSION["id_perfil"] == 3) {
                     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
                         <thead>
                             <tr>
-                                <th class="th-sm">Ver detalle Delito</th>
+                                <th class="th-sm">Antecedente</th>
                                 <th class="th-sm">Rut</th>
                                 <th class="th-sm">Nombre </th>
                                 <th class="th-sm">Apellido</th>
@@ -137,7 +137,7 @@ if ($_SESSION["id_perfil"] == 3) {
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Ver Detalle delito</th>
+                                <th>Antecedente</th>
                                 <th>Rut</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
@@ -166,7 +166,7 @@ if ($_SESSION["id_perfil"] == 3) {
                                         }
                                     </style>
                                     <div>
-                                        <h5 class="modal-title" id="j5">DETALLE DELITO</h5>
+                                        <h5 class="modal-title" id="j5">Antecedente</h5>
                                     </div>
                                 </strong>
 

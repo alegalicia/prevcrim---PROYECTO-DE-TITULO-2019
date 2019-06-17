@@ -37,7 +37,12 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-user"></i></span>
           </div>
-          <input name="usuario" type="text" class="form-control" placeholder="Usuario" required maxlength="10">
+          <input name="usuario" type="text" class="form-control" placeholder="EJ: 12345678-9" required maxlength="10">
+          
+
+          <!-- <input onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="rut" name="rut" 
+          required oninput="checkRut(this)" class="form-control" placeholder="Ej: 12345678-9" type="text" required maxlength="10">
+          <script src="js/modulo11.js"></script> -->
 
         </div>
         <div class="input-group form-group">

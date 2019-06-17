@@ -227,7 +227,7 @@ if ($_SESSION["id_perfil"] == 1) {
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success" name="ingresar" value="crear"> Crear cuenta</button>
+                                    <button type="submit" class="btn btn-success" name="ingresar" value="crear">Crear</button>
                                 </div>
                             </form>
                         </article>
