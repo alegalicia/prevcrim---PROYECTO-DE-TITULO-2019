@@ -30,7 +30,7 @@ if ($ingresar == "ok") {
     $rut = (int)$rut;
     $act = new funciones();
     $registrar = $act->nuevo_delito_delincuente($rut, $comuna, $direccion, $fecha, $hora, $descpcion, $delito, $tipo);
-    echo "<meta http-equiv='refresh' content='0;url=../view/jefe_ingresar_delito.php'>";
+    echo "<meta http-equiv='refresh' content='0;url=../view/op_ingresar_delito.php'>";
 }
 
 ?>
@@ -94,7 +94,7 @@ if ($_SESSION["id_perfil"] == 3) {
             <br>
             <h4> Seleccionar Delincuente: </h4>
             <div class="col-md-8 login-sec">
-                <form class="login-form" action="jefe_ingresar_delito.php" method="post" name="f1">
+                <form class="login-form" action="op_ingresar_delito.php" method="post" name="f1">
                     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
                         <thead>
                             <tr>

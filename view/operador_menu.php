@@ -137,7 +137,7 @@ if (isset($_SESSION["id_perfil"])) {
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-id-card-o"></i>
-                  <span>Administar Usuario</span>
+                  <span>Panel</span>
                   <span class="pull-right-container">
                     <span class="label label-primary pull-right">9</span>
                   </span>
@@ -151,7 +151,7 @@ if (isset($_SESSION["id_perfil"])) {
                   <li><a href="op_rankin_comu_sec.php" target='cen'><i class="fa fa-id-card-o"></i>Ranking Comuna</a></li>
                   <li><a href="op_reporte_comuna.php" target='cen'><i class="fa fa-id-card-o"></i>Reporte Comuna</a></li>
                   <li><a href="op_reporte_sector.php" target='cen'><i class="fa fa-id-card-o"></i>Reporte Sector</a></li>
-                  <li><a href="op_eliminar.php" target='cen'><i class="fa fa-id-card-o"></i>Ingresar Delito</a></li>
+                  <li><a href="op_ingresar_delito.php" target='cen'><i class="fa fa-id-card-o"></i>Ingresar Delito</a></li>
                 </ul>
               </li>
             </ul>

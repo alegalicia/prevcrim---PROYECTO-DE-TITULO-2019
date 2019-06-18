@@ -205,27 +205,6 @@ if (isset($_SESSION["id_perfil"])) {
 
               <li class="treeview">
                 <a href="#">
-                  <i class="fa fa-users"></i>
-                  <span> Admi. Usuario (JZ) </span>
-                  <span class="pull-right-container">
-                    <span class="label label-warning pull-right">3</span>
-                  </span>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="admin_nuevo_ins.php" target='cen'><i class="fa fa-users"></i>Nueva institución</a></li>
-                  <li><a href="admin_actualizar_ins.php" target='cen'><i class="fa fa-users"></i>Actualizar institucion </a></li>
-                  <li><a href="admin_eliminar_ins.php" target='cen'><i class="fa fa-users"></i>Eliminar Institución</a></li>
-                </ul>
-              </li>
-            </ul>
-
-            <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu" data-widget="tree">
-              <li class="active treeview menu-open">
-              </li>
-
-              <li class="treeview">
-                <a href="#">
                   <i class="fa fa-area-chart"></i>
                   <span> Reporte (JZ) </span>
                   <span class="pull-right-container">

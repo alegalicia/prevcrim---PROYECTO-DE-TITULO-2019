@@ -8,7 +8,7 @@ if (!isset($_SESSION["login"])) {
 function apiLicencias($tk)
 {
 	//link
-	$url = "https://prevcrim.000webhostapp.com/view/ws/controller/acceso.php?opcion=licencia&token=";
+	$url = "http://localhost/prevcrim/view/ws/controller/acceso.php?opcion=licencia&token=";
 	$resultado = $url . $tk;
 	return $resultado;
 }
@@ -22,7 +22,7 @@ $datos = json_decode($json, true);
 function apiGoogle($tk1)
 {
 	//link
-	$url = "https://prevcrim.000webhostapp.com/view/ws/controller/acceso.php?opcion=controlGoogle&token=";
+	$url = "http://localhost/prevcrim/view/ws/controller/acceso.php?opcion=controlGoogle&token=";
 	$resultado = $url . $tk1;
 	return $resultado;
 }
@@ -37,7 +37,7 @@ $datos2 = json_decode($json1, true);
 function contrato($t)
 {
 	//link
-	$url = "https://prevcrim.000webhostapp.com/view/ws/controller/acceso.php?opcion=contrato&token=";
+	$url = "http://localhost/prevcrim/view/ws/controller/acceso.php?opcion=contrato&token=";
 	$resultado = $url . $t;
 	return $resultado;
 }

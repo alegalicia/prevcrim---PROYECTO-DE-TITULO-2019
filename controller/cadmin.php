@@ -653,7 +653,9 @@ class funciones {
 //muestra los ultimos 12 meses
 	public function sector_filtro($id_sector) {
 
-		$sql = "SELECT day(delito_delincuente.fecha) as day, month(delito_delincuente.fecha)-1 as month, year(delito_delincuente.fecha) year, delito_delincuente.fecha, COUNT(delito_delincuente.id_delito) as total,  comuna.comuna, comuna.id_sector, comuna.id_comuna, sector.sector, delito.delito
+		$sql = "SELECT day(delito_delincuente.fecha) as day, month(delito_delincuente.fecha)-1 as month, 
+		year(delito_delincuente.fecha) year, delito_delincuente.fecha, COUNT(delito_delincuente.id_delito) as total, 
+		comuna.comuna, comuna.id_sector, comuna.id_comuna, sector.sector, delito.delito
               FROM `delito_delincuente`
               inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna
               inner join delito on delito_delincuente.id_delito = delito.id_delito

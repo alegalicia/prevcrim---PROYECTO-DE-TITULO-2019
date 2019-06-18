@@ -138,7 +138,7 @@ if ($_SESSION["id_perfil"] == 2) {
             <br>
             <h3> Actualizar Usuarios de la institucón <l> <?php echo $ins; ?> </l>: </h3>
             <div class="col-md-8 login-sec">
-                <form class="login-form" action="jefe_jz_actualizar.php" method="post" name="f1">
+                <form class="login-form" action="jefe_actualizar.php" method="post" name="f1">
                     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
                         <thead>
                             <tr>
@@ -276,7 +276,7 @@ if ($_SESSION["id_perfil"] == 2) {
                                         </select>
                                         <input name="fijo" class="form-control" placeholder="Fijo" type="text" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" required maxlength="9" value="<?php echo $o['fijo'] ?>">
                                     </div>
-                                    <h4>Dirección</h4>
+                                    Dirección
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -308,7 +308,7 @@ if ($_SESSION["id_perfil"] == 2) {
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success" name="ingresar" value="actualizar"> Actualizar cuenta</button>
+                                        <button type="submit" class="btn btn-success" name="ingresar" value="actualizar">Actualizar</button>
                                     </div>
                                 </form>
                             </article>

@@ -226,8 +226,9 @@ if (isset($_SESSION['perfil'])) {
 													$total = $o['total'];
 													$delito = $o['delito'];
 													$total = (int)$total;
+													$comuna = $o['comuna'];
 													echo "{";
-													echo "name:'Delito: " . $delito . "',";
+													echo "name:'Delito: " . $delito ." Comuna: ".$comuna ."',";
 													echo "y:" . $total . ",";
 													echo "sliced: false,";
 													echo "elected: true";

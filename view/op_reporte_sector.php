@@ -159,7 +159,7 @@ if (isset($_SESSION["id_perfil"])) {
 
       ?>
                 <tr>
-                    <td><?php echo "D-".$o['id_delito_delincuente']?></td>
+                    <td><?php echo "D-".$o['id_delito']?></td>
                     <td><?php echo $o['nombre']?></td>
                     <td><?php echo $o['delito']?></td>
                     <td><?php echo $o['comuna']?></td>
