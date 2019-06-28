@@ -310,6 +310,35 @@ if ($geo['status'] = 'OK') {
         }
     }  
    
+
+         //==================== INSERTAR sector===========================  
+    
+         public function nuevSector($sector, $descripcion)  { 
+            
+
+            $sql_estado = $this->db->connect()->exec("INSERT INTO `sector` (`id_sector`, `sector`, `descripcion`, `estado`) 
+                                                      VALUES (NULL, '".$sector."', '".$descripcion."', '1');");
+    
+            if ($sql_estado) {
+                echo          
+                "
+                <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                 swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
+                 </script>";
+                return true;
+                
+            } else {   echo "
+                        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                        <script> 
+                       swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
+                return false;
+            }
+        }  
+
+
  }
+
+
 
 ?>

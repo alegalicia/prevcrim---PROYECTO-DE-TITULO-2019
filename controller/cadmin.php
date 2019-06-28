@@ -963,6 +963,23 @@ public function rankinkSector() {
 			return $datos;
 		}
 
+	//genera un nuevo delito delincunte
+	public function nuevSector($sector, $descripcion) {
 
+		require_once '../modell/madmin.php';
+		try {
+			$lista = new funciones_BD();
+			$lista->nuevSector($sector, $descripcion);
+
+			if ($lista) {
+				return true;
+
+			} else {
+				return false;
+			}
+		} catch (Exception $e) {
+			
+		}
+	}
 }
 ?>
