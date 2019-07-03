@@ -337,8 +337,34 @@ if ($geo['status'] = 'OK') {
         }  
 
 
+         //==================== INSERTAR sector===========================  
+    
+ public function agregarComuna($sector, $comuna) { 
+            
+
+            $sql_estado = $this->db->connect()->exec("
+            UPDATE comuna
+            set id_sector = '".$sector."'
+            where id_comuna ='".$comuna."';
+            ");
+    
+            if ($sql_estado) {
+                echo          
+                "
+                <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                 swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
+                 </script>";
+                return true;
+                
+            } else {   echo "
+                        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                        <script> 
+                       swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
+                return false;
+            }
+        }  
+
+
  }
-
-
-
 ?>

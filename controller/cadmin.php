@@ -23,7 +23,11 @@ class funciones {
 
 	//==================== listado de comunas  ===========================
 	public function lista_comuna() {
-		$sql = "select id_comuna, comuna from `comuna` order by comuna asc";
+		$sql = "select comuna.id_comuna, comuna.comuna, provincia.provincia, region.region
+				from `comuna` 
+				INNER join provincia on comuna.id_provincia = provincia.id_provincia
+				inner join region on provincia.id_region = region.id_region 
+				order by comuna asc";
 
 		$stmt = $this->db->connect()->query($sql);
 		$datos = array();
@@ -963,7 +967,7 @@ public function rankinkSector() {
 			return $datos;
 		}
 
-	//genera un nuevo delito delincunte
+	//crear un sector nuevo
 	public function nuevSector($sector, $descripcion) {
 
 		require_once '../modell/madmin.php';
@@ -981,5 +985,39 @@ public function rankinkSector() {
 			
 		}
 	}
+//==================== listado delitos  ===========================
+		public function listaSectores() {
+			$sql = "select id_sector, sector, descripcion FROM `sector` where estado= 1";
+	
+			$stmt = $this->db->connect()->query($sql);
+			$datos = array();
+			while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+				$datos[] = array_map("utf8_encode", $fila);
+				// $datos[] =  $fila;
+			}
+			return $datos;
+	
+		}
+
+//==================== agregar comuna===========================
+public function agregarComuna($sector, $comuna) {
+
+	require_once '../modell/madmin.php';
+	try {
+		$lista = new funciones_BD();
+		$lista->agregarComuna($sector, $comuna);
+
+		if ($lista) {
+			return true;
+
+		} else {
+			return false;
+		}
+	} catch (Exception $e) {
+		
+	}
+}
+
+
 }
 ?>
