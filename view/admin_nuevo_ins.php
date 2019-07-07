@@ -16,7 +16,7 @@ $ingresar  = isset($_REQUEST['ingresar']) ? $_REQUEST['ingresar'] : isset($_REQU
 if ($ingresar == "crear") {
     $ingresar_act = new funciones();
     $registrar = $ingresar_act->ingresar_institucion($institucion, $monitor);
-    echo "<meta http-equiv='refresh' content='0;url=../view/admin_nuevo_ins.php'>";
+ 
 }
 ?>
 <!DOCTYPE html>
@@ -34,6 +34,7 @@ if ($ingresar == "crear") {
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/panel.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    
 </head>
 <?php
 if ($_SESSION["id_perfil"] == 1) {

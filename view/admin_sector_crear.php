@@ -88,6 +88,7 @@ $ingresar  = isset($_REQUEST['ingresar']) ? $_REQUEST['ingresar'] : isset($_REQU
     </style>
     <!-- Script alerta modificado -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="css/panel.css">
 </head>
 <?php
 if ($_SESSION["id_perfil"] == 1) {

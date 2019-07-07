@@ -261,7 +261,7 @@ if (isset($_SESSION["id_perfil"])) {
                       $delito = $o['delito'];
                     }
                     ?>
-                    <span class="info-box-text">DELICTO PRINCIO </span>
+                    <span class="info-box-text">DELITO PRINCIO </span>
                     <span class="info-box-number">Día: <?php echo $delito; ?></span>
                     <span class="info-box-text"><strong>Cantidad: <?php echo $total; ?></strong></span>
                   </div>
@@ -299,7 +299,7 @@ if (isset($_SESSION["id_perfil"])) {
             </div>
             <div class="box-footer">
 
-              <iFRAME name="cen" height="600px" width="100%" SRC="inicio.php"></iFRAME>
+              <iFRAME name="cen" height="800px" width="100%" SRC="inicio.php"></iFRAME>
 
             </div>
             <!-- /.box-footer -->

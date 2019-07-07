@@ -57,7 +57,6 @@ if ($clave == $clave1) {
             $direccion,
             $rut
         );
-        echo "<meta http-equiv='refresh' content='0;url=../view/admin_jz_usaurio_nuevo.php'>";
     }
 } else echo "<script>alert('LAS CONTRASEÑAS NO COINCIDEN');</script>";
 ?>
@@ -102,16 +101,21 @@ if ($_SESSION["id_perfil"] == 1) {
             </h3>
             <div class="container">
                 <br>
-                <div class="col-md-4 login-sec">
+                <div class="col-md-6 login-sec">
                     <div class="card bg-light">
-                        <article class="card-body mx-auto" style="max-width: 400px;">
+                        <article class="card-body mx-auto" style="max-width: 700px;">
 
                             <form method="post">
+                                <table>
+                                    <td>
+
 
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
-                                        <input onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="rut" class="form-control" placeholder=Rut type="text" required maxlength="10">
-                                        <input name="dv" class="form-control" placeholder="DV" type="text" required maxlength="1">
+                                    <input onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" 
+                                        id="rut" name="rut" required oninput="checkRut(this)" class="form-control" 
+                                        placeholder=Rut type="text" required maxlength="10" >
+                                        <script src="js/modulo11.js"></script>
                                     </div>
                                 </div>
 
@@ -149,7 +153,9 @@ if ($_SESSION["id_perfil"] == 1) {
                                     </div>
                                     <input name="correo" class="form-control" placeholder="Correo electronico" type="email" required maxlength="50">
                                 </div>
-
+                                </td>
+                                <td></td>
+                                <td>
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -206,10 +212,12 @@ if ($_SESSION["id_perfil"] == 1) {
                                     </div>
                                     <input name="clave1" class="form-control" placeholder="Repita Contraseña" type="password" required maxlength="15">
                                 </div>
-
+                                </td>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success" name="ingresar" value="crear">Crear cuenta</button>
                                 </div>
+                                
+                                </table>
                             </form>
                         </article>
                     </div>

@@ -339,7 +339,7 @@ if (isset($_SESSION["id_perfil"])) {
       </div>
             <div class="box-footer">
             
-                <iFRAME name= "cen"  height="600px" width="100%" SRC="inicio.php" ></iFRAME>
+                <iFRAME name= "cen"  height="800px" width="100%" SRC="inicio.php" ></iFRAME>
              
             </div>
             <!-- /.box-footer -->

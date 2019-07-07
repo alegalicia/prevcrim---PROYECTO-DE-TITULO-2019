@@ -75,44 +75,7 @@ if ($ingresar == "actualizar") {
     <link rel="stylesheet" href="css/panel.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function() {
-            $('#dtBasicExample').DataTable();
-            $('.dataTables_length').addClass('bs-select');
-        });
-        $('#dtBasicExample').DataTable({
-            language: {
-                processing: "Cargando...",
-                search: "Buscar:",
-                lengthMenu: "Mostrar elementos en: _MENU_",
-                info: "Elementos mostrados _START_ de _END_  de un total _TOTAL_ Elementos encontrados",
-                infoEmpty: " ",
-                infoFiltered: "",
-                infoPostFix: "",
-                loadingRecords: "Chargement en cours...",
-                zeroRecords: "No se encontro factura",
-                emptyTable: " ",
-                paginate: {
-                    first: "Premier",
-                    previous: "Anterior",
-                    next: "Siguiente",
-                    last: "Ultimo"
-                },
-                aria: {
-                    sortAscending: ": activer pour trier la colonne par ordre croissant",
-                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
-                }
-            }
-        });
-    </script>
-    <script type="text/javascript">
-        function ExportToExcel(dtBasicExample) {
-            var htmltable = document.getElementById('dtBasicExample');
-            var html = htmltable.outerHTML;
-            window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
-        }
-    </script>
+
     <style>
         l {
             color: red;
@@ -186,7 +149,7 @@ if ($_SESSION["id_perfil"] == 2) {
                 </form>
             </div>
             <br>
-            <div class="col-md-4 login-sec">
+            <div class="col-md-6 login-sec">
                 <?php
                 if (isset($_POST['update'])) {
                     $id = $_POST['update'];
@@ -207,8 +170,12 @@ if ($_SESSION["id_perfil"] == 2) {
                         } ?>
                         <hr>
                         <div class="card bg-light">
-                            <article class="card-body mx-auto" style="max-width: 400px;">
+                            <article class="card-body mx-auto" style="max-width: 700px;">
                                 <form action="jefe_jz_actualizar.php" method="get">
+                                    <table>
+                                        <td>
+
+
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
                                             <style>
@@ -256,7 +223,9 @@ if ($_SESSION["id_perfil"] == 2) {
                                         </div>
                                         <input name="correo" class="form-control" placeholder="Correo electronico" type="email" required maxlength="50" value="<?php echo $o['correo'] ?>">
                                     </div>
-
+                                    </td> 
+                                        <td></td>
+                                      <td>  
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -266,7 +235,7 @@ if ($_SESSION["id_perfil"] == 2) {
                                         </select>
                                         <input name="celular" class="form-control" placeholder="Celular" type="text" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" required maxlength="9" value="<?php echo $o['celular'] ?>">
                                     </div>
-
+           
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -276,7 +245,7 @@ if ($_SESSION["id_perfil"] == 2) {
                                         </select>
                                         <input name="fijo" class="form-control" placeholder="Fijo" type="text" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" required maxlength="9" value="<?php echo $o['fijo'] ?>">
                                     </div>
-                                    Dirección
+
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -306,10 +275,12 @@ if ($_SESSION["id_perfil"] == 2) {
                                         </div>
                                         <input name="clave1" class="form-control" placeholder="Repita Contraseña" type="password" required maxlength="15">
                                     </div>
-
+                                    </td>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success" name="ingresar" value="actualizar">Actualizar</button>
                                     </div>
+                                   
+                                    </table>
                                 </form>
                             </article>
                         </div>
@@ -319,6 +290,44 @@ if ($_SESSION["id_perfil"] == 2) {
             } ?>
             </div>
         </center>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
+        $('#dtBasicExample').DataTable({
+            language: {
+                processing: "Cargando...",
+                search: "Buscar:",
+                lengthMenu: "Mostrar elementos en: _MENU_",
+                info: "Elementos mostrados _START_ de _END_  de un total _TOTAL_ Elementos encontrados",
+                infoEmpty: " ",
+                infoFiltered: "",
+                infoPostFix: "",
+                loadingRecords: "Chargement en cours...",
+                zeroRecords: "No se encontro factura",
+                emptyTable: " ",
+                paginate: {
+                    first: "Premier",
+                    previous: "Anterior",
+                    next: "Siguiente",
+                    last: "Ultimo"
+                },
+                aria: {
+                    sortAscending: ": activer pour trier la colonne par ordre croissant",
+                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function ExportToExcel(dtBasicExample) {
+            var htmltable = document.getElementById('dtBasicExample');
+            var html = htmltable.outerHTML;
+            window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
+        }
+    </script>
     </body>
 <?php
 } else echo "debe iniciar sesión con una cuenta con previlegios";

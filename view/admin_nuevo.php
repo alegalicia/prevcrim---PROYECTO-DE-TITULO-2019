@@ -58,7 +58,7 @@ if ($clave == $clave1) {
             $direccion,
             $rut
         );
-        echo "<meta http-equiv='refresh' content='0;url=../view/admin_nuevo.php'>";
+       
     }
 } else echo "<script>alert('LAS CONTRASEÑAS NO COINCIDEN');</script>";
 
@@ -79,7 +79,8 @@ if ($clave == $clave1) {
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/panel.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
+    <!-- Script alerta modificado -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 <?php
@@ -114,12 +115,13 @@ if ($_SESSION["id_perfil"] == 1) {
             <h4>Nuevo usuairo</h4>
             <div class="container">
                 <br>
-                <div class="col-md-4 login-sec">
+                <div class="col-md-8 login-sec">
                     <div class="card bg-light">
-                        <article class="card-body mx-auto" style="max-width: 400px;">
+                        <article class="card-body mx-auto" style="max-width: 800px;">
 
                             <form method="post">
-
+                            <table>
+                                <td>
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
                                         <input onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" 
@@ -172,7 +174,9 @@ if ($_SESSION["id_perfil"] == 1) {
                                     </select>
                                     <input name="celular" class="form-control" placeholder="Celular" type="text" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" required maxlength="9">
                                 </div>
-
+                                </td>
+                                <td></td>
+                                <td>
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -225,10 +229,12 @@ if ($_SESSION["id_perfil"] == 1) {
                                     </div>
                                     <input name="clave1" class="form-control" placeholder="Repita Contraseña" type="password" required maxlength="15">
                                 </div>
-
+                                </td>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success" name="ingresar" value="crear">Crear</button>
+                                    <button type="submit" class="btn btn-success" name="ingresar" value="crear">Crear Usuario</button>
                                 </div>
+
+                                </table>
                             </form>
                         </article>
                     </div>

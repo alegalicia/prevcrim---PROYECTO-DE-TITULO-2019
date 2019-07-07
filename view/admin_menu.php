@@ -220,6 +220,27 @@ if (isset($_SESSION["id_perfil"])) {
               </li>
             </ul>
 
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+              <li class="active treeview menu-open">
+              </li>
+
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-university"></i>
+                  <span> Zona</span>
+                  <span class="pull-right-container">
+                    <span class="label label-info pull-right">5</span>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a target='cen' href="admin_sector_comuna.php"><i class="fa fa-university"></i>Crear Zona</a></li>
+                  <li><a target='cen' href="admin_sector_crear.php"><i class="fa fa-university"></i>Agregar Comuna</a></li>
+
+                </ul>
+              </li>
+            </ul>
+
             <ul class="sidebar-menu" data-widget="tree">
               <li class="active treeview menu-open">
               </li>
@@ -338,7 +359,7 @@ if (isset($_SESSION["id_perfil"])) {
                       $delito = $o['delito'];
                     }
                     ?>
-                    <span class="info-box-text">DELITO PRINCIO </span>
+                    <span class="info-box-text">DELITO PRINCIPAL</span>
                     <span class="info-box-number">Día: <?php echo $delito; ?></span>
                     <span class="info-box-text"><strong>Cantidad: <?php echo $total; ?></strong></span>
                   </div>
@@ -376,7 +397,7 @@ if (isset($_SESSION["id_perfil"])) {
             </div>
             <div class="box-footer">
 
-              <iFRAME name="cen" height="600px" width="100%" SRC="inicio.php"></iFRAME>
+              <iFRAME name="cen" height="800px" width="100%" SRC="inicio.php"></iFRAME>
 
             </div>
             <!-- /.box-footer -->

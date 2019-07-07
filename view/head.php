@@ -14,6 +14,7 @@ if (!isset($_SESSION["login"])) {
     <title>PREVCRIM</title>
     <link rel="stylesheet" href="css/csshead.css">
     <link rel="stylesheet" href="css/panel.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>

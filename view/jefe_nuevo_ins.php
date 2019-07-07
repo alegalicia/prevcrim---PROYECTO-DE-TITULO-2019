@@ -13,11 +13,10 @@ $monitor   = isset($_REQUEST['monitor']) ? $_REQUEST['monitor'] : isset($_REQUES
 
 $ingresar  = isset($_REQUEST['ingresar']) ? $_REQUEST['ingresar'] : isset($_REQUEST['ingresar']);
 
-if ($ingresar == "crear") {
-    $ingresar_act = new funciones();
-    $registrar = $ingresar_act->ingresar_institucion($institucion, $monitor);
-    echo "<meta http-equiv='refresh' content='0;url=../view/jefe_nuevo_ins.php'>";
-}
+    if ($ingresar == "crear") {
+        $ingresar_act = new funciones();
+        $registrar = $ingresar_act->ingresar_institucion($institucion, $monitor);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,11 +73,9 @@ if (isset($_SESSION["id_perfil"])) {
     </body>
 <?php
 } else {
-    echo "<script>alert('DEBE INICIAR SESIÓN CON EL PERFIL CORRESPONDIENTE.!!!');</script>";
-    echo "<meta http-equiv='refresh' content='0;url=../index.html'>";
+    echo "DEBE INICIAR SESIÓN CON EL PERFIL CORRESPONDIENTE.!!!";
 } 
-}   echo "<script>alert('DEBE INICIAR SESIÓN..!!!');</script>";
-    echo "<meta http-equiv='refresh' content='0;url=../index.html'>";
+}   echo "<DEBE INICIAR SESIÓN..!!!";
 ?>
 
 </html>

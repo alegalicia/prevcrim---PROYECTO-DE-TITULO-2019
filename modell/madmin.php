@@ -92,13 +92,21 @@ class funciones_BD {
         '".$primer_apellido."', '".$segundo_apellido."', '".$correo."', '".$celular."', '".$fijo."', '".$institucion."', 
         '".$comuna."', '".$direccion."', '".$perfil."', '".$fecha."', '".$hora."', '1');");
 
-        if ($sql_estado) {
-            echo "<script>alert('EL USUAIO CON RUT ' + $rut+ 'SE INGRESADO CORRECTAMENTE');</script>";
-            return true;
-            
-        } else { echo "<script>alert('EL RUT YA SE ENCUENTRA REGISTRADO');</script>";
-            return false;
-        }
+                if ($sql_estado) {
+                    echo          
+                    "
+                    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                    <script>
+                    swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
+                    </script>";
+                    return true;
+                    
+                } else {   echo "
+                            <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                            <script> 
+                        swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
+                    return false;
+                }
     }   
     
    // ACTUALIZAR PERSONA
@@ -121,14 +129,21 @@ class funciones_BD {
             
         where `usuario`.`rut` = '".$rut."'");
       
-      
-            if ($sql_estado) {
-                    echo "<script>alert('EL USUAIO CON RUT ' + $rut+ ' ACTUALIZADO CORRECTAMENTE..!!!');</script>";
-            return true;
-        } else {
-           echo "<script>alert('ERROR !!!);</script>";
-            return false;
-        }
+                if ($sql_estado) {
+                    echo          
+                    "
+                    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                    <script>
+                    swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
+                    </script>";
+                    return true;
+                    
+                } else {   echo "
+                            <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                            <script> 
+                        swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
+                    return false;
+                }
     }  
     
     
@@ -141,13 +156,21 @@ class funciones_BD {
             
         where `usuario`.`rut` = '".$rut."'");
       
-            if ($sql_estado) {
-                    echo "<script>alert('EL USUAIO CON RUT ' + $rut+ ' FUE ELIMINADO!!!');</script>";
-            return true;
-        } else {
-           echo "<script>alert('ERROR !!!);</script>";
-            return false;
-        }
+                if ($sql_estado) {
+                    echo          
+                    "
+                    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                    <script>
+                    swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
+                    </script>";
+                    return true;
+                    
+                } else {   echo "
+                            <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                            <script> 
+                        swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
+                    return false;
+                }
     }  
     
     
@@ -161,13 +184,21 @@ class funciones_BD {
         (`id_institucion`, `institucion`, `monitor`, `estado`) 
          VALUES ('null','".$institucion."','".$monitor."', '1');");
 
-        if ($sql_estado) {
-            echo "<script>alert('INSTITUCIÓN INGRESADO CORRECTAMENTE');</script>";
-            return true;
-            
-        } else { echo "<script>alert('ERROR AL CREAR INSTITUCIOÓN');</script>";
-            return false;
-        }
+                if ($sql_estado) {
+                    echo          
+                    "
+                    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                    <script>
+                    swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
+                    </script>";
+                    return true;
+                    
+                } else {   echo "
+                            <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                            <script> 
+                        swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
+                    return false;
+                }
     }  
     
     
@@ -181,12 +212,20 @@ class funciones_BD {
       
       
             if ($sql_estado) {
-                    echo "<script>alert('USUAIO ACTUALIZADO..!!!');</script>";
-            return true;
-        } else {
-           echo "<script>alert('ERROR !!!);</script>";
-            return false;
-        }
+                echo          
+                "
+                <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
+                </script>";
+                return true;
+                
+            } else {   echo "
+                        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                        <script> 
+                    swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
+                return false;
+            }
     }
     
        // ELIMIMNAR INSTITUCION
@@ -197,11 +236,19 @@ class funciones_BD {
         where `institucion`.`id_institucion` = '".$id_institucion."'");
       
       
-            if ($sql_estado) {
-                    echo "<script>alert('INSTITUCION ELIMINADA..!!!');</script>";
+        if ($sql_estado) {
+            echo          
+            "
+            <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+            <script>
+             swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
+             </script>";
             return true;
-        } else {
-           echo "<script>alert('ERROR !!!);</script>";
+            
+        } else {   echo "
+                    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                    <script> 
+                   swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
             return false;
         }
     }  
@@ -225,14 +272,22 @@ class funciones_BD {
             
         where `usuario`.`rut` = '".$rut."'");
       
-      
-            if ($sql_estado) {
-                    echo "<script>alert('USUAIO ELIMINADO..!!!');</script>";
-            return true;
-        } else {
-           echo "<script>alert('ERROR !!!);</script>";
-            return false;
-        }
+            
+                if ($sql_estado) {
+                    echo          
+                    "
+                    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                    <script>
+                    swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
+                    </script>";
+                    return true;
+                    
+                } else {   echo "
+                            <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                            <script> 
+                        swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
+                    return false;
+                }
     }
     
 //crea delincuente
@@ -270,13 +325,21 @@ if ($geo['status'] = 'OK') {
       '".$apado."', '".$nacionalidad."', '".$direccion."', '".$genero."', '".$direccion."', '".$comuna."', '".$celular."', 
       '".$fijo."', '".$id_estado_delincuente."', now(), '1','".$latitud."','".$longitud."');");
 
-        if($sql_estado) {
-            echo "<script>alert('DELINCUENTE INGRESADO CORRECTAMENTE');</script>";
-            return true;
-            
-        } else { echo "<script>alert('ERROR AL INGRESAR DELINCUENTE');</script>";
+            if ($sql_estado) {
+                echo          
+                "
+                <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
+                </script>";
+                return true;
+                
+            } else {   echo "
+                        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                        <script> 
+                    swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
                 return false;
-               }   
+            }
     }
     
     
@@ -286,13 +349,21 @@ if ($geo['status'] = 'OK') {
       $sql_estado = $this->db->connect()->exec("insert into `delito_delincuente` (`id_delito_delincuente`, `id_delincuente`, `id_delito`, `id_comuna`, `descripcion`, `fecha`, `hora`, `tipo`, `estado`) 
       values (null, '".$rut."', '".$delito."', '".$comuna."', '".$descpcion."', '".$fecha."', '".$hora."', '".$tipo."', '1'); ");
 
-        if($sql_estado) {
-            echo "<script>alert('DELITO AGREGARDO CORRECTAMENTE ');</script>";
-            return true;
-            
-        } else { echo "<script>alert('ERROR AL INGRESAR DELITO...');</script>";
+            if ($sql_estado) {
+                echo          
+                "
+                <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
+                </script>";
+                return true;
+                
+            } else {   echo "
+                        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                        <script> 
+                    swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
                 return false;
-               }   
+            }
     }    
 
 
@@ -301,13 +372,14 @@ if ($geo['status'] = 'OK') {
         $sql_estado = $this->db->connect()->exec("INSERT INTO `google` (`id_google`, `cantidad`, `fecha`) 
                                                     VALUES (NULL, '".$contador."', NOW() );");
 
-        if ($sql_estado) {
-          
-            return true;
-            
-        } else { echo "<script>alert('ERROR AL CONTAR GOOGLE');</script>";
-            return false;
-        }
+            if ($sql_estado) {
+
+                return true;
+                
+            } else {   
+
+                return false;
+            }
     }  
    
 
@@ -318,22 +390,22 @@ if ($geo['status'] = 'OK') {
 
             $sql_estado = $this->db->connect()->exec("INSERT INTO `sector` (`id_sector`, `sector`, `descripcion`, `estado`) 
                                                       VALUES (NULL, '".$sector."', '".$descripcion."', '1');");
-    
-            if ($sql_estado) {
-                echo          
-                "
-                <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
-                <script>
-                 swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
-                 </script>";
-                return true;
                 
-            } else {   echo "
-                        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
-                        <script> 
-                       swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
-                return false;
-            }
+                if ($sql_estado) {
+                    echo          
+                    "
+                    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                    <script>
+                    swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
+                    </script>";
+                    return true;
+                    
+                } else {   echo "
+                            <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                            <script> 
+                        swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
+                    return false;
+                }
         }  
 
 

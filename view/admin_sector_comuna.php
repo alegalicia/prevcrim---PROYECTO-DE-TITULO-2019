@@ -13,11 +13,11 @@ $comuna   = isset($_REQUEST['comuna']) ? $_REQUEST['comuna'] : isset($_REQUEST['
 
 $ingresar  = isset($_REQUEST['ingresar']) ? $_REQUEST['ingresar'] : isset($_REQUEST['ingresar']);
 
-if ($ingresar == "agregar") {
+    if ($ingresar == "agregar") {
 
-$agregarC = new funciones();
-$ag=$agregarC->agregarComuna($sector, $comuna);
-}
+    $agregarC = new funciones();
+    $ag=$agregarC->agregarComuna($sector, $comuna);
+    }
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ $ag=$agregarC->agregarComuna($sector, $comuna);
 <head>
     <meta charset="UTF-8">
     <title>Nuevo Sector</title>
-
+    <link rel="stylesheet" href="css/panel.css">
     <!-- Script alerta modificado -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
