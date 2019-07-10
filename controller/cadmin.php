@@ -1015,9 +1015,28 @@ public function agregarComuna($sector, $comuna) {
 		}
 	} catch (Exception $e) {
 		
-	}
+	}	
 }
 
+public function geolocalizacion_delito_comuna($comuna) {
+	$sql = "SELECT delito_delincuente.direccion as direccion, delincuente.fecha, delincuente.apodo,
+			delincuente.apodo ,delito_delincuente.latitud, delito_delincuente.longitud, comuna.id_comuna, 
+			comuna.comuna, delito_delincuente.direccion 
+			FROM `delito_delincuente` 
+			inner join delincuente on delito_delincuente.id_delincuente = delincuente.rut
+			inner join comuna on delito_delincuente.id_comuna = comuna.id_comuna
+			WHERE comuna.id_comuna = '".$comuna."' 
+			order by `delincuente`.`fecha` DESC 
+			LIMIT 30";
+
+	$stmt = $this->db->connect()->query($sql);
+	$datos = array();
+	while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		$datos[] = array_map("utf8_encode", $fila);
+		// $datos[] =  $fila;
+	}
+	return $datos;
+}
 
 }
 ?>

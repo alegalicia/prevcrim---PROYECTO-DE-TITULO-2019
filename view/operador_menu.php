@@ -42,7 +42,7 @@ if (isset($_SESSION["id_perfil"])) {
       <div class="wrapper">
         <header class="main-header">
           <!-- Logo -->
-          <a href="" class="logo" style="background-color:#9BDF23;">
+          <a href="" class="logo">
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Prev</b>crim</span>
           </a>

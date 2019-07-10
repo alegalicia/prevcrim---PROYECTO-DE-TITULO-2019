@@ -59,15 +59,15 @@
         <input type="hidden" name="opcion" value="login">
       </form>
 
-      <p>SOPORTE: MESA DE AYUDA CLICK 222-22221 <BR>CORREO: CLICK@SOLOBINARY.CL</p>
+      <h6>SOPORTE: MESA DE AYUDA CLICK 222-22221 <BR>CORREO: CLICK@SOLOBINARY.CL</h6>
 
     </div>
   </header>
   <div class="g-recaptcha" data-sitekey="TU CLAVE DEL SITIO AQUÍ"></div>
   <section class="section section-b">
     <div class="container">
-      <h2>Copy Rigth 2019:</h2>
-      <p><strong> PROYECTO TITULACIÓN: SOLOBINARY {Copy Rigth 2019: Alejandro Galicia - Patricio Tamayo}</strong> All rights
+      <h5>Copy Rigth 2019:</h5>
+      <p><strong> PROYECTO TITULACIÓN: SOLOBINARY {Copy Rigth 2019: Alejandro Galicia - Patricio Tamayo - Oscar Caceres}</strong> All rights
     reserved.</p>
     </div>
   </section>

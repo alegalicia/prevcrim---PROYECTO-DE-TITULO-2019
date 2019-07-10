@@ -45,7 +45,7 @@ if (isset($_SESSION["id_perfil"])) {
       <div class="wrapper">
         <header class="main-header">
           <!-- Logo -->
-          <a href="" class="logo" style="background-color:#9BDF23;">
+          <a href="" class="logo">
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Prev</b>crim</span>
           </a>
@@ -193,7 +193,8 @@ if (isset($_SESSION["id_perfil"])) {
                   <li><a target='cen' href="admin_jz_busqueda.php"><i class="fa fa-font-awesome"></i>Busqueda Total</a></li>
                   <li><a target='cen' href="admin_jz_delincunete.php"><i class="fa fa-font-awesome"></i>Ingresar Delincuente</a></li>
                   <li><a target='cen' href="admin_jz_parentesco.php"><i class="fa fa-font-awesome"></i>Parentesco</a></li>
-                  <li><a target='cen' href="google.php"><i class="fa fa-map-marker"></i>Google Map </a></li>
+                  <li><a target='cen' href="google.php"><i class="fa fa-map-marker"></i>Google Map - Delincuentes</a></li>
+                  <li><a target='cen' href="googleComuna.php"><i class="fa fa-map-marker"></i>Google Map - Delitos comuna</a></li>
                 </ul>
               </li>
             </ul>
@@ -206,7 +207,7 @@ if (isset($_SESSION["id_perfil"])) {
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-area-chart"></i>
-                  <span> Reporte (JZ) </span>
+                  <span> Reporte</span>
                   <span class="pull-right-container">
                     <span class="label label-info pull-right">5</span>
                   </span>
@@ -230,7 +231,7 @@ if (isset($_SESSION["id_perfil"])) {
                   <i class="fa fa-university"></i>
                   <span> Zona</span>
                   <span class="pull-right-container">
-                    <span class="label label-info pull-right">5</span>
+                    <span class="label label-info pull-right">2</span>
                   </span>
                 </a>
                 <ul class="treeview-menu">
@@ -330,7 +331,7 @@ if (isset($_SESSION["id_perfil"])) {
                       $comuna = $o['comuna'];
                     }
                     ?>
-                    <span class="info-box-text">COMUNA CON MAS DELITA</span>
+                    <span class="info-box-text">COMUNA CON MAS DELICTIVA</span>
                     <span class="info-box-number">Comuna: <?php echo $comuna; ?></span>
                     <span class="info-box-text"><strong>Cantidad: <?php echo $total; ?></strong></span>
                   </div>

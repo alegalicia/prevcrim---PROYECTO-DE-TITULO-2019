@@ -54,7 +54,7 @@ if ($_SESSION["id_perfil"] == 1) {
     <body>
         <center>
             <br>
-            <h4> Seleccionar Delincuente: </h4>
+            <h5> Ingresar Delito/Control(Seleccionar Delincuente): </h5>
             <div class="col-md-8 login-sec">
                 <form class="login-form" action="admin_ingresar_delito.php" method="post" name="f1">
                     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
@@ -188,6 +188,12 @@ if ($_SESSION["id_perfil"] == 1) {
                                     <select name="delito" class="form-control"><?php echo $select2; ?></select>
                                 </div>
 
+                                <div class="form-group input-group">
+                                                <div class="input-group-prepend">
+                                                 <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                                                </div>
+                                    <input type="text" id="direccion" class="md-textarea form-control" rows="3" name="direccion" placeholder="Dirección">
+                                </div>   
                                 <table>
                                     <tr>
                                         <td>
@@ -209,10 +215,10 @@ if ($_SESSION["id_perfil"] == 1) {
                                         </td>
                                     </tr>
                                 </table>
-
+                                    
                                 <div class="md-form">
-                                    <label for="form7">Descripción de lo sucedido</label>
-                                    <textarea id="form7" class="md-textarea form-control" rows="3" name="descpcion"></textarea>
+                                    <label for="descpcion">Descripción de lo sucedido</label>
+                                    <textarea id="descpcion" class="md-textarea form-control" rows="3" name="descpcion"></textarea>
                                 </div>
 
                             </div>

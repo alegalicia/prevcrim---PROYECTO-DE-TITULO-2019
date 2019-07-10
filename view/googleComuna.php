@@ -1,5 +1,16 @@
 <?php
-//============ Genera algo ===============
+
+error_reporting(0);
+if (!isset($_SESSION["login"])) {
+    session_start();
+}
+require_once 'loading.php';
+require_once('../controller/cadmin.php');
+$comuna   = isset($_REQUEST['comuna']) ? $_REQUEST['comuna'] : isset($_REQUEST['comuna']);
+
+if ($comuna) {
+  $comuna = "1";
+}
 
 ?>
 
@@ -35,9 +46,33 @@
 
 <body>
   <center>
-  <h4>UBICACION ACTUAL DE LOS DELINCUENTE</h4>
-  </center>
+  <h4>UBICACION DELITOS POR COMUNA</h4>
 
+    <form class="col-md-4 login-sec" action="googleComuna.php" name="mostrar" method="POST">
+    <?php                 
+        $obj = new funciones();
+        $lista1 = new funciones();
+        $lista1 = $obj->lista_comuna();
+        $select1 = '';
+        foreach ($lista1 as $key1 => $value1) {
+            $select1 .= '<option value="' . $value1["id_comuna"] . '">' . $value1["comuna"] . '</option>';
+        } 
+     ?>
+        <select name="comuna" class="form-control" id="comuna"><?php echo $select1; ?></select>
+        </div>
+        <br>
+        <button class="btn btn-success">Seleccionar</button>
+    </form>
+</center>
+
+<?php 
+
+if ($comuna == "1") {
+
+  $comuna = $_POST['comuna'];
+  
+?>
+<br>
   <div id="map"></div>
   <script>
     function initMap() {
@@ -62,7 +97,7 @@
           <?php
           require_once('../controller/cadmin.php');
           $lista = new funciones();
-          $res = $lista->geolocalizacion_delito();
+          $res = $lista->geolocalizacion_delito_comuna($comuna);
           foreach ($res as $obj => $o) {
 
             $direccion = $o['direccion'];
@@ -93,7 +128,7 @@
 
       require_once('../controller/cadmin.php');
       $lista = new funciones();
-      $res = $lista->geolocalizacion_delito();
+      $res = $lista->geolocalizacion_delito_comuna($comuna);
       $contador=0;
       foreach ($res as $obj => $o) {
 
@@ -121,7 +156,7 @@
       require_once '../controller/cadmin.php';
       $act = new funciones();
       $registrar = $act->cuentaGoogle( $contador);
-
+}
   ?>
 </body>
 

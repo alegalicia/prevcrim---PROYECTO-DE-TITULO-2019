@@ -90,7 +90,7 @@ if ($_SESSION["id_perfil"] == 1) {
     <body>
         <center>
             <br>
-            <h4> Actualizar Usuario: </h4>
+            <h4>Actualizar Usuario: </h4>
             <div class="col-md-8 login-sec">
                 <form class="login-form" action="admin_act.php" method="post" name="f1">
                     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">

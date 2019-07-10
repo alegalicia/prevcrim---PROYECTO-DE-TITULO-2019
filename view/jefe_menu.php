@@ -42,7 +42,7 @@ if (isset($_SESSION["id_perfil"])) {
 <div class="wrapper">
   <header class="main-header">
     <!-- Logo -->
-    <a href="" class="logo" style="background-color:#9BDF23;">
+    <a href="" class="logo">
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Prev</b>crim</span>
     </a>
@@ -170,7 +170,8 @@ if (isset($_SESSION["id_perfil"])) {
                     <li><a target='cen' href="jefe_busqueda.php"><i class="fa fa-font-awesome"></i>Busqueda Total</a></li>
                     <li><a target='cen' href="jefe_delincunete.php"><i class="fa fa-font-awesome"></i>Ingresar Delincuente</a></li>
                     <li><a target='cen' href="jefe_parentesco.php"><i class="fa fa-font-awesome"></i>Parentesco</a></li>
-                    <li><a target='cen' href="google.php"><i class="fa fa-map-marker"></i>Google Map </a></li>
+                    <li><a target='cen' href="google.php"><i class="fa fa-map-marker"></i>Google Map - Delincuentes</a></li>
+                    <li><a target='cen' href="googleComuna.php"><i class="fa fa-map-marker"></i>Google Map - Delitos comuna</a></li>
           </ul>
         </li>   
       </ul>
