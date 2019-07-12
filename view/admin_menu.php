@@ -237,8 +237,8 @@ if (isset($_SESSION["id_perfil"])) {
                   </span>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a target='cen' href="admin_sector_comuna.php"><i class="fa fa-university"></i>Crear Zona</a></li>
-                  <li><a target='cen' href="admin_sector_crear.php"><i class="fa fa-university"></i>Agregar Comuna</a></li>
+                  <li><a target='cen' href="admin_sector_crear.php"><i class="fa fa-university"></i>Crear Zona</a></li>
+                  <li><a target='cen' href="admin_sector_comuna.php"><i class="fa fa-university"></i>Agregar Comuna</a></li>
 
                 </ul>
               </li>

@@ -39,7 +39,9 @@ if ($ingresar == "crear") {
     
 </head>
 <?php
-if ($_SESSION["id_perfil"] == 1) {
+if (isset($_SESSION['perfil'])) {
+
+    if ($_SESSION['id_perfil'] == 1) {
 
     require_once('../controller/cadmin.php');
     $obj = new funciones();
@@ -61,7 +63,7 @@ if ($_SESSION["id_perfil"] == 1) {
     ?>
     <body>
         <center>
-            <h4>Nueva institución</h4>
+            <h4>Agregar Sector a institución</h4>
             <div class="container">
                 <br>
                 <div class="col-md-4 login-sec">
@@ -95,10 +97,12 @@ if ($_SESSION["id_perfil"] == 1) {
         </center>
     </body>
 <?php
-} else {
-    echo "<script>alert('DEBE INICIAR SESIÓN..!!!');</script>";
-    echo "<meta http-equiv='refresh' content='0;url=../index.html'>";
-}
+        } else {
+            echo "debe iniciar sesión con un perfil autorizado";
+        }
+    } else {
+        echo "debe iniciar sesión";
+    }
 ?>
 
 </html>
