@@ -1038,5 +1038,55 @@ public function geolocalizacion_delito_comuna($comuna) {
 	return $datos;
 }
 
+	//==================== listado de insituciones  ===========================
+	public function lista_sectores() {
+		$sql = "select id_sector, sector from `sector` where estado = 1 ";
+
+		$stmt = $this->db->connect()->query($sql);
+		$datos = array();
+		while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$datos[] = array_map("utf8_encode", $fila);
+			// $datos[] =  $fila;
+		}
+		return $datos;
+	}
+
+
+	//==================== listado de insituciones  ===========================
+		public function lista_sectores_inst() {
+			$sql = "SELECT sector.sector, institucion.institucion, COUNT(institucion.id_institucion) as total, institucion.id_institucion 
+			FROM `ins_sec` 
+			INNER join institucion on ins_sec.id_institucion = institucion.id_institucion 
+			inner join sector on ins_sec.id_sector = sector.id_sector
+			group by institucion.id_institucion";
+	
+			$stmt = $this->db->connect()->query($sql);
+			$datos = array();
+			while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+				$datos[] = array_map("utf8_encode", $fila);
+				// $datos[] =  $fila;
+			}
+			return $datos;
+		}
+
+		public function ingresar_ins_sec($institucion, $sector) {
+			require_once '../modell/madmin.php';
+	
+			try {
+				$lista = new funciones_BD();
+				$lista->ingresar_ins_sec($institucion, $sector);
+	
+				if ($lista) {
+					return true;
+				} else {
+	
+					return false;
+				}
+			} catch (Exception $e) {
+				echo "<script>alert('ERROR AL INGRESAR USUARIO NIVEL 1');</script>";
+			}
+		}
+	
+	
 }
 ?>

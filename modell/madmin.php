@@ -462,5 +462,29 @@ if ($geo['status'] = 'OK') {
             }
         }  
 
+        public function ingresar_ins_sec($institucion, $sector)  { 
+         
+         
+            $sql_estado = $this->db->connect()->exec("INSERT INTO `ins_sec` (`id_ins_sec`, `id_institucion`, `id_sector`, `estado`) 
+                                                      VALUES (NULL, '".$institucion."', '".$sector."', '1');");
+    
+                    if ($sql_estado) {
+                        echo          
+                        "
+                        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                        <script>
+                        swal('PrevCrim', 'Acción realizada correctamente...!!!!', 'success');
+                        </script>";
+                        return true;
+                        
+                    } else {   echo "
+                                <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                                <script> 
+                            swal('PrevCrim', 'Error en la acción...!!!!', 'error');</script>"; 
+                        return false;
+                    }
+        }  
+
+
  }
 ?>

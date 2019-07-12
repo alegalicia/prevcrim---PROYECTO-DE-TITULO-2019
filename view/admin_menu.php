@@ -161,15 +161,17 @@ if (isset($_SESSION["id_perfil"])) {
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-university"></i>
-                  <span> Adm. Institución </span>
+                  <span>Institución </span>
                   <span class="pull-right-container">
-                    <span class="label label-success pull-right">3</span>
+                    <span class="label label-success pull-right">5</span>
                   </span>
                 </a>
                 <ul class="treeview-menu">
                   <li><a href="admin_nuevo_ins.php" target='cen'><i class="fa fa-university"></i>Nueva institución</a></li>
                   <li><a href="admin_actualizar_ins.php" target='cen'><i class="fa fa-university"></i>Actualizar institucion </a></li>
                   <li><a href="admin_eliminar_ins.php" target='cen'><i class="fa fa-university"></i>Eliminar Institución</a></li>
+                  <li><a href="admin_ins_sec.php" target='cen'><i class="fa fa-university"></i>Asignar Sector</a></li>
+                  <li><a href="admin_resumen_ins.php" target='cen'><i class="fa fa-university"></i>Listado de Instituciones</a></li>
                 </ul>
               </li>
             </ul>

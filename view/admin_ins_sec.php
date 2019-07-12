@@ -1,3 +1,4 @@
+
 <?php
 error_reporting(0);
 if (!isset($_SESSION["login"])) {
@@ -7,17 +8,18 @@ if (!isset($_SESSION["login"])) {
 require_once 'loading.php';
 require_once '../controller/cadmin.php';
 
-$institucion   = isset($_REQUEST['institucion']) ? $_REQUEST['institucion'] : isset($_REQUEST['institucion']);
+$institucion   = isset($_REQUEST['monitor']) ? $_REQUEST['monitor'] : isset($_REQUEST['monitor']);
 
-$monitor   = 0;
+$sector   = isset($_REQUEST['sector']) ? $_REQUEST['sector'] : isset($_REQUEST['sector']);
 
 $ingresar  = isset($_REQUEST['ingresar']) ? $_REQUEST['ingresar'] : isset($_REQUEST['ingresar']);
 
 if ($ingresar == "crear") {
     $ingresar_act = new funciones();
-    $registrar = $ingresar_act->ingresar_institucion($institucion, $monitor);
- 
+    $registrar = $ingresar_act->ingresar_ins_sec($institucion, $sector);
+
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +50,14 @@ if ($_SESSION["id_perfil"] == 1) {
     foreach ($lista as $key2 => $value) {
         $select .= '<option value="' . $value["id_sector"] . '">' . $value["sector"] . '</option>';
     }
+
+
+    $lista1 = $obj->lista_inst();
+    $select1 = '';
+    foreach ($lista1 as $key2 => $value1) {
+        $select1 .= '<option value="' . $value1["id_institucion"] . '">' . $value1["institucion"] . '</option>';
+    }
+
     ?>
     <body>
         <center>
@@ -59,22 +69,21 @@ if ($_SESSION["id_perfil"] == 1) {
                         <article class="card-body mx-auto" style="max-width: 400px;">
 
                             <form method="post">
-                                <div class="form-group input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                                    </div>
-                                    <input name="institucion" class="form-control" placeholder="Nombre Institución" type="text" required maxlength="30">
-                                </div>
 
-<!--  
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-building"></i> </span>
                                     </div>
-                                    <select name="monitor" class="form-control"><?php //echo $select; ?></select>
+                                    <select name="monitor" class="form-control"><?php echo $select1; ?></select>
                                 </div>
 
--->
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                                    </div>
+                                    <select name="sector" class="form-control"><?php echo $select; ?></select>
+                                </div>
+
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success btn-block" name="ingresar" value="crear"> Crear institución</button>
                                 </div>

@@ -112,7 +112,7 @@ if ($_SESSION["id_perfil"] == 1) {
 
     <body>
         <center>
-            <h4>Nuevo usuairo</h4>
+            <h4>Nuevo usuario</h4>
             <div class="container">
                 <br>
                 <div class="col-md-8 login-sec">
