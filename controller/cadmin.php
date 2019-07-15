@@ -781,7 +781,7 @@ public function rankinkSector() {
 				FROM `delincuente` 
         inner join comuna on delincuente.id_comuna = comuna.id_comuna 
 				order by `delincuente`.`fecha` DESC 
-				LIMIT 30";
+				LIMIT 300";
 
 		$stmt = $this->db->connect()->query($sql);
 		$datos = array();

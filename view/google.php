@@ -1,5 +1,11 @@
 <?php
-//============ Genera algo ===============
+error_reporting(0);
+if (!isset($_SESSION["login"])) {
+    session_start();
+}
+
+require_once 'loading.php';
+require_once '../controller/cadmin.php';
 
 ?>
 
@@ -51,7 +57,7 @@
       });
 
       // Create an array of alphabetical characters used to label the markers.
-      var labels = 'Delincunete';
+      var labels = 'Delincunte';
       var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
       // Add some markers to the map.
       // Note: The code uses the JavaScript Array.prototype.map() method to

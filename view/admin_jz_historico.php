@@ -204,7 +204,7 @@ if (isset($_SESSION['perfil'])) {
 								</script>
 							</div>
 							<br>
-							<h4>Estaidcas del Sector <?php echo $o['sector']; ?>:</h4>
+							<h4>Estaidiscas del Sector <?php echo $o['sector']; ?>:</h4>
 							<hr>
 							<div class="col-md-8 login-sec">
 								<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
